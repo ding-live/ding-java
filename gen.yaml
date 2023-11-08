@@ -5,7 +5,7 @@ generation:
     omitDescriptionIfSummaryPresent: false
   baseServerURL: ""
   flattenGlobalSecurity: true
-  repoURL: https://github.com/ding-live/ding-python.git
+  repoURL: https://github.com/ding-live/ding-typescript.git
   sdkClassName: Ding
   singleTagPerOp: false
   tagNamespacingDisabled: false
