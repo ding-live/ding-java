@@ -1,0 +1,13 @@
+# CreateAuthenticationResponse
+
+A successful response to an authentication creation request.
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `authenticationUuid`                                                                            | *String*                                                                                        | :heavy_minus_sign:                                                                              | A unique identifier for the authentication that you can use on the /check and /retry endpoints. |
+| `createdAt`                                                                                     | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html)       | :heavy_minus_sign:                                                                              | N/A                                                                                             |
+| `expiresAt`                                                                                     | [OffsetDateTime](https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html)       | :heavy_minus_sign:                                                                              | The time at which the authentication expires and can no longer be checked or retried.           |
+| `status`                                                                                        | [live.ding.dingSdk.models.shared.Status](../../models/shared/Status.md)                         | :heavy_minus_sign:                                                                              | The status of the authentication.                                                               |

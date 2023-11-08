@@ -1,22 +1,41 @@
 configVersion: 1.0.0
+management:
+  docChecksum: b8a9cbd146aa1183c110d3a9672c46b4
+  docVersion: 1.0.0
+  speakeasyVersion: 1.116.0
+  generationVersion: 2.185.0
 generation:
-  comments:
-    disableComments: false
-    omitDescriptionIfSummaryPresent: false
-  baseServerURL: ""
-  flattenGlobalSecurity: true
-  repoURL: https://github.com/ding-live/ding-typescript.git
+  comments: {}
   sdkClassName: Ding
-  singleTagPerOp: false
-  tagNamespacingDisabled: false
+  repoURL: https://github.com/ding-live/ding-java.git
+features:
+  java:
+    core: 3.0.2
+    examples: 2.81.3
+    flattening: 2.81.1
+    globalSecurity: 2.81.1
+    globalServerURLs: 2.82.0
+    serverIDs: 2.81.1
 java:
-  version: 0.0.1
+  version: 0.1.0
   artifactID: dingSdk
   companyEmail: hello@ding.live
   companyName: Ding
   companyURL: https://ding.live
   githubURL: github.com/ding-live/ding-java
   groupID: live.ding
+  imports:
+    option: openapi
+    paths:
+      callbacks: models/callbacks
+      errors: models/errors
+      operations: models/operations
+      shared: models/shared
+      webhooks: models/webhooks
+  inputModelSuffix: input
   maxMethodParams: 4
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
+  outputModelSuffix: output
   projectName: ding
+  published: true
+  repoSubDirectory: .
