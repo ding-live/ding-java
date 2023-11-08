@@ -16,7 +16,7 @@ java:
   companyName: Ding
   companyURL: https://ding.live
   githubURL: github.com/ding-live/ding-java
-  groupID: liveding
+  groupID: live.ding
   maxMethodParams: 4
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   projectName: ding
