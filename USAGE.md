@@ -1,7 +1,8 @@
 <!-- Start SDK Example Usage -->
+### Send a code
 
-## Send a code
 Send an OTP code to a user's phone number.
+
 
 ```java
 package hello.world;
@@ -45,9 +46,10 @@ public class Application {
 }
 ```
 
+### Check a code
 
-## Check a code
 Check that a code entered by a user is valid.
+
 
 ```java
 package hello.world;
@@ -80,9 +82,10 @@ public class Application {
 }
 ```
 
+### Retry an authentication
 
-## Retry an authentication
 Retry an authentication if a user has not received the code.
+
 
 ```java
 package hello.world;

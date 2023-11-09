@@ -1,19 +1,17 @@
 configVersion: 1.0.0
 management:
-  docChecksum: b8a9cbd146aa1183c110d3a9672c46b4
+  docChecksum: b9f97362258d3b222b574146e543ca89
   docVersion: 1.0.0
-  speakeasyVersion: 1.116.0
-  generationVersion: 2.185.0
+  speakeasyVersion: 1.118.0
+  generationVersion: 2.187.2
 generation:
-  comments:
-    disableComments: false
-    omitDescriptionIfSummaryPresent: false
+  comments: {}
+  sdkClassName: Ding
+  repoURL: https://github.com/ding-live/ding-java.git
+  usageSnippets:
+    optionalPropertyRendering: withExample
   baseServerURL: ""
   flattenGlobalSecurity: true
-  repoURL: https://github.com/ding-live/ding-csharp.git
-  sdkClassName: Ding
-  singleTagPerOp: false
-  tagNamespacingDisabled: false
 features:
   java:
     core: 3.0.2
@@ -23,7 +21,7 @@ features:
     globalServerURLs: 2.82.0
     serverIDs: 2.81.1
 java:
-  version: 0.1.0
+  version: 0.1.1
   artifactID: dingSdk
   companyEmail: hello@ding.live
   companyName: Ding
