@@ -74,55 +74,6 @@ public class Otp {
     }
 
     /**
-     * Create an authentication
-     * @param request the request object containing all of the parameters for the API call
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
-    public live.ding.dingSdk.models.operations.CreateAutenticationResponse createAutentication(live.ding.dingSdk.models.shared.CreateAuthenticationRequest request) throws Exception {
-        String baseUrl = this.sdkConfiguration.serverUrl;
-        String url = live.ding.dingSdk.utils.Utils.generateURL(baseUrl, "/authentication");
-        
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("POST");
-        req.setURL(url);
-        SerializedBody serializedRequestBody = live.ding.dingSdk.utils.Utils.serializeRequestBody(request, "request", "json");
-        req.setBody(serializedRequestBody);
-
-        req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
-        
-        HTTPClient client = this.sdkConfiguration.securityClient;
-        
-        HttpResponse<byte[]> httpRes = client.send(req);
-
-        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        live.ding.dingSdk.models.operations.CreateAutenticationResponse res = new live.ding.dingSdk.models.operations.CreateAutenticationResponse(contentType, httpRes.statusCode()) {{
-            createAuthenticationResponse = null;
-            errorResponse = null;
-        }};
-        res.rawResponse = httpRes;
-        
-        if (httpRes.statusCode() == 200) {
-            if (live.ding.dingSdk.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                live.ding.dingSdk.models.shared.CreateAuthenticationResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), live.ding.dingSdk.models.shared.CreateAuthenticationResponse.class);
-                res.createAuthenticationResponse = out;
-            }
-        }
-        else if (httpRes.statusCode() == 400) {
-            if (live.ding.dingSdk.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                live.ding.dingSdk.models.shared.ErrorResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), live.ding.dingSdk.models.shared.ErrorResponse.class);
-                res.errorResponse = out;
-            }
-        }
-
-        return res;
-    }
-
-    /**
      * Retry an authentication
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
@@ -158,6 +109,55 @@ public class Otp {
                 ObjectMapper mapper = JSON.getMapper();
                 live.ding.dingSdk.models.shared.RetryAuthenticationResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), live.ding.dingSdk.models.shared.RetryAuthenticationResponse.class);
                 res.retryAuthenticationResponse = out;
+            }
+        }
+        else if (httpRes.statusCode() == 400) {
+            if (live.ding.dingSdk.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                live.ding.dingSdk.models.shared.ErrorResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), live.ding.dingSdk.models.shared.ErrorResponse.class);
+                res.errorResponse = out;
+            }
+        }
+
+        return res;
+    }
+
+    /**
+     * Create an authentication
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public live.ding.dingSdk.models.operations.CreateAutenticationResponse send(live.ding.dingSdk.models.shared.CreateAuthenticationRequest request) throws Exception {
+        String baseUrl = this.sdkConfiguration.serverUrl;
+        String url = live.ding.dingSdk.utils.Utils.generateURL(baseUrl, "/authentication");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = live.ding.dingSdk.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        live.ding.dingSdk.models.operations.CreateAutenticationResponse res = new live.ding.dingSdk.models.operations.CreateAutenticationResponse(contentType, httpRes.statusCode()) {{
+            createAuthenticationResponse = null;
+            errorResponse = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (live.ding.dingSdk.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                live.ding.dingSdk.models.shared.CreateAuthenticationResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), live.ding.dingSdk.models.shared.CreateAuthenticationResponse.class);
+                res.createAuthenticationResponse = out;
             }
         }
         else if (httpRes.statusCode() == 400) {

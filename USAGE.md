@@ -1,7 +1,8 @@
 <!-- Start SDK Example Usage -->
+### Send a code
 
-## Send a code
 Send an OTP code to a user's phone number.
+
 
 ```java
 package hello.world;
@@ -21,19 +22,19 @@ public class Application {
                 }})
                 .build();
 
-            live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest("eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc", "+1234567890"){{
+            live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest("82779012-9667-4917-8532-b94017ce3f0f", "+1234567890"){{
                 appRealm = "string";
                 appVersion = "string";
-                callbackUrl = "http://silly-credit.name";
+                callbackUrl = "https://regal-butane.name";
                 deviceId = "string";
                 deviceModel = "string";
-                deviceType = DeviceType.WEB;
-                ip = "97.139.118.123";
+                deviceType = DeviceType.ANDROID;
+                ip = "69.99.185.232";
                 isReturningUser = false;
                 osVersion = "string";
             }};            
 
-            CreateAutenticationResponse res = sdk.otp.createAutentication(req);
+            CreateAutenticationResponse res = sdk.otp.send(req);
 
             if (res.createAuthenticationResponse != null) {
                 // handle response
@@ -45,9 +46,10 @@ public class Application {
 }
 ```
 
+### Check a code
 
-## Check a code
 Check that a code entered by a user is valid.
+
 
 ```java
 package hello.world;
@@ -80,9 +82,10 @@ public class Application {
 }
 ```
 
+### Retry an authentication
 
-## Retry an authentication
 Retry an authentication if a user has not received the code.
+
 
 ```java
 package hello.world;
