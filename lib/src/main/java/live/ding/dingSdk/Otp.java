@@ -25,7 +25,7 @@ public class Otp {
 	}
 
     /**
-     * Check an authentication code
+     * Check a code
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
      * @throws Exception if the API call fails
@@ -74,7 +74,7 @@ public class Otp {
     }
 
     /**
-     * Create an authentication
+     * Send a code
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
      * @throws Exception if the API call fails
@@ -123,7 +123,7 @@ public class Otp {
     }
 
     /**
-     * Retry an authentication
+     * Perform a retry
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
      * @throws Exception if the API call fails

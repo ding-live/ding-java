@@ -10,7 +10,6 @@ import java.nio.charset.StandardCharsets;
 import live.ding.dingSdk.utils.HTTPClient;
 import live.ding.dingSdk.utils.HTTPRequest;
 import live.ding.dingSdk.utils.JSON;
-import live.ding.dingSdk.utils.SerializedBody;
 
 /**
  * Retrieve up-to-date metadata about a specific phone number
@@ -24,34 +23,21 @@ public class Lookup {
 	}
 
     /**
-     * Lookup a phone number
+     * Lookup a number
      * @param customerUuid
+     * @param phoneNumber
      * @return the response from the API call
      * @throws Exception if the API call fails
      */
-    public live.ding.dingSdk.models.operations.LookupResponse lookup(String customerUuid) throws Exception {
-        return this.lookup(customerUuid, null);
-    }
-
-    /**
-     * Lookup a phone number
-     * @param customerUuid
-     * @param lookupRequest
-     * @return the response from the API call
-     * @throws Exception if the API call fails
-     */
-    public live.ding.dingSdk.models.operations.LookupResponse lookup(String customerUuid, live.ding.dingSdk.models.shared.LookupRequest lookupRequest) throws Exception {
-        live.ding.dingSdk.models.operations.LookupRequest request = new live.ding.dingSdk.models.operations.LookupRequest(customerUuid);
-        request.lookupRequest=lookupRequest;
+    public live.ding.dingSdk.models.operations.LookupResponse lookup(String customerUuid, String phoneNumber) throws Exception {
+        live.ding.dingSdk.models.operations.LookupRequest request = new live.ding.dingSdk.models.operations.LookupRequest(customerUuid, phoneNumber);
         
         String baseUrl = this.sdkConfiguration.serverUrl;
-        String url = live.ding.dingSdk.utils.Utils.generateURL(baseUrl, "/lookup");
+        String url = live.ding.dingSdk.utils.Utils.generateURL(live.ding.dingSdk.models.operations.LookupRequest.class, baseUrl, "/lookup/{phone_number}", request, null);
         
         HTTPRequest req = new HTTPRequest();
-        req.setMethod("POST");
+        req.setMethod("GET");
         req.setURL(url);
-        SerializedBody serializedRequestBody = live.ding.dingSdk.utils.Utils.serializeRequestBody(request, "lookupRequest", "json");
-        req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
         req.addHeader("user-agent", this.sdkConfiguration.userAgent);
