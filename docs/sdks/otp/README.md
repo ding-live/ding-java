@@ -7,13 +7,13 @@ Send OTP codes to your users using their phone numbers.
 
 ### Available Operations
 
-* [check](#check) - Check an authentication code
-* [createAutentication](#createautentication) - Create an authentication
-* [retry](#retry) - Retry an authentication
+* [check](#check) - Check a code
+* [createAutentication](#createautentication) - Send a code
+* [retry](#retry) - Perform a retry
 
 ## check
 
-Check an authentication code
+Check a code
 
 ### Example Usage
 
@@ -62,7 +62,7 @@ public class Application {
 
 ## createAutentication
 
-Create an authentication
+Send a code
 
 ### Example Usage
 
@@ -122,7 +122,7 @@ public class Application {
 
 ## retry
 
-Retry an authentication
+Perform a retry
 
 ### Example Usage
 
