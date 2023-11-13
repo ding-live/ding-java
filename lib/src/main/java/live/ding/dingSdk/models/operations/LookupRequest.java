@@ -17,15 +17,16 @@ public class LookupRequest {
         return this;
     }
     
-    @SpeakeasyMetadata("request:mediaType=application/json")
-    public live.ding.dingSdk.models.shared.LookupRequest lookupRequest;
+    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=phone_number")
+    public String phoneNumber;
 
-    public LookupRequest withLookupRequest(live.ding.dingSdk.models.shared.LookupRequest lookupRequest) {
-        this.lookupRequest = lookupRequest;
+    public LookupRequest withPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
         return this;
     }
     
-    public LookupRequest(@JsonProperty("customer-uuid") String customerUuid) {
+    public LookupRequest(@JsonProperty("customer-uuid") String customerUuid, @JsonProperty("phone_number") String phoneNumber) {
         this.customerUuid = customerUuid;
+        this.phoneNumber = phoneNumber;
   }
 }

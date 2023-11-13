@@ -50,7 +50,6 @@ lib/src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponse.ja
 lib/src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationRequest.java
 lib/src/main/java/live/ding/dingSdk/models/shared/LineType.java
 lib/src/main/java/live/ding/dingSdk/models/shared/LookupResponse.java
-lib/src/main/java/live/ding/dingSdk/models/shared/LookupRequest.java
 lib/src/main/java/live/ding/dingSdk/models/shared/Security.java
 USAGE.md
 docs/models/operations/CheckResponse.md
@@ -72,7 +71,6 @@ docs/models/shared/RetryAuthenticationResponse.md
 docs/models/shared/RetryAuthenticationRequest.md
 docs/models/shared/LineType.md
 docs/models/shared/LookupResponse.md
-docs/models/shared/LookupRequest.md
 docs/models/shared/Security.md
 docs/sdks/ding/README.md
 docs/sdks/otp/README.md
