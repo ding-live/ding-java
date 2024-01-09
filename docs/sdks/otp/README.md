@@ -7,13 +7,13 @@ Send OTP codes to your users using their phone numbers.
 
 ### Available Operations
 
-* [check](#check) - Check an authentication code
-* [createAutentication](#createautentication) - Create an authentication
-* [retry](#retry) - Retry an authentication
+* [check](#check) - Check a code
+* [createAutentication](#createautentication) - Send a code
+* [retry](#retry) - Perform a retry
 
 ## check
 
-Check an authentication code
+Check a code
 
 ### Example Usage
 
@@ -29,14 +29,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security("YOUR_API_KEY"){{
+                .setSecurity(new Security(
+                "YOUR_API_KEY"){{
                     apiKey = "YOUR_API_KEY";
                 }})
                 .build();
 
-            live.ding.dingSdk.models.shared.CreateCheckRequest req = new CreateCheckRequest("e0e7b0e9-739d-424b-922f-1c2cb48ab077", "123456", "8f1196d5-806e-4b71-9b24-5f96ec052808");            
+            live.ding.dingSdk.models.shared.CreateCheckRequest req = new CreateCheckRequest(
+                "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+                "123456",
+                "8f1196d5-806e-4b71-9b24-5f96ec052808");
 
-            CheckResponse res = sdk.otp.check(req);
+            live.ding.dingSdk.models.operations.CheckResponse res = sdk.otp.check(req);
 
             if (res.createCheckResponse != null) {
                 // handle response
@@ -62,7 +66,7 @@ public class Application {
 
 ## createAutentication
 
-Create an authentication
+Send a code
 
 ### Example Usage
 
@@ -79,12 +83,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security("YOUR_API_KEY"){{
+                .setSecurity(new Security(
+                "YOUR_API_KEY"){{
                     apiKey = "YOUR_API_KEY";
                 }})
                 .build();
 
-            live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest("eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc", "+1234567890"){{
+            live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest(
+                "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
+                "+1234567890"){{
                 appRealm = "string";
                 appVersion = "string";
                 callbackUrl = "http://silly-credit.name";
@@ -94,9 +101,10 @@ public class Application {
                 ip = "97.139.118.123";
                 isReturningUser = false;
                 osVersion = "string";
-            }};            
 
-            CreateAutenticationResponse res = sdk.otp.createAutentication(req);
+            }};
+
+            live.ding.dingSdk.models.operations.CreateAutenticationResponse res = sdk.otp.createAutentication(req);
 
             if (res.createAuthenticationResponse != null) {
                 // handle response
@@ -122,7 +130,7 @@ public class Application {
 
 ## retry
 
-Retry an authentication
+Perform a retry
 
 ### Example Usage
 
@@ -138,14 +146,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security("YOUR_API_KEY"){{
+                .setSecurity(new Security(
+                "YOUR_API_KEY"){{
                     apiKey = "YOUR_API_KEY";
                 }})
                 .build();
 
-            live.ding.dingSdk.models.shared.RetryAuthenticationRequest req = new RetryAuthenticationRequest("a74ee547-564d-487a-91df-37fb25413a91", "3c8b3a46-881e-4cdd-93a6-f7f238bf020a");            
+            live.ding.dingSdk.models.shared.RetryAuthenticationRequest req = new RetryAuthenticationRequest(
+                "a74ee547-564d-487a-91df-37fb25413a91",
+                "3c8b3a46-881e-4cdd-93a6-f7f238bf020a");
 
-            RetryResponse res = sdk.otp.retry(req);
+            live.ding.dingSdk.models.operations.RetryResponse res = sdk.otp.retry(req);
 
             if (res.retryAuthenticationResponse != null) {
                 // handle response

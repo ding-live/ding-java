@@ -8,7 +8,7 @@ import live.ding.dingSdk.utils.HTTPClient;
 import live.ding.dingSdk.utils.SpeakeasyHTTPClient;
 
 /**
- * Ding: The OTP API allows you to send authentication codes to your users using their phone numbers
+ * Ding: The OTP API allows you to send authentication codes to your users using their phone numbers.
  */
 public class Ding {
 	/**

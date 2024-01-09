@@ -2,25 +2,25 @@
 
 The Ding Java library provides convenient access to the Ding API from applications written in the Java language.
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
+## SDK Installation
 
-# SDK Installation
-
-## Gradle
+### Gradle
 
 ```groovy
-implementation 'live.ding.dingSdk:ding:0.1.0'
+implementation 'live.ding.dingSdk:ding:0.2.0'
 ```
-
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## SDK Example Usage
 
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
 
-# Send a code
+### Send a code
 
 Send an OTP code to a user's phone number.
+
 
 ```java
 package hello.world;
@@ -35,12 +35,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security("YOUR_API_KEY"){{
+                .setSecurity(new Security(
+                "YOUR_API_KEY"){{
                     apiKey = "YOUR_API_KEY";
                 }})
                 .build();
 
-            live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest("eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc", "+1234567890"){{
+            live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest(
+                "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
+                "+1234567890"){{
                 appRealm = "string";
                 appVersion = "string";
                 callbackUrl = "http://silly-credit.name";
@@ -50,9 +53,10 @@ public class Application {
                 ip = "97.139.118.123";
                 isReturningUser = false;
                 osVersion = "string";
+
             }};
 
-            CreateAutenticationResponse res = sdk.otp.createAutentication(req);
+            live.ding.dingSdk.models.operations.CreateAutenticationResponse res = sdk.otp.createAutentication(req);
 
             if (res.createAuthenticationResponse != null) {
                 // handle response
@@ -64,9 +68,10 @@ public class Application {
 }
 ```
 
-# Check a code
+### Check a code
 
 Check that a code entered by a user is valid.
+
 
 ```java
 package hello.world;
@@ -80,14 +85,18 @@ public class Application {
     public static void main(String[] args) {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security("YOUR_API_KEY"){{
+                .setSecurity(new Security(
+                "YOUR_API_KEY"){{
                     apiKey = "YOUR_API_KEY";
                 }})
                 .build();
 
-            live.ding.dingSdk.models.shared.CreateCheckRequest req = new CreateCheckRequest("e0e7b0e9-739d-424b-922f-1c2cb48ab077", "123456", "8f1196d5-806e-4b71-9b24-5f96ec052808");
+            live.ding.dingSdk.models.shared.CreateCheckRequest req = new CreateCheckRequest(
+                "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+                "123456",
+                "8f1196d5-806e-4b71-9b24-5f96ec052808");
 
-            CheckResponse res = sdk.otp.check(req);
+            live.ding.dingSdk.models.operations.CheckResponse res = sdk.otp.check(req);
 
             if (res.createCheckResponse != null) {
                 // handle response
@@ -99,9 +108,10 @@ public class Application {
 }
 ```
 
-# Retry an authentication
+### Perform a retry
 
-Retry an authentication if a user has not received the code.
+Perform a retry if a user has not received the code.
+
 
 ```java
 package hello.world;
@@ -115,14 +125,17 @@ public class Application {
     public static void main(String[] args) {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security("YOUR_API_KEY"){{
+                .setSecurity(new Security(
+                "YOUR_API_KEY"){{
                     apiKey = "YOUR_API_KEY";
                 }})
                 .build();
 
-            live.ding.dingSdk.models.shared.RetryAuthenticationRequest req = new RetryAuthenticationRequest("a74ee547-564d-487a-91df-37fb25413a91", "3c8b3a46-881e-4cdd-93a6-f7f238bf020a");
+            live.ding.dingSdk.models.shared.RetryAuthenticationRequest req = new RetryAuthenticationRequest(
+                "a74ee547-564d-487a-91df-37fb25413a91",
+                "3c8b3a46-881e-4cdd-93a6-f7f238bf020a");
 
-            RetryResponse res = sdk.otp.retry(req);
+            live.ding.dingSdk.models.operations.RetryResponse res = sdk.otp.retry(req);
 
             if (res.retryAuthenticationResponse != null) {
                 // handle response
@@ -133,27 +146,41 @@ public class Application {
     }
 }
 ```
+<!-- End SDK Example Usage [usage] -->
 
-<!-- End SDK Example Usage -->
+<!-- Start Available Resources and Operations [operations] -->
+## Available Resources and Operations
 
-<!-- Start SDK Available Operations -->
+### [otp](docs/sdks/otp/README.md)
 
-# Available Resources and Operations
+* [check](docs/sdks/otp/README.md#check) - Check a code
+* [createAutentication](docs/sdks/otp/README.md#createautentication) - Send a code
+* [retry](docs/sdks/otp/README.md#retry) - Perform a retry
 
-## [otp](docs/sdks/otp/README.md)
+### [lookup](docs/sdks/lookup/README.md)
 
-- [check](docs/sdks/otp/README.md#check) - Check an authentication code
-- [createAutentication](docs/sdks/otp/README.md#createautentication) - Create an authentication
-- [retry](docs/sdks/otp/README.md#retry) - Retry an authentication
+* [lookup](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
+<!-- End Available Resources and Operations [operations] -->
 
-## [lookup](docs/sdks/lookup/README.md)
+<!-- Start Server Selection [server] -->
+## Server Selection
 
-- [lookup](docs/sdks/lookup/README.md#lookup) - Lookup a phone number
-<!-- End SDK Available Operations -->
+## Server Selection
 
-<!-- Start Dev Containers -->
+### Select Server by Name
 
-<!-- End Dev Containers -->
+You can override the default server globally using the `setServer` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+
+| Name | Server | Variables |
+| ----- | ------ | --------- |
+| `production` | `https://api.ding.live/v1` | None |
+
+
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally using the `setServerURL` option when initializing the SDK client instance. For example:
+<!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

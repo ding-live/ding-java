@@ -25,7 +25,7 @@ public class Otp {
 	}
 
     /**
-     * Check an authentication code
+     * Check a code
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
      * @throws Exception if the API call fails
@@ -48,12 +48,11 @@ public class Otp {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        live.ding.dingSdk.models.operations.CheckResponse res = new live.ding.dingSdk.models.operations.CheckResponse(contentType, httpRes.statusCode()) {{
+        
+        live.ding.dingSdk.models.operations.CheckResponse res = new live.ding.dingSdk.models.operations.CheckResponse(contentType, httpRes.statusCode(), httpRes) {{
             createCheckResponse = null;
             errorResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (live.ding.dingSdk.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -74,7 +73,7 @@ public class Otp {
     }
 
     /**
-     * Create an authentication
+     * Send a code
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
      * @throws Exception if the API call fails
@@ -97,12 +96,11 @@ public class Otp {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        live.ding.dingSdk.models.operations.CreateAutenticationResponse res = new live.ding.dingSdk.models.operations.CreateAutenticationResponse(contentType, httpRes.statusCode()) {{
+        
+        live.ding.dingSdk.models.operations.CreateAutenticationResponse res = new live.ding.dingSdk.models.operations.CreateAutenticationResponse(contentType, httpRes.statusCode(), httpRes) {{
             createAuthenticationResponse = null;
             errorResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (live.ding.dingSdk.utils.Utils.matchContentType(contentType, "application/json")) {
@@ -123,7 +121,7 @@ public class Otp {
     }
 
     /**
-     * Retry an authentication
+     * Perform a retry
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
      * @throws Exception if the API call fails
@@ -146,12 +144,11 @@ public class Otp {
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        live.ding.dingSdk.models.operations.RetryResponse res = new live.ding.dingSdk.models.operations.RetryResponse(contentType, httpRes.statusCode()) {{
+        
+        live.ding.dingSdk.models.operations.RetryResponse res = new live.ding.dingSdk.models.operations.RetryResponse(contentType, httpRes.statusCode(), httpRes) {{
             retryAuthenticationResponse = null;
             errorResponse = null;
         }};
-        res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (live.ding.dingSdk.utils.Utils.matchContentType(contentType, "application/json")) {

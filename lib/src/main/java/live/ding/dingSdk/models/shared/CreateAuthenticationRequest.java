@@ -23,7 +23,7 @@ public class CreateAuthenticationRequest {
     }
     
     /**
-     * The version of your app.
+     * The version of your application.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("app_version")
@@ -58,7 +58,7 @@ public class CreateAuthenticationRequest {
     }
     
     /**
-     * Unique identifier for the user's device. For Android, this corresponds to the ANDROID_ID and for iOS, this corresponds to the identifierForVendor.
+     * Unique identifier for the user's device. For Android, this corresponds to the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("device_id")
@@ -118,7 +118,7 @@ public class CreateAuthenticationRequest {
     }
     
     /**
-     * The version of the user's operating system.
+     * The version of the user's device operating system.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("os_version")
