@@ -8,7 +8,7 @@ The Ding Java library provides convenient access to the Ding API from applicatio
 ### Gradle
 
 ```groovy
-implementation 'live.ding.dingSdk:ding:0.2.0'
+implementation 'live.ding.dingSdk:ding:0.3.0'
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -44,15 +44,15 @@ public class Application {
             live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest(
                 "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
                 "+1234567890"){{
-                appRealm = "string";
-                appVersion = "string";
+                appRealm = "<value>";
+                appVersion = "<value>";
                 callbackUrl = "http://silly-credit.name";
-                deviceId = "string";
-                deviceModel = "string";
+                deviceId = "<value>";
+                deviceModel = "<value>";
                 deviceType = DeviceType.WEB;
                 ip = "97.139.118.123";
                 isReturningUser = false;
-                osVersion = "string";
+                osVersion = "<value>";
 
             }};
 

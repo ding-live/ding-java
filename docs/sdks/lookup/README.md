@@ -33,7 +33,7 @@ public class Application {
                 }})
                 .build();
 
-            live.ding.dingSdk.models.operations.LookupResponse res = sdk.lookup.lookup("6e93aa15-9177-4d09-8395-b69ce50db1c8", "string");
+            live.ding.dingSdk.models.operations.LookupResponse res = sdk.lookup.lookup("6e93aa15-9177-4d09-8395-b69ce50db1c8", "<value>");
 
             if (res.lookupResponse != null) {
                 // handle response

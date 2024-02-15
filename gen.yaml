@@ -5,10 +5,12 @@ generation:
     optionalPropertyRendering: withExample
   fixes:
     nameResolutionDec2023: false
+    parameterOrderingFeb2024: false
+    requestResponseComponentNamesFeb2024: false
   baseServerURL: ""
   flattenGlobalSecurity: true
 java:
-  version: 0.2.0
+  version: 0.3.0
   artifactID: dingSdk
   companyEmail: hello@ding.live
   companyName: Ding
@@ -28,3 +30,4 @@ java:
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   outputModelSuffix: output
   projectName: ding
+  templateVersion: v1
