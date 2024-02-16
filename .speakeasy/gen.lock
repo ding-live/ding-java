@@ -4,15 +4,15 @@ management:
   docChecksum: 5e4ef027bc51f54368e8b1607b77c098
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.258.0
-  releaseVersion: 0.3.0
-  configChecksum: b1e3655f42c2ccd018629f8665d766f4
+  generationVersion: 2.259.1
+  releaseVersion: 0.3.1
+  configChecksum: 3c314829d7606ab866ca72e4412c4999
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
 features:
   java:
-    core: 3.5.0
+    core: 3.5.1
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.81.2
