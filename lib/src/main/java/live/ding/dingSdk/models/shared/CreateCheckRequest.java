@@ -31,7 +31,7 @@ public class CreateCheckRequest {
     }
     
     /**
-     * Your customer UUID, which can be found in the API settings in the dashboard.
+     * Your customer UUID, which can be found in the API settings in the Dashboard.
      */
     @JsonProperty("customer_uuid")
     public String customerUuid;

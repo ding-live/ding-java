@@ -8,7 +8,7 @@ The Ding Java library provides convenient access to the Ding API from applicatio
 ### Gradle
 
 ```groovy
-implementation 'live.ding.dingSdk:ding:0.3.1'
+implementation 'live.ding.dingSdk:ding:0.4.0'
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -167,13 +167,14 @@ public class Application {
 
 ## Server Selection
 
-### Select Server by Name
+### Select Server by Index
 
-You can override the default server globally using the `setServer` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+You can override the default server globally using the `setServerIndex` option when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| Name | Server | Variables |
-| ----- | ------ | --------- |
-| `production` | `https://api.ding.live/v1` | None |
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.ding.live/v1` | None |
+
 
 
 

@@ -12,12 +12,12 @@ class SDKConfiguration {
 	public HTTPClient securityClient;
 	public Security security;
 	public String serverUrl;
-	public String server;
+	public int serverIdx = 0;
 	public String language = "java";
 	public String openapiDocVersion = "1.0.0";
-	public String sdkVersion = "0.3.1";
-	public String genVersion = "2.259.1";
-	public String userAgent = "speakeasy-sdk/java 0.3.1 2.259.1 1.0.0 live.ding.dingSdk";
+	public String sdkVersion = "0.4.0";
+	public String genVersion = "2.263.3";
+	public String userAgent = "speakeasy-sdk/java 0.4.0 2.263.3 1.0.0 live.ding.dingSdk";
 	
 	
 }

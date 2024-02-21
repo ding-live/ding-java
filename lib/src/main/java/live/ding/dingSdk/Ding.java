@@ -12,27 +12,14 @@ import live.ding.dingSdk.utils.SpeakeasyHTTPClient;
  */
 public class Ding {
 	/**
-	 * AvailableServers contains identifiers for the servers available to the SDK.
-	 */ 
-	public enum AvailableServers {
-        /**
-         * PRODUCTION - The production Ding API server
-         */
-        PRODUCTION("production");
-
-		public final String server;
-
-		private AvailableServers(String server) {
-			this.server = server;
-		}
-	}
-
-	/**
 	 * SERVERS contains the list of server urls available to the SDK.
 	 */
-	public static final java.util.Map<AvailableServers, String> SERVERS = new java.util.HashMap<AvailableServers, String>() {{
-		put(AvailableServers.PRODUCTION, "https://api.ding.live/v1");
-	}};
+	public static final String[] SERVERS = {
+        /**
+         * The production Ding API server
+         */
+        "https://api.ding.live/v1",
+	};
   	
     /**
      * Send OTP codes to your users using their phone numbers.
@@ -96,13 +83,13 @@ public class Ding {
 		}
 		
 		/**
-		 * Allows the overriding of the default server by name
-		 * @param server The server to use for all requests.
+		 * Allows the overriding of the default server by index
+		 * @param serverIdx The server to use for all requests.
 		 * @return The builder instance.
 		 */
-		public Builder setServer(AvailableServers server) {
-			this.sdkConfiguration.server = server.toString();
-			this.sdkConfiguration.serverUrl = SERVERS.get(server);
+		public Builder setServerIndex(int serverIdx) {
+			this.sdkConfiguration.serverIdx = serverIdx;
+			this.sdkConfiguration.serverUrl = SERVERS[serverIdx];
 			return this;
 		}
 		
@@ -125,8 +112,8 @@ public class Ding {
 			}
 			
 			if (this.sdkConfiguration.serverUrl == null || this.sdkConfiguration.serverUrl.isBlank()) {
-				this.sdkConfiguration.serverUrl = SERVERS.get(AvailableServers.PRODUCTION);
-				this.sdkConfiguration.server = AvailableServers.PRODUCTION.toString();
+				this.sdkConfiguration.serverUrl = SERVERS[0];
+				this.sdkConfiguration.serverIdx = 0;
 			}
 
 			if (this.sdkConfiguration.serverUrl.endsWith("/")) {
