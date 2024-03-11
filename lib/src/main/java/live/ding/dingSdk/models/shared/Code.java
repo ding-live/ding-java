@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  *   * `invalid_os_version` - The provided OS version is invalid.
  *   * `invalid_device_model` - The provided device model is invalid.
  *   * `invalid_device_id` - The provided device ID is invalid.
+ *   * `invalid_template_id` - The provided template ID is invalid.
  * 
  */
 public enum Code {
@@ -39,7 +40,8 @@ public enum Code {
     INVALID_APP_VERSION("invalid_app_version"),
     INVALID_OS_VERSION("invalid_os_version"),
     INVALID_DEVICE_MODEL("invalid_device_model"),
-    INVALID_DEVICE_ID("invalid_device_id");
+    INVALID_DEVICE_ID("invalid_device_id"),
+    INVALID_TEMPLATE_ID("invalid_template_id");
 
     @JsonValue
     public final String value;

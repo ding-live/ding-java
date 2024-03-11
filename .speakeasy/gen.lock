@@ -1,21 +1,21 @@
 lockVersion: 2.0.0
 id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
-  docChecksum: 01bd42610039f89b431afa7eb1a3c56c
+  docChecksum: a2a29dc8a8df536c8b2553db26987fad
   docVersion: 1.0.0
-  speakeasyVersion: internal
-  generationVersion: 2.263.3
-  releaseVersion: 0.4.0
-  configChecksum: 42c8d1f652d0f14447f13f9cc3249d23
+  speakeasyVersion: 1.205.2
+  generationVersion: 2.279.1
+  releaseVersion: 0.4.1
+  configChecksum: cd13d3a63f6e78edeb94a9e709461c79
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
 features:
   java:
-    core: 3.5.1
+    core: 3.5.2
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.81.2
+    globalSecurity: 2.81.4
     globalServerURLs: 2.82.1
 generatedFiles:
   - lib/src/main/java/live/ding/dingSdk/SDKConfiguration.java
@@ -52,7 +52,7 @@ generatedFiles:
   - lib/src/main/java/live/ding/dingSdk/utils/Types.java
   - lib/src/main/java/live/ding/dingSdk/utils/Utils.java
   - lib/src/main/java/live/ding/dingSdk/models/operations/CheckResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/operations/CreateAutenticationResponse.java
+  - lib/src/main/java/live/ding/dingSdk/models/operations/CreateAuthenticationResponse.java
   - lib/src/main/java/live/ding/dingSdk/models/operations/RetryResponse.java
   - lib/src/main/java/live/ding/dingSdk/models/operations/LookupRequest.java
   - lib/src/main/java/live/ding/dingSdk/models/operations/LookupResponse.java
@@ -72,7 +72,7 @@ generatedFiles:
   - lib/src/main/java/live/ding/dingSdk/models/shared/LookupResponse.java
   - lib/src/main/java/live/ding/dingSdk/models/shared/Security.java
   - docs/models/operations/CheckResponse.md
-  - docs/models/operations/CreateAutenticationResponse.md
+  - docs/models/operations/CreateAuthenticationResponse.md
   - docs/models/operations/RetryResponse.md
   - docs/models/operations/LookupRequest.md
   - docs/models/operations/LookupResponse.md

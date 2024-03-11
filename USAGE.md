@@ -8,7 +8,7 @@ Send an OTP code to a user's phone number.
 package hello.world;
 
 import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.operations.CreateAutenticationResponse;
+import live.ding.dingSdk.models.operations.CreateAuthenticationResponse;
 import live.ding.dingSdk.models.shared.CreateAuthenticationRequest;
 import live.ding.dingSdk.models.shared.DeviceType;
 import live.ding.dingSdk.models.shared.Security;
@@ -24,21 +24,22 @@ public class Application {
                 .build();
 
             live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest(
-                "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
+                "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
                 "+1234567890"){{
                 appRealm = "<value>";
                 appVersion = "<value>";
-                callbackUrl = "http://silly-credit.name";
+                callbackUrl = "https://thin-television.name";
                 deviceId = "<value>";
                 deviceModel = "<value>";
-                deviceType = DeviceType.WEB;
-                ip = "97.139.118.123";
+                deviceType = DeviceType.ANDROID;
+                ip = "176.157.112.67";
                 isReturningUser = false;
                 osVersion = "<value>";
+                templateId = "<value>";
 
             }};
 
-            live.ding.dingSdk.models.operations.CreateAutenticationResponse res = sdk.otp.createAutentication(req);
+            live.ding.dingSdk.models.operations.CreateAuthenticationResponse res = sdk.otp.createAuthentication(req);
 
             if (res.createAuthenticationResponse != null) {
                 // handle response

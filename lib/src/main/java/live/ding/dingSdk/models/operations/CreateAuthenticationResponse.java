@@ -8,14 +8,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.http.HttpResponse;
 
 
-public class CreateAutenticationResponse {
+public class CreateAuthenticationResponse {
     /**
      * HTTP response content type for this operation
      */
     
     public String contentType;
 
-    public CreateAutenticationResponse withContentType(String contentType) {
+    public CreateAuthenticationResponse withContentType(String contentType) {
         this.contentType = contentType;
         return this;
     }
@@ -26,7 +26,7 @@ public class CreateAutenticationResponse {
     
     public live.ding.dingSdk.models.shared.CreateAuthenticationResponse createAuthenticationResponse;
 
-    public CreateAutenticationResponse withCreateAuthenticationResponse(live.ding.dingSdk.models.shared.CreateAuthenticationResponse createAuthenticationResponse) {
+    public CreateAuthenticationResponse withCreateAuthenticationResponse(live.ding.dingSdk.models.shared.CreateAuthenticationResponse createAuthenticationResponse) {
         this.createAuthenticationResponse = createAuthenticationResponse;
         return this;
     }
@@ -37,7 +37,7 @@ public class CreateAutenticationResponse {
     
     public live.ding.dingSdk.models.shared.ErrorResponse errorResponse;
 
-    public CreateAutenticationResponse withErrorResponse(live.ding.dingSdk.models.shared.ErrorResponse errorResponse) {
+    public CreateAuthenticationResponse withErrorResponse(live.ding.dingSdk.models.shared.ErrorResponse errorResponse) {
         this.errorResponse = errorResponse;
         return this;
     }
@@ -48,7 +48,7 @@ public class CreateAutenticationResponse {
     
     public Integer statusCode;
 
-    public CreateAutenticationResponse withStatusCode(Integer statusCode) {
+    public CreateAuthenticationResponse withStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
         return this;
     }
@@ -59,12 +59,12 @@ public class CreateAutenticationResponse {
     
     public HttpResponse<byte[]> rawResponse;
 
-    public CreateAutenticationResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
+    public CreateAuthenticationResponse withRawResponse(HttpResponse<byte[]> rawResponse) {
         this.rawResponse = rawResponse;
         return this;
     }
     
-    public CreateAutenticationResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
+    public CreateAuthenticationResponse(@JsonProperty("ContentType") String contentType, @JsonProperty("StatusCode") Integer statusCode, @JsonProperty("RawResponse") HttpResponse<byte[]> rawResponse) {
         this.contentType = contentType;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;

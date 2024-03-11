@@ -8,7 +8,7 @@ The Ding Java library provides convenient access to the Ding API from applicatio
 ### Gradle
 
 ```groovy
-implementation 'live.ding.dingSdk:ding:0.4.0'
+implementation 'live.ding.dingSdk:ding:0.4.1'
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -26,7 +26,7 @@ Send an OTP code to a user's phone number.
 package hello.world;
 
 import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.operations.CreateAutenticationResponse;
+import live.ding.dingSdk.models.operations.CreateAuthenticationResponse;
 import live.ding.dingSdk.models.shared.CreateAuthenticationRequest;
 import live.ding.dingSdk.models.shared.DeviceType;
 import live.ding.dingSdk.models.shared.Security;
@@ -42,21 +42,22 @@ public class Application {
                 .build();
 
             live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest(
-                "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
+                "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
                 "+1234567890"){{
                 appRealm = "<value>";
                 appVersion = "<value>";
-                callbackUrl = "http://silly-credit.name";
+                callbackUrl = "https://thin-television.name";
                 deviceId = "<value>";
                 deviceModel = "<value>";
-                deviceType = DeviceType.WEB;
-                ip = "97.139.118.123";
+                deviceType = DeviceType.ANDROID;
+                ip = "176.157.112.67";
                 isReturningUser = false;
                 osVersion = "<value>";
+                templateId = "<value>";
 
             }};
 
-            live.ding.dingSdk.models.operations.CreateAutenticationResponse res = sdk.otp.createAutentication(req);
+            live.ding.dingSdk.models.operations.CreateAuthenticationResponse res = sdk.otp.createAuthentication(req);
 
             if (res.createAuthenticationResponse != null) {
                 // handle response
@@ -154,7 +155,7 @@ public class Application {
 ### [otp](docs/sdks/otp/README.md)
 
 * [check](docs/sdks/otp/README.md#check) - Check a code
-* [createAutentication](docs/sdks/otp/README.md#createautentication) - Send a code
+* [createAuthentication](docs/sdks/otp/README.md#createauthentication) - Send a code
 * [retry](docs/sdks/otp/README.md#retry) - Perform a retry
 
 ### [lookup](docs/sdks/lookup/README.md)

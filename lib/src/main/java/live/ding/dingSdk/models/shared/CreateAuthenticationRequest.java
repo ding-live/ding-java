@@ -140,6 +140,18 @@ public class CreateAuthenticationRequest {
         return this;
     }
     
+    /**
+     * The template id associated with the message content variant to be sent.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("template_id")
+    public String templateId;
+
+    public CreateAuthenticationRequest withTemplateId(String templateId) {
+        this.templateId = templateId;
+        return this;
+    }
+    
     public CreateAuthenticationRequest(@JsonProperty("customer_uuid") String customerUuid, @JsonProperty("phone_number") String phoneNumber) {
         this.customerUuid = customerUuid;
         this.phoneNumber = phoneNumber;

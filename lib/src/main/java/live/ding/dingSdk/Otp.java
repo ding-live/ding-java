@@ -78,7 +78,7 @@ public class Otp {
      * @return the response from the API call
      * @throws Exception if the API call fails
      */
-    public live.ding.dingSdk.models.operations.CreateAutenticationResponse createAutentication(live.ding.dingSdk.models.shared.CreateAuthenticationRequest request) throws Exception {
+    public live.ding.dingSdk.models.operations.CreateAuthenticationResponse createAuthentication(live.ding.dingSdk.models.shared.CreateAuthenticationRequest request) throws Exception {
         String baseUrl = this.sdkConfiguration.serverUrl;
         String url = live.ding.dingSdk.utils.Utils.generateURL(baseUrl, "/authentication");
         
@@ -97,7 +97,7 @@ public class Otp {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
         
-        live.ding.dingSdk.models.operations.CreateAutenticationResponse res = new live.ding.dingSdk.models.operations.CreateAutenticationResponse(contentType, httpRes.statusCode(), httpRes) {{
+        live.ding.dingSdk.models.operations.CreateAuthenticationResponse res = new live.ding.dingSdk.models.operations.CreateAuthenticationResponse(contentType, httpRes.statusCode(), httpRes) {{
             createAuthenticationResponse = null;
             errorResponse = null;
         }};
