@@ -8,7 +8,7 @@ The Ding Java library provides convenient access to the Ding API from applicatio
 ### Gradle
 
 ```groovy
-implementation 'live.ding.dingSdk:ding:0.4.1'
+implementation 'live.ding.dingSdk:ding:0.4.2'
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -156,6 +156,7 @@ public class Application {
 
 * [check](docs/sdks/otp/README.md#check) - Check a code
 * [createAuthentication](docs/sdks/otp/README.md#createauthentication) - Send a code
+* [feedback](docs/sdks/otp/README.md#feedback) - Send feedback
 * [retry](docs/sdks/otp/README.md#retry) - Perform a retry
 
 ### [lookup](docs/sdks/lookup/README.md)

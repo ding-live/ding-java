@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
-  docChecksum: a2a29dc8a8df536c8b2553db26987fad
+  docChecksum: bd5703227a0834ce8cffa01539ad4346
   docVersion: 1.0.0
-  speakeasyVersion: 1.205.2
-  generationVersion: 2.279.1
-  releaseVersion: 0.4.1
-  configChecksum: cd13d3a63f6e78edeb94a9e709461c79
+  speakeasyVersion: 1.206.3
+  generationVersion: 2.280.6
+  releaseVersion: 0.4.2
+  configChecksum: c441ccc5ad9383b676456dce9c97b110
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
@@ -53,6 +53,7 @@ generatedFiles:
   - lib/src/main/java/live/ding/dingSdk/utils/Utils.java
   - lib/src/main/java/live/ding/dingSdk/models/operations/CheckResponse.java
   - lib/src/main/java/live/ding/dingSdk/models/operations/CreateAuthenticationResponse.java
+  - lib/src/main/java/live/ding/dingSdk/models/operations/FeedbackResponse.java
   - lib/src/main/java/live/ding/dingSdk/models/operations/RetryResponse.java
   - lib/src/main/java/live/ding/dingSdk/models/operations/LookupRequest.java
   - lib/src/main/java/live/ding/dingSdk/models/operations/LookupResponse.java
@@ -65,6 +66,9 @@ generatedFiles:
   - lib/src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationResponse.java
   - lib/src/main/java/live/ding/dingSdk/models/shared/DeviceType.java
   - lib/src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationRequest.java
+  - lib/src/main/java/live/ding/dingSdk/models/shared/FeedbackResponse.java
+  - lib/src/main/java/live/ding/dingSdk/models/shared/FeedbackRequestStatus.java
+  - lib/src/main/java/live/ding/dingSdk/models/shared/FeedbackRequest.java
   - lib/src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponseStatus.java
   - lib/src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponse.java
   - lib/src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationRequest.java
@@ -73,6 +77,7 @@ generatedFiles:
   - lib/src/main/java/live/ding/dingSdk/models/shared/Security.java
   - docs/models/operations/CheckResponse.md
   - docs/models/operations/CreateAuthenticationResponse.md
+  - docs/models/operations/FeedbackResponse.md
   - docs/models/operations/RetryResponse.md
   - docs/models/operations/LookupRequest.md
   - docs/models/operations/LookupResponse.md
@@ -85,6 +90,9 @@ generatedFiles:
   - docs/models/shared/CreateAuthenticationResponse.md
   - docs/models/shared/DeviceType.md
   - docs/models/shared/CreateAuthenticationRequest.md
+  - docs/models/shared/FeedbackResponse.md
+  - docs/models/shared/FeedbackRequestStatus.md
+  - docs/models/shared/FeedbackRequest.md
   - docs/models/shared/RetryAuthenticationResponseStatus.md
   - docs/models/shared/RetryAuthenticationResponse.md
   - docs/models/shared/RetryAuthenticationRequest.md

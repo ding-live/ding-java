@@ -121,6 +121,54 @@ public class Otp {
     }
 
     /**
+     * Send feedback
+     * @param request the request object containing all of the parameters for the API call
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     */
+    public live.ding.dingSdk.models.operations.FeedbackResponse feedback(live.ding.dingSdk.models.shared.FeedbackRequest request) throws Exception {
+        String baseUrl = this.sdkConfiguration.serverUrl;
+        String url = live.ding.dingSdk.utils.Utils.generateURL(baseUrl, "/authentication/feedback");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = live.ding.dingSdk.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+        
+        live.ding.dingSdk.models.operations.FeedbackResponse res = new live.ding.dingSdk.models.operations.FeedbackResponse(contentType, httpRes.statusCode(), httpRes) {{
+            feedbackResponse = null;
+            errorResponse = null;
+        }};
+        
+        if (httpRes.statusCode() == 200) {
+            if (live.ding.dingSdk.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                live.ding.dingSdk.models.shared.FeedbackResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), live.ding.dingSdk.models.shared.FeedbackResponse.class);
+                res.feedbackResponse = out;
+            }
+        }
+        else {
+            if (live.ding.dingSdk.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                live.ding.dingSdk.models.shared.ErrorResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), live.ding.dingSdk.models.shared.ErrorResponse.class);
+                res.errorResponse = out;
+            }
+        }
+
+        return res;
+    }
+
+    /**
      * Perform a retry
      * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call

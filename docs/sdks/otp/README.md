@@ -9,6 +9,7 @@ Send OTP codes to your users using their phone numbers.
 
 * [check](#check) - Check a code
 * [createAuthentication](#createauthentication) - Send a code
+* [feedback](#feedback) - Send feedback
 * [retry](#retry) - Perform a retry
 
 ## check
@@ -127,6 +128,60 @@ public class Application {
 ### Response
 
 **[live.ding.dingSdk.models.operations.CreateAuthenticationResponse](../../models/operations/CreateAuthenticationResponse.md)**
+
+
+## feedback
+
+Send feedback
+
+### Example Usage
+
+```java
+package hello.world;
+
+import live.ding.dingSdk.Ding;
+import live.ding.dingSdk.models.operations.FeedbackResponse;
+import live.ding.dingSdk.models.shared.FeedbackRequest;
+import live.ding.dingSdk.models.shared.FeedbackRequestStatus;
+import live.ding.dingSdk.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            Ding sdk = Ding.builder()
+                .setSecurity(new Security(
+                "YOUR_API_KEY"){{
+                    apiKey = "YOUR_API_KEY";
+                }})
+                .build();
+
+            live.ding.dingSdk.models.shared.FeedbackRequest req = new FeedbackRequest(
+                "c0c405fa-6bcb-4094-9430-7d6e2428ff23",
+                "+1234567890",
+                FeedbackRequestStatus.ONBOARDED);
+
+            live.ding.dingSdk.models.operations.FeedbackResponse res = sdk.otp.feedback(req);
+
+            if (res.feedbackResponse != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [live.ding.dingSdk.models.shared.FeedbackRequest](../../models/shared/FeedbackRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+
+
+### Response
+
+**[live.ding.dingSdk.models.operations.FeedbackResponse](../../models/operations/FeedbackResponse.md)**
 
 
 ## retry
