@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
-  docChecksum: 761ff7b72b6a6546da651525ba52b429
+  docChecksum: dcfda3975ee56f99d9a1aab22294af6d
   docVersion: 1.0.0
-  speakeasyVersion: 1.209.3
-  generationVersion: 2.281.2
-  releaseVersion: 0.4.3
-  configChecksum: e4203d8b0ff18a6a869b41034bc523a4
+  speakeasyVersion: 1.215.1
+  generationVersion: 2.286.4
+  releaseVersion: 0.4.4
+  configChecksum: 0c0cfd76f1103d23ce2e263540d8c37b
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
@@ -15,7 +15,7 @@ features:
     core: 3.5.2
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.81.4
+    globalSecurity: 2.81.5
     globalServerURLs: 2.82.1
 generatedFiles:
   - lib/src/main/java/live/ding/dingSdk/SDKConfiguration.java

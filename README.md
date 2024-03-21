@@ -8,7 +8,7 @@ The Ding Java library provides convenient access to the Ding API from applicatio
 ### Gradle
 
 ```groovy
-implementation 'live.ding.dingSdk:ding:0.4.3'
+implementation 'live.ding.dingSdk:ding:0.4.4'
 ```
 <!-- End SDK Installation [installation] -->
 
