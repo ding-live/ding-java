@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  *   * `duplicated_feedback_status` - Duplicated feedback status has found.
  *   * `invalid_feedback_status` - The provided feedback status is invalid.
  *   * `invalid_template_id` - The provided template ID is invalid.
+ *   * `suspended_account` - Your account has been suspended.
  * 
  */
 public enum Code {
@@ -47,7 +48,8 @@ public enum Code {
     NO_ASSOCIATED_AUTH_FOUND("no_associated_auth_found"),
     DUPLICATED_FEEDBACK_STATUS("duplicated_feedback_status"),
     INVALID_FEEDBACK_STATUS("invalid_feedback_status"),
-    INVALID_TEMPLATE_ID("invalid_template_id");
+    INVALID_TEMPLATE_ID("invalid_template_id"),
+    SUSPENDED_ACCOUNT("suspended_account");
 
     @JsonValue
     public final String value;

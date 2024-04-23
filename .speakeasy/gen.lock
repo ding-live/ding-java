@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
-  docChecksum: dcfda3975ee56f99d9a1aab22294af6d
+  docChecksum: 9894bd098e7dd9f81402a9c6ea0a6ea0
   docVersion: 1.0.0
-  speakeasyVersion: 1.215.1
-  generationVersion: 2.286.4
-  releaseVersion: 0.4.4
-  configChecksum: 0c0cfd76f1103d23ce2e263540d8c37b
+  speakeasyVersion: 1.269.1
+  generationVersion: 2.312.1
+  releaseVersion: 0.4.5
+  configChecksum: 4aea4ffa6be334fd9c4596af5be7e462
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
