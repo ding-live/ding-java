@@ -47,6 +47,18 @@ public class CreateAuthenticationRequest {
     }
     
     /**
+     * A unique, user-defined identifier that will be included in webhook events
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("correlation_id")
+    public String correlationId;
+
+    public CreateAuthenticationRequest withCorrelationId(String correlationId) {
+        this.correlationId = correlationId;
+        return this;
+    }
+    
+    /**
      * Your customer UUID, which can be found in the API settings in the dashboard.
      */
     @JsonProperty("customer_uuid")

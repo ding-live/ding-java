@@ -8,7 +8,7 @@ The Ding Java library provides convenient access to the Ding API from applicatio
 ### Gradle
 
 ```groovy
-implementation 'live.ding.dingSdk:ding:0.4.7'
+implementation 'live.ding.dingSdk:ding:0.4.8'
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -47,6 +47,7 @@ public class Application {
                 appRealm = "<value>";
                 appVersion = "<value>";
                 callbackUrl = "https://thin-television.name";
+                correlationId = "<value>";
                 deviceId = "<value>";
                 deviceModel = "<value>";
                 deviceType = DeviceType.ANDROID;

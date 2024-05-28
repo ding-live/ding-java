@@ -96,6 +96,7 @@ public class Application {
                 appRealm = "<value>";
                 appVersion = "<value>";
                 callbackUrl = "https://thin-television.name";
+                correlationId = "<value>";
                 deviceId = "<value>";
                 deviceModel = "<value>";
                 deviceType = DeviceType.ANDROID;
