@@ -12,7 +12,7 @@ generation:
   baseServerURL: ""
   flattenGlobalSecurity: true
 java:
-  version: 0.4.9
+  version: 0.4.10
   artifactID: dingSdk
   companyEmail: hello@ding.live
   companyName: Ding

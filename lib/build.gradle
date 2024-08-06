@@ -64,7 +64,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'live.ding'
             artifactId = 'dingSdk'
-            version = '0.4.9'
+            version = '0.4.10'
 
             from components.java
 
