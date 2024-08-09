@@ -3,86 +3,111 @@ id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
   docChecksum: 85248a8dd6a5cd6fea1b82dfc30249e9
   docVersion: 1.0.0
-  speakeasyVersion: 1.352.2
-  generationVersion: 2.385.2
-  releaseVersion: 0.4.10
-  configChecksum: 1f172d47011b6e89581c1748e0d23689
+  speakeasyVersion: 1.358.0
+  generationVersion: 2.390.6
+  releaseVersion: 0.5.0
+  configChecksum: 473a6388d059adbc51c5f8c5c752ad3a
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
 features:
   java:
-    core: 3.5.8
+    additionalDependencies: 0.1.0
+    core: 3.28.1
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.81.6
+    globalSecurity: 2.82.7
+    globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.1
+    sdkHooks: 0.1.0
 generatedFiles:
-  - lib/src/main/java/live/ding/dingSdk/SDKConfiguration.java
-  - lib/src/main/java/live/ding/dingSdk/Otp.java
-  - lib/src/main/java/live/ding/dingSdk/Lookup.java
-  - lib/src/main/java/live/ding/dingSdk/Ding.java
+  - src/main/java/live/ding/dingSdk/SecuritySource.java
+  - src/main/java/live/ding/dingSdk/SDKConfiguration.java
+  - src/main/java/live/ding/dingSdk/Otp.java
+  - src/main/java/live/ding/dingSdk/Lookup.java
+  - src/main/java/live/ding/dingSdk/models/operations/CheckRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/CreateAuthenticationRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/FeedbackRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/RetryRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/LookupRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/SDKMethodInterfaces.java
+  - src/main/java/live/ding/dingSdk/Ding.java
   - .gitattributes
+  - build.gradle
   - gradle/wrapper/gradle-wrapper.jar
   - gradle/wrapper/gradle-wrapper.properties
   - gradlew
   - gradlew.bat
   - settings.gradle
-  - lib/build.gradle
-  - lib/src/main/java/live/ding/dingSdk/utils/DateTimeDeserializer.java
-  - lib/src/main/java/live/ding/dingSdk/utils/DateTimeSerializer.java
-  - lib/src/main/java/live/ding/dingSdk/utils/FormMetadata.java
-  - lib/src/main/java/live/ding/dingSdk/utils/HTTPClient.java
-  - lib/src/main/java/live/ding/dingSdk/utils/HTTPRequest.java
-  - lib/src/main/java/live/ding/dingSdk/utils/HeaderMetadata.java
-  - lib/src/main/java/live/ding/dingSdk/utils/JSON.java
-  - lib/src/main/java/live/ding/dingSdk/utils/Metadata.java
-  - lib/src/main/java/live/ding/dingSdk/utils/MultipartFormMetadata.java
-  - lib/src/main/java/live/ding/dingSdk/utils/PathParamsMetadata.java
-  - lib/src/main/java/live/ding/dingSdk/utils/QueryParameters.java
-  - lib/src/main/java/live/ding/dingSdk/utils/QueryParamsMetadata.java
-  - lib/src/main/java/live/ding/dingSdk/utils/RequestBody.java
-  - lib/src/main/java/live/ding/dingSdk/utils/RequestMetadata.java
-  - lib/src/main/java/live/ding/dingSdk/utils/Security.java
-  - lib/src/main/java/live/ding/dingSdk/utils/SecurityMetadata.java
-  - lib/src/main/java/live/ding/dingSdk/utils/SerializedBody.java
-  - lib/src/main/java/live/ding/dingSdk/utils/SpeakeasyHTTPClient.java
-  - lib/src/main/java/live/ding/dingSdk/utils/SpeakeasyHTTPSecurityClient.java
-  - lib/src/main/java/live/ding/dingSdk/utils/SpeakeasyMetadata.java
-  - lib/src/main/java/live/ding/dingSdk/utils/Types.java
-  - lib/src/main/java/live/ding/dingSdk/utils/Utils.java
-  - lib/src/main/java/live/ding/dingSdk/models/operations/CheckResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/operations/CreateAuthenticationResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/operations/FeedbackResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/operations/RetryResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/operations/LookupRequest.java
-  - lib/src/main/java/live/ding/dingSdk/models/operations/LookupResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/Code.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/ErrorResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponseStatus.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/CreateCheckRequest.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/Status.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/DeviceType.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationRequest.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/FeedbackResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/FeedbackRequestStatus.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/FeedbackRequest.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponseStatus.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationRequest.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/LineType.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/LookupResponse.java
-  - lib/src/main/java/live/ding/dingSdk/models/shared/Security.java
+  - src/main/java/live/ding/dingSdk/utils/BackoffStrategy.java
+  - src/main/java/live/ding/dingSdk/utils/BigDecimalString.java
+  - src/main/java/live/ding/dingSdk/utils/BigIntegerString.java
+  - src/main/java/live/ding/dingSdk/utils/Deserializers.java
+  - src/main/java/live/ding/dingSdk/utils/EventStream.java
+  - src/main/java/live/ding/dingSdk/utils/EventStreamLineReader.java
+  - src/main/java/live/ding/dingSdk/utils/EventStreamMessage.java
+  - src/main/java/live/ding/dingSdk/utils/EventStreamReader.java
+  - src/main/java/live/ding/dingSdk/utils/FormMetadata.java
+  - src/main/java/live/ding/dingSdk/utils/HTTPClient.java
+  - src/main/java/live/ding/dingSdk/utils/HTTPRequest.java
+  - src/main/java/live/ding/dingSdk/utils/HeaderMetadata.java
+  - src/main/java/live/ding/dingSdk/utils/Helpers.java
+  - src/main/java/live/ding/dingSdk/utils/Hook.java
+  - src/main/java/live/ding/dingSdk/utils/Hooks.java
+  - src/main/java/live/ding/dingSdk/utils/JSON.java
+  - src/main/java/live/ding/dingSdk/utils/LazySingletonValue.java
+  - src/main/java/live/ding/dingSdk/utils/Metadata.java
+  - src/main/java/live/ding/dingSdk/utils/MultipartFormMetadata.java
+  - src/main/java/live/ding/dingSdk/utils/OneOfDeserializer.java
+  - src/main/java/live/ding/dingSdk/utils/Options.java
+  - src/main/java/live/ding/dingSdk/utils/PathParamsMetadata.java
+  - src/main/java/live/ding/dingSdk/utils/QueryParameters.java
+  - src/main/java/live/ding/dingSdk/utils/QueryParamsMetadata.java
+  - src/main/java/live/ding/dingSdk/utils/RequestBody.java
+  - src/main/java/live/ding/dingSdk/utils/RequestMetadata.java
+  - src/main/java/live/ding/dingSdk/utils/Response.java
+  - src/main/java/live/ding/dingSdk/utils/Retries.java
+  - src/main/java/live/ding/dingSdk/utils/RetryConfig.java
+  - src/main/java/live/ding/dingSdk/utils/Security.java
+  - src/main/java/live/ding/dingSdk/utils/SecurityMetadata.java
+  - src/main/java/live/ding/dingSdk/utils/SerializedBody.java
+  - src/main/java/live/ding/dingSdk/utils/SpeakeasyHTTPClient.java
+  - src/main/java/live/ding/dingSdk/utils/SpeakeasyMetadata.java
+  - src/main/java/live/ding/dingSdk/utils/TypedObject.java
+  - src/main/java/live/ding/dingSdk/utils/Types.java
+  - src/main/java/live/ding/dingSdk/utils/Utils.java
+  - src/main/java/live/ding/dingSdk/models/errors/AuthException.java
+  - src/main/java/live/ding/dingSdk/models/errors/SDKError.java
+  - src/main/java/live/ding/dingSdk/models/operations/CheckResponse.java
+  - src/main/java/live/ding/dingSdk/models/operations/CreateAuthenticationResponse.java
+  - src/main/java/live/ding/dingSdk/models/operations/FeedbackResponse.java
+  - src/main/java/live/ding/dingSdk/models/operations/RetryResponse.java
+  - src/main/java/live/ding/dingSdk/models/operations/LookupRequest.java
+  - src/main/java/live/ding/dingSdk/models/operations/LookupResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponseStatus.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateCheckRequest.java
+  - src/main/java/live/ding/dingSdk/models/shared/Status.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/DeviceType.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationRequest.java
+  - src/main/java/live/ding/dingSdk/models/shared/FeedbackResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/FeedbackRequestStatus.java
+  - src/main/java/live/ding/dingSdk/models/shared/FeedbackRequest.java
+  - src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponseStatus.java
+  - src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationRequest.java
+  - src/main/java/live/ding/dingSdk/models/shared/LineType.java
+  - src/main/java/live/ding/dingSdk/models/shared/LookupResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/Security.java
+  - src/main/java/live/ding/dingSdk/models/errors/Code.java
+  - src/main/java/live/ding/dingSdk/models/errors/ErrorResponse.java
   - docs/models/operations/CheckResponse.md
   - docs/models/operations/CreateAuthenticationResponse.md
   - docs/models/operations/FeedbackResponse.md
   - docs/models/operations/RetryResponse.md
   - docs/models/operations/LookupRequest.md
   - docs/models/operations/LookupResponse.md
-  - docs/models/shared/Code.md
-  - docs/models/shared/ErrorResponse.md
   - docs/models/shared/CreateCheckResponseStatus.md
   - docs/models/shared/CreateCheckResponse.md
   - docs/models/shared/CreateCheckRequest.md
@@ -99,7 +124,10 @@ generatedFiles:
   - docs/models/shared/LineType.md
   - docs/models/shared/LookupResponse.md
   - docs/models/shared/Security.md
+  - docs/models/errors/Code.md
+  - docs/models/errors/ErrorResponse.md
   - docs/sdks/ding/README.md
   - docs/sdks/otp/README.md
   - docs/sdks/lookup/README.md
   - USAGE.md
+  - CONTRIBUTING.md

@@ -1,5 +1,5 @@
 # Otp
-(*otp*)
+(*otp()*)
 
 ## Overview
 
@@ -21,49 +21,67 @@ Check a code
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import live.ding.dingSdk.Ding;
+import live.ding.dingSdk.models.errors.SDKError;
 import live.ding.dingSdk.models.operations.CheckResponse;
 import live.ding.dingSdk.models.shared.CreateCheckRequest;
 import live.ding.dingSdk.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security(
-                "YOUR_API_KEY"){{
-                    apiKey = "YOUR_API_KEY";
-                }})
+                .security(Security.builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build())
                 .build();
 
-            live.ding.dingSdk.models.shared.CreateCheckRequest req = new CreateCheckRequest(
-                "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
-                "123456",
-                "8f1196d5-806e-4b71-9b24-5f96ec052808");
+            CreateCheckRequest req = CreateCheckRequest.builder()
+                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
+                .checkCode("123456")
+                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
+                .build();
 
-            live.ding.dingSdk.models.operations.CheckResponse res = sdk.otp.check(req);
+            CheckResponse res = sdk.otp().check()
+                .request(req)
+                .call();
 
-            if (res.createCheckResponse != null) {
+            if (res.createCheckResponse().isPresent()) {
                 // handle response
             }
+        } catch (live.ding.dingSdk.models.errors.ErrorResponse e) {
+            // handle exception
+            throw e;
+        } catch (SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `request`                                                                                       | [live.ding.dingSdk.models.shared.CreateCheckRequest](../../models/shared/CreateCheckRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `request`                                                       | [CreateCheckRequest](../../models/shared/CreateCheckRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 
 ### Response
 
-**[live.ding.dingSdk.models.operations.CheckResponse](../../models/operations/CheckResponse.md)**
+**[CheckResponse](../../models/operations/CheckResponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4xx-5xx                     | \*\/*                       |
 
 ## createAuthentication
 
@@ -74,62 +92,66 @@ Send a code
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import live.ding.dingSdk.Ding;
+import live.ding.dingSdk.models.errors.SDKError;
 import live.ding.dingSdk.models.operations.CreateAuthenticationResponse;
 import live.ding.dingSdk.models.shared.CreateAuthenticationRequest;
-import live.ding.dingSdk.models.shared.DeviceType;
 import live.ding.dingSdk.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security(
-                "YOUR_API_KEY"){{
-                    apiKey = "YOUR_API_KEY";
-                }})
+                .security(Security.builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build())
                 .build();
 
-            live.ding.dingSdk.models.shared.CreateAuthenticationRequest req = new CreateAuthenticationRequest(
-                "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
-                "+1234567890"){{
-                appRealm = "<value>";
-                appVersion = "<value>";
-                callbackUrl = "https://thin-television.name";
-                correlationId = "<value>";
-                deviceId = "<value>";
-                deviceModel = "<value>";
-                deviceType = DeviceType.ANDROID;
-                ip = "176.157.112.67";
-                isReturningUser = false;
-                osVersion = "<value>";
-                templateId = "<value>";
+            CreateAuthenticationRequest req = CreateAuthenticationRequest.builder()
+                .customerUuid("c9f826e0-deca-41ec-871f-ecd6e8efeb46")
+                .phoneNumber("+1234567890")
+                .build();
 
-            }};
+            CreateAuthenticationResponse res = sdk.otp().createAuthentication()
+                .request(req)
+                .call();
 
-            live.ding.dingSdk.models.operations.CreateAuthenticationResponse res = sdk.otp.createAuthentication(req);
-
-            if (res.createAuthenticationResponse != null) {
+            if (res.createAuthenticationResponse().isPresent()) {
                 // handle response
             }
+        } catch (live.ding.dingSdk.models.errors.ErrorResponse e) {
+            // handle exception
+            throw e;
+        } catch (SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                         | [live.ding.dingSdk.models.shared.CreateAuthenticationRequest](../../models/shared/CreateAuthenticationRequest.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [CreateAuthenticationRequest](../../models/shared/CreateAuthenticationRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
 
 
 ### Response
 
-**[live.ding.dingSdk.models.operations.CreateAuthenticationResponse](../../models/operations/CreateAuthenticationResponse.md)**
+**[CreateAuthenticationResponse](../../models/operations/CreateAuthenticationResponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4xx-5xx                     | \*\/*                       |
 
 ## feedback
 
@@ -140,50 +162,64 @@ Send feedback
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import live.ding.dingSdk.Ding;
+import live.ding.dingSdk.models.errors.SDKError;
 import live.ding.dingSdk.models.operations.FeedbackResponse;
 import live.ding.dingSdk.models.shared.FeedbackRequest;
 import live.ding.dingSdk.models.shared.FeedbackRequestStatus;
 import live.ding.dingSdk.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security(
-                "YOUR_API_KEY"){{
-                    apiKey = "YOUR_API_KEY";
-                }})
+                .security(Security.builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build())
                 .build();
 
-            live.ding.dingSdk.models.shared.FeedbackRequest req = new FeedbackRequest(
-                "c0c405fa-6bcb-4094-9430-7d6e2428ff23",
-                "+1234567890",
-                FeedbackRequestStatus.ONBOARDED);
+            FeedbackRequest req = FeedbackRequest.builder()
+                .customerUuid("c0c405fa-6bcb-4094-9430-7d6e2428ff23")
+                .phoneNumber("+1234567890")
+                .status(FeedbackRequestStatus.ONBOARDED)
+                .build();
 
-            live.ding.dingSdk.models.operations.FeedbackResponse res = sdk.otp.feedback(req);
+            FeedbackResponse res = sdk.otp().feedback()
+                .request(req)
+                .call();
 
-            if (res.feedbackResponse != null) {
+            if (res.feedbackResponse().isPresent()) {
                 // handle response
             }
+        } catch (SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `request`                                                                                 | [live.ding.dingSdk.models.shared.FeedbackRequest](../../models/shared/FeedbackRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `request`                                                 | [FeedbackRequest](../../models/shared/FeedbackRequest.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
 
 
 ### Response
 
-**[live.ding.dingSdk.models.operations.FeedbackResponse](../../models/operations/FeedbackResponse.md)**
+**[FeedbackResponse](../../models/operations/FeedbackResponse.md)**
+### Errors
 
+| Error Object           | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4xx-5xx                | \*\/*                  |
 
 ## retry
 
@@ -194,45 +230,63 @@ Perform a retry
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import live.ding.dingSdk.Ding;
+import live.ding.dingSdk.models.errors.SDKError;
 import live.ding.dingSdk.models.operations.RetryResponse;
 import live.ding.dingSdk.models.shared.RetryAuthenticationRequest;
 import live.ding.dingSdk.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security(
-                "YOUR_API_KEY"){{
-                    apiKey = "YOUR_API_KEY";
-                }})
+                .security(Security.builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build())
                 .build();
 
-            live.ding.dingSdk.models.shared.RetryAuthenticationRequest req = new RetryAuthenticationRequest(
-                "a74ee547-564d-487a-91df-37fb25413a91",
-                "3c8b3a46-881e-4cdd-93a6-f7f238bf020a");
+            RetryAuthenticationRequest req = RetryAuthenticationRequest.builder()
+                .authenticationUuid("a74ee547-564d-487a-91df-37fb25413a91")
+                .customerUuid("3c8b3a46-881e-4cdd-93a6-f7f238bf020a")
+                .build();
 
-            live.ding.dingSdk.models.operations.RetryResponse res = sdk.otp.retry(req);
+            RetryResponse res = sdk.otp().retry()
+                .request(req)
+                .call();
 
-            if (res.retryAuthenticationResponse != null) {
+            if (res.retryAuthenticationResponse().isPresent()) {
                 // handle response
             }
+        } catch (live.ding.dingSdk.models.errors.ErrorResponse e) {
+            // handle exception
+            throw e;
+        } catch (SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                       | [live.ding.dingSdk.models.shared.RetryAuthenticationRequest](../../models/shared/RetryAuthenticationRequest.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [RetryAuthenticationRequest](../../models/shared/RetryAuthenticationRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
 
 ### Response
 
-**[live.ding.dingSdk.models.operations.RetryResponse](../../models/operations/RetryResponse.md)**
+**[RetryResponse](../../models/operations/RetryResponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4xx-5xx                     | \*\/*                       |

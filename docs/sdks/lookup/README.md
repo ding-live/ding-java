@@ -1,5 +1,5 @@
 # Lookup
-(*lookup*)
+(*lookup()*)
 
 ## Overview
 
@@ -18,29 +18,41 @@ Perform a phone number lookup
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.operations.LookupRequest;
+import live.ding.dingSdk.models.errors.SDKError;
 import live.ding.dingSdk.models.operations.LookupResponse;
 import live.ding.dingSdk.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         try {
             Ding sdk = Ding.builder()
-                .setSecurity(new Security(
-                "YOUR_API_KEY"){{
-                    apiKey = "YOUR_API_KEY";
-                }})
+                .security(Security.builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build())
                 .build();
 
-            live.ding.dingSdk.models.operations.LookupResponse res = sdk.lookup.lookup("6e93aa15-9177-4d09-8395-b69ce50db1c8", "<value>");
+            LookupResponse res = sdk.lookup().lookup()
+                .customerUuid("6e93aa15-9177-4d09-8395-b69ce50db1c8")
+                .phoneNumber("<value>")
+                .call();
 
-            if (res.lookupResponse != null) {
+            if (res.lookupResponse().isPresent()) {
                 // handle response
             }
+        } catch (live.ding.dingSdk.models.errors.ErrorResponse e) {
+            // handle exception
+            throw e;
+        } catch (SDKError e) {
+            // handle exception
+            throw e;
         } catch (Exception e) {
             // handle exception
+            throw e;
         }
+
     }
 }
 ```
@@ -55,5 +67,10 @@ public class Application {
 
 ### Response
 
-**[live.ding.dingSdk.models.operations.LookupResponse](../../models/operations/LookupResponse.md)**
+**[LookupResponse](../../models/operations/LookupResponse.md)**
+### Errors
 
+| Error Object                | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4xx-5xx                     | \*\/*                       |

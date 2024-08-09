@@ -12,11 +12,15 @@ generation:
   baseServerURL: ""
   flattenGlobalSecurity: true
 java:
-  version: 0.4.10
+  version: 0.5.0
+  additionalDependencies: []
+  additionalPlugins: []
   artifactID: dingSdk
+  clientServerStatusCodesAsErrors: true
   companyEmail: hello@ding.live
   companyName: Ding
   companyURL: https://ding.live
+  flattenGlobalSecurity: false
   githubURL: github.com/ding-live/ding-java
   groupID: live.ding
   imports:
@@ -28,8 +32,12 @@ java:
       shared: models/shared
       webhooks: models/webhooks
   inputModelSuffix: input
+  license:
+    name: The MIT License (MIT)
+    shortName: MIT
+    url: https://mit-license.org/
   maxMethodParams: 4
   ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   outputModelSuffix: output
   projectName: ding
-  templateVersion: v1
+  templateVersion: v2
