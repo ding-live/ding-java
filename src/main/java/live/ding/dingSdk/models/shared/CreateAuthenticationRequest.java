@@ -84,7 +84,7 @@ public class CreateAuthenticationRequest {
     private Optional<String> ip;
 
     /**
-     * Whether the user is a returning user on your app.
+     * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("is_returning_user")
@@ -233,7 +233,7 @@ public class CreateAuthenticationRequest {
     }
 
     /**
-     * Whether the user is a returning user on your app.
+     * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
      */
     @JsonIgnore
     public Optional<Boolean> isReturningUser() {
@@ -422,7 +422,7 @@ public class CreateAuthenticationRequest {
     }
 
     /**
-     * Whether the user is a returning user on your app.
+     * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
      */
     public CreateAuthenticationRequest withIsReturningUser(boolean isReturningUser) {
         Utils.checkNotNull(isReturningUser, "isReturningUser");
@@ -431,7 +431,7 @@ public class CreateAuthenticationRequest {
     }
 
     /**
-     * Whether the user is a returning user on your app.
+     * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
      */
     public CreateAuthenticationRequest withIsReturningUser(Optional<Boolean> isReturningUser) {
         Utils.checkNotNull(isReturningUser, "isReturningUser");
@@ -731,7 +731,7 @@ public class CreateAuthenticationRequest {
         }
 
         /**
-         * Whether the user is a returning user on your app.
+         * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
          */
         public Builder isReturningUser(boolean isReturningUser) {
             Utils.checkNotNull(isReturningUser, "isReturningUser");
@@ -740,7 +740,7 @@ public class CreateAuthenticationRequest {
         }
 
         /**
-         * Whether the user is a returning user on your app.
+         * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
          */
         public Builder isReturningUser(Optional<Boolean> isReturningUser) {
             Utils.checkNotNull(isReturningUser, "isReturningUser");
