@@ -4,7 +4,6 @@
 
 package live.ding.dingSdk.models.shared;
 
-
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
 

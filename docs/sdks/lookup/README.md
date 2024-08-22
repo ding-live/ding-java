@@ -57,8 +57,6 @@ public class Application {
 }
 ```
 
-
-
 ### Parameters
 
 | Parameter          | Type               | Required           | Description        |
@@ -66,10 +64,10 @@ public class Application {
 | `customerUuid`     | *String*           | :heavy_check_mark: | N/A                |
 | `phoneNumber`      | *String*           | :heavy_check_mark: | N/A                |
 
-
 ### Response
 
 **[LookupResponse](../../models/operations/LookupResponse.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |

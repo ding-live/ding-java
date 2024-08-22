@@ -66,24 +66,23 @@ public class Application {
 }
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | `request`                                                       | [CreateCheckRequest](../../models/shared/CreateCheckRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
-
 ### Response
 
 **[CheckResponse](../../models/operations/CheckResponse.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | models/errors/ErrorResponse | 400                         | application/json            |
 | models/errors/SDKError      | 4xx-5xx                     | \*\/*                       |
+
 
 ## createAuthentication
 
@@ -138,24 +137,23 @@ public class Application {
 }
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `request`                                                                         | [CreateAuthenticationRequest](../../models/shared/CreateAuthenticationRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
 
-
 ### Response
 
 **[CreateAuthenticationResponse](../../models/operations/CreateAuthenticationResponse.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
 | models/errors/ErrorResponse | 400                         | application/json            |
 | models/errors/SDKError      | 4xx-5xx                     | \*\/*                       |
+
 
 ## feedback
 
@@ -209,23 +207,22 @@ public class Application {
 }
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
 | `request`                                                 | [FeedbackRequest](../../models/shared/FeedbackRequest.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
 
-
 ### Response
 
 **[FeedbackResponse](../../models/operations/FeedbackResponse.md)**
+
 ### Errors
 
 | Error Object           | Status Code            | Content Type           |
 | ---------------------- | ---------------------- | ---------------------- |
 | models/errors/SDKError | 4xx-5xx                | \*\/*                  |
+
 
 ## retry
 
@@ -280,18 +277,16 @@ public class Application {
 }
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `request`                                                                       | [RetryAuthenticationRequest](../../models/shared/RetryAuthenticationRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
-
 ### Response
 
 **[RetryResponse](../../models/operations/RetryResponse.md)**
+
 ### Errors
 
 | Error Object                | Status Code                 | Content Type                |
