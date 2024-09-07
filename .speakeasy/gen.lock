@@ -3,17 +3,17 @@ id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
   docChecksum: c2a5d8222f4117f238343d6187ef2751
   docVersion: 1.0.0
-  speakeasyVersion: 1.377.1
-  generationVersion: 2.404.1
-  releaseVersion: 0.6.1
-  configChecksum: 528810edbb9747815ddb02e1d379dc66
+  speakeasyVersion: 1.392.1
+  generationVersion: 2.411.9
+  releaseVersion: 0.6.2
+  configChecksum: 50659f1b6292d93d3a03d3c6916c6091
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
-    core: 3.29.4
+    core: 3.29.5
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.7
@@ -21,24 +21,79 @@ features:
     globalServerURLs: 2.82.1
     sdkHooks: 0.1.0
 generatedFiles:
-  - src/main/java/live/ding/dingSdk/SecuritySource.java
-  - src/main/java/live/ding/dingSdk/SDKConfiguration.java
-  - src/main/java/live/ding/dingSdk/Otp.java
-  - src/main/java/live/ding/dingSdk/Lookup.java
-  - src/main/java/live/ding/dingSdk/models/operations/CheckRequestBuilder.java
-  - src/main/java/live/ding/dingSdk/models/operations/CreateAuthenticationRequestBuilder.java
-  - src/main/java/live/ding/dingSdk/models/operations/FeedbackRequestBuilder.java
-  - src/main/java/live/ding/dingSdk/models/operations/RetryRequestBuilder.java
-  - src/main/java/live/ding/dingSdk/models/operations/LookupRequestBuilder.java
-  - src/main/java/live/ding/dingSdk/models/operations/SDKMethodInterfaces.java
-  - src/main/java/live/ding/dingSdk/Ding.java
   - .gitattributes
+  - CONTRIBUTING.md
+  - USAGE.md
   - build.gradle
+  - docs/models/errors/Code.md
+  - docs/models/errors/ErrorResponse.md
+  - docs/models/operations/CheckResponse.md
+  - docs/models/operations/CreateAuthenticationResponse.md
+  - docs/models/operations/FeedbackResponse.md
+  - docs/models/operations/LookupRequest.md
+  - docs/models/operations/LookupResponse.md
+  - docs/models/operations/RetryResponse.md
+  - docs/models/shared/CreateAuthenticationRequest.md
+  - docs/models/shared/CreateAuthenticationResponse.md
+  - docs/models/shared/CreateCheckRequest.md
+  - docs/models/shared/CreateCheckResponse.md
+  - docs/models/shared/CreateCheckResponseStatus.md
+  - docs/models/shared/DeviceType.md
+  - docs/models/shared/FeedbackRequest.md
+  - docs/models/shared/FeedbackRequestStatus.md
+  - docs/models/shared/FeedbackResponse.md
+  - docs/models/shared/LineType.md
+  - docs/models/shared/LookupResponse.md
+  - docs/models/shared/RetryAuthenticationRequest.md
+  - docs/models/shared/RetryAuthenticationResponse.md
+  - docs/models/shared/RetryAuthenticationResponseStatus.md
+  - docs/models/shared/Security.md
+  - docs/models/shared/Status.md
+  - docs/sdks/ding/README.md
+  - docs/sdks/lookup/README.md
+  - docs/sdks/otp/README.md
   - gradle/wrapper/gradle-wrapper.jar
   - gradle/wrapper/gradle-wrapper.properties
   - gradlew
   - gradlew.bat
   - settings.gradle
+  - src/main/java/live/ding/dingSdk/Ding.java
+  - src/main/java/live/ding/dingSdk/Lookup.java
+  - src/main/java/live/ding/dingSdk/Otp.java
+  - src/main/java/live/ding/dingSdk/SDKConfiguration.java
+  - src/main/java/live/ding/dingSdk/SecuritySource.java
+  - src/main/java/live/ding/dingSdk/models/errors/AuthException.java
+  - src/main/java/live/ding/dingSdk/models/errors/Code.java
+  - src/main/java/live/ding/dingSdk/models/errors/ErrorResponse.java
+  - src/main/java/live/ding/dingSdk/models/errors/SDKError.java
+  - src/main/java/live/ding/dingSdk/models/operations/CheckRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/CheckResponse.java
+  - src/main/java/live/ding/dingSdk/models/operations/CreateAuthenticationRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/CreateAuthenticationResponse.java
+  - src/main/java/live/ding/dingSdk/models/operations/FeedbackRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/FeedbackResponse.java
+  - src/main/java/live/ding/dingSdk/models/operations/LookupRequest.java
+  - src/main/java/live/ding/dingSdk/models/operations/LookupRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/LookupResponse.java
+  - src/main/java/live/ding/dingSdk/models/operations/RetryRequestBuilder.java
+  - src/main/java/live/ding/dingSdk/models/operations/RetryResponse.java
+  - src/main/java/live/ding/dingSdk/models/operations/SDKMethodInterfaces.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationRequest.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateCheckRequest.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponseStatus.java
+  - src/main/java/live/ding/dingSdk/models/shared/DeviceType.java
+  - src/main/java/live/ding/dingSdk/models/shared/FeedbackRequest.java
+  - src/main/java/live/ding/dingSdk/models/shared/FeedbackRequestStatus.java
+  - src/main/java/live/ding/dingSdk/models/shared/FeedbackResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/LineType.java
+  - src/main/java/live/ding/dingSdk/models/shared/LookupResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationRequest.java
+  - src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponse.java
+  - src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponseStatus.java
+  - src/main/java/live/ding/dingSdk/models/shared/Security.java
+  - src/main/java/live/ding/dingSdk/models/shared/Status.java
   - src/main/java/live/ding/dingSdk/utils/BackoffStrategy.java
   - src/main/java/live/ding/dingSdk/utils/BigDecimalString.java
   - src/main/java/live/ding/dingSdk/utils/BigIntegerString.java
@@ -76,58 +131,48 @@ generatedFiles:
   - src/main/java/live/ding/dingSdk/utils/TypedObject.java
   - src/main/java/live/ding/dingSdk/utils/Types.java
   - src/main/java/live/ding/dingSdk/utils/Utils.java
-  - src/main/java/live/ding/dingSdk/models/errors/AuthException.java
-  - src/main/java/live/ding/dingSdk/models/errors/SDKError.java
-  - src/main/java/live/ding/dingSdk/models/operations/CheckResponse.java
-  - src/main/java/live/ding/dingSdk/models/operations/CreateAuthenticationResponse.java
-  - src/main/java/live/ding/dingSdk/models/operations/FeedbackResponse.java
-  - src/main/java/live/ding/dingSdk/models/operations/RetryResponse.java
-  - src/main/java/live/ding/dingSdk/models/operations/LookupRequest.java
-  - src/main/java/live/ding/dingSdk/models/operations/LookupResponse.java
-  - src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponseStatus.java
-  - src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponse.java
-  - src/main/java/live/ding/dingSdk/models/shared/CreateCheckRequest.java
-  - src/main/java/live/ding/dingSdk/models/shared/Status.java
-  - src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationResponse.java
-  - src/main/java/live/ding/dingSdk/models/shared/DeviceType.java
-  - src/main/java/live/ding/dingSdk/models/shared/CreateAuthenticationRequest.java
-  - src/main/java/live/ding/dingSdk/models/shared/FeedbackResponse.java
-  - src/main/java/live/ding/dingSdk/models/shared/FeedbackRequestStatus.java
-  - src/main/java/live/ding/dingSdk/models/shared/FeedbackRequest.java
-  - src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponseStatus.java
-  - src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationResponse.java
-  - src/main/java/live/ding/dingSdk/models/shared/RetryAuthenticationRequest.java
-  - src/main/java/live/ding/dingSdk/models/shared/LineType.java
-  - src/main/java/live/ding/dingSdk/models/shared/LookupResponse.java
-  - src/main/java/live/ding/dingSdk/models/shared/Security.java
-  - src/main/java/live/ding/dingSdk/models/errors/Code.java
-  - src/main/java/live/ding/dingSdk/models/errors/ErrorResponse.java
-  - docs/models/operations/CheckResponse.md
-  - docs/models/operations/CreateAuthenticationResponse.md
-  - docs/models/operations/FeedbackResponse.md
-  - docs/models/operations/RetryResponse.md
-  - docs/models/operations/LookupRequest.md
-  - docs/models/operations/LookupResponse.md
-  - docs/models/shared/CreateCheckResponseStatus.md
-  - docs/models/shared/CreateCheckResponse.md
-  - docs/models/shared/CreateCheckRequest.md
-  - docs/models/shared/Status.md
-  - docs/models/shared/CreateAuthenticationResponse.md
-  - docs/models/shared/DeviceType.md
-  - docs/models/shared/CreateAuthenticationRequest.md
-  - docs/models/shared/FeedbackResponse.md
-  - docs/models/shared/FeedbackRequestStatus.md
-  - docs/models/shared/FeedbackRequest.md
-  - docs/models/shared/RetryAuthenticationResponseStatus.md
-  - docs/models/shared/RetryAuthenticationResponse.md
-  - docs/models/shared/RetryAuthenticationRequest.md
-  - docs/models/shared/LineType.md
-  - docs/models/shared/LookupResponse.md
-  - docs/models/shared/Security.md
-  - docs/models/errors/Code.md
-  - docs/models/errors/ErrorResponse.md
-  - docs/sdks/ding/README.md
-  - docs/sdks/otp/README.md
-  - docs/sdks/lookup/README.md
-  - USAGE.md
-  - CONTRIBUTING.md
+examples:
+  check:
+    speakeasy-default-check:
+      requestBody:
+        application/json: {"authentication_uuid": "e0e7b0e9-739d-424b-922f-1c2cb48ab077", "check_code": "123456", "customer_uuid": "8f1196d5-806e-4b71-9b24-5f96ec052808"}
+      responses:
+        "200":
+          application/json: {"status": "valid"}
+        "400":
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+  create-authentication:
+    speakeasy-default-create-authentication:
+      requestBody:
+        application/json: {"customer_uuid": "c9f826e0-deca-41ec-871f-ecd6e8efeb46", "phone_number": "+1234567890"}
+      responses:
+        "400":
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+  feedback:
+    speakeasy-default-feedback:
+      requestBody:
+        application/json: {"customer_uuid": "c0c405fa-6bcb-4094-9430-7d6e2428ff23", "phone_number": "+1234567890", "status": "onboarded"}
+      responses:
+        "200":
+          application/json: {"uuid": "123e4567-e89b-12d3-a456-4266141740a0"}
+        default:
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+  retry:
+    speakeasy-default-retry:
+      responses:
+        "200":
+          application/json: {"remaining_retry": 3, "status": "approved"}
+        "400":
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+  lookup:
+    speakeasy-default-lookup:
+      parameters:
+        path:
+          phone_number: "<value>"
+        header:
+          customer-uuid: "6e93aa15-9177-4d09-8395-b69ce50db1c8"
+      responses:
+        "200":
+          application/json: {"carrier": "AT&T", "country_code": "US", "line_type": "Mobile", "mcc": "310", "mnc": "410", "phone_number": "+1234567890"}
+        "400":
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
