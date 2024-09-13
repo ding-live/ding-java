@@ -3,17 +3,17 @@ id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
   docChecksum: c2a5d8222f4117f238343d6187ef2751
   docVersion: 1.0.0
-  speakeasyVersion: 1.392.1
-  generationVersion: 2.411.9
-  releaseVersion: 0.6.2
-  configChecksum: 50659f1b6292d93d3a03d3c6916c6091
+  speakeasyVersion: 1.396.6
+  generationVersion: 2.415.6
+  releaseVersion: 0.6.3
+  configChecksum: 571811d636d3bd34ea459840777eb3b8
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
-    core: 3.29.5
+    core: 3.29.7
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.7
@@ -148,6 +148,7 @@ examples:
       responses:
         "400":
           application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+        "200": {}
   feedback:
     speakeasy-default-feedback:
       requestBody:

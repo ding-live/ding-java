@@ -30,7 +30,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'live.ding:dingSdk:0.6.2'
+implementation 'live.ding:dingSdk:0.6.3'
 ```
 
 Maven:
@@ -38,7 +38,7 @@ Maven:
 <dependency>
     <groupId>live.ding</groupId>
     <artifactId>dingSdk</artifactId>
-    <version>0.6.2</version>
+    <version>0.6.3</version>
 </dependency>
 ```
 
@@ -223,6 +223,14 @@ public class Application {
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+<details open>
+<summary>Available methods</summary>
+
+
+### [lookup()](docs/sdks/lookup/README.md)
+
+* [lookup](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
+
 ### [otp()](docs/sdks/otp/README.md)
 
 * [check](docs/sdks/otp/README.md#check) - Check a code
@@ -230,9 +238,7 @@ public class Application {
 * [feedback](docs/sdks/otp/README.md#feedback) - Send feedback
 * [retry](docs/sdks/otp/README.md#retry) - Perform a retry
 
-### [lookup()](docs/sdks/lookup/README.md)
-
-* [lookup](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Server Selection [server] -->
