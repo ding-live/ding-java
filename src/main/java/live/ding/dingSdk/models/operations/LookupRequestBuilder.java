@@ -17,13 +17,13 @@ public class LookupRequestBuilder {
         this.sdk = sdk;
     }
 
-    public LookupRequestBuilder customerUuid(java.lang.String customerUuid) {
+    public LookupRequestBuilder customerUuid(String customerUuid) {
         Utils.checkNotNull(customerUuid, "customerUuid");
         this.customerUuid = customerUuid;
         return this;
     }
 
-    public LookupRequestBuilder phoneNumber(java.lang.String phoneNumber) {
+    public LookupRequestBuilder phoneNumber(String phoneNumber) {
         Utils.checkNotNull(phoneNumber, "phoneNumber");
         this.phoneNumber = phoneNumber;
         return this;

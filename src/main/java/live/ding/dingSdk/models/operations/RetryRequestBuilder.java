@@ -17,13 +17,13 @@ public class RetryRequestBuilder {
         this.sdk = sdk;
     }
                 
-    public RetryRequestBuilder request(live.ding.dingSdk.models.shared.RetryAuthenticationRequest request) {
+    public RetryRequestBuilder request(RetryAuthenticationRequest request) {
         Utils.checkNotNull(request, "request");
         this.request = Optional.of(request);
         return this;
     }
 
-    public RetryRequestBuilder request(java.util.Optional<? extends live.ding.dingSdk.models.shared.RetryAuthenticationRequest> request) {
+    public RetryRequestBuilder request(Optional<? extends RetryAuthenticationRequest> request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
         return this;

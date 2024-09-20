@@ -4,6 +4,7 @@
 
 package live.ding.dingSdk.models.operations;
 
+import java.lang.Exception;
 import java.lang.String;
 import java.util.Optional;
 import live.ding.dingSdk.models.shared.CreateAuthenticationRequest;
@@ -15,31 +16,31 @@ public class SDKMethodInterfaces {
 
 
     public interface MethodCallCheck {
-        live.ding.dingSdk.models.operations.CheckResponse check(
+        CheckResponse check(
             Optional<? extends CreateCheckRequest> request) throws Exception;
     }
 
 
     public interface MethodCallCreateAuthentication {
-        live.ding.dingSdk.models.operations.CreateAuthenticationResponse createAuthentication(
+        CreateAuthenticationResponse createAuthentication(
             Optional<? extends CreateAuthenticationRequest> request) throws Exception;
     }
 
 
     public interface MethodCallFeedback {
-        live.ding.dingSdk.models.operations.FeedbackResponse feedback(
+        FeedbackResponse feedback(
             Optional<? extends FeedbackRequest> request) throws Exception;
     }
 
 
     public interface MethodCallRetry {
-        live.ding.dingSdk.models.operations.RetryResponse retry(
+        RetryResponse retry(
             Optional<? extends RetryAuthenticationRequest> request) throws Exception;
     }
 
 
     public interface MethodCallLookup {
-        live.ding.dingSdk.models.operations.LookupResponse lookup(
+        LookupResponse lookup(
             String customerUuid,
             String phoneNumber) throws Exception;
     }

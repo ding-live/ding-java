@@ -11,6 +11,7 @@ import live.ding.dingSdk.models.operations.SDKMethodInterfaces.*;
 import live.ding.dingSdk.utils.HTTPClient;
 import live.ding.dingSdk.utils.RetryConfig;
 import live.ding.dingSdk.utils.SpeakeasyHTTPClient;
+import live.ding.dingSdk.utils.Utils;
 
 /**
  * Ding: The OTP API allows you to send authentication codes to your users using their phone numbers.
@@ -115,7 +116,7 @@ public class Ding {
          * @return The builder instance.
          */
         public Builder serverURL(String serverUrl, Map<String, String> params) {
-            this.sdkConfiguration.serverUrl = live.ding.dingSdk.utils.Utils.templateUrl(serverUrl, params);
+            this.sdkConfiguration.serverUrl = Utils.templateUrl(serverUrl, params);
             return this;
         }
         

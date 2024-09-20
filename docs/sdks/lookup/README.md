@@ -20,39 +20,28 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.SDKError;
+import live.ding.dingSdk.models.errors.ErrorResponse;
 import live.ding.dingSdk.models.operations.LookupResponse;
 import live.ding.dingSdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
-        try {
-            Ding sdk = Ding.builder()
+    public static void main(String[] args) throws ErrorResponse, Exception {
+
+        Ding sdk = Ding.builder()
                 .security(Security.builder()
                     .apiKey("YOUR_API_KEY")
                     .build())
-                .build();
+            .build();
 
-            LookupResponse res = sdk.lookup().lookup()
+        LookupResponse res = sdk.lookup().lookup()
                 .customerUuid("6e93aa15-9177-4d09-8395-b69ce50db1c8")
                 .phoneNumber("<value>")
                 .call();
 
-            if (res.lookupResponse().isPresent()) {
-                // handle response
-            }
-        } catch (live.ding.dingSdk.models.errors.ErrorResponse e) {
-            // handle exception
-            throw e;
-        } catch (SDKError e) {
-            // handle exception
-            throw e;
-        } catch (Exception e) {
-            // handle exception
-            throw e;
+        if (res.lookupResponse().isPresent()) {
+            // handle response
         }
-
     }
 }
 ```

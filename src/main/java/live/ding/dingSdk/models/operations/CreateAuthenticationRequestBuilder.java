@@ -17,13 +17,13 @@ public class CreateAuthenticationRequestBuilder {
         this.sdk = sdk;
     }
                 
-    public CreateAuthenticationRequestBuilder request(live.ding.dingSdk.models.shared.CreateAuthenticationRequest request) {
+    public CreateAuthenticationRequestBuilder request(CreateAuthenticationRequest request) {
         Utils.checkNotNull(request, "request");
         this.request = Optional.of(request);
         return this;
     }
 
-    public CreateAuthenticationRequestBuilder request(java.util.Optional<? extends live.ding.dingSdk.models.shared.CreateAuthenticationRequest> request) {
+    public CreateAuthenticationRequestBuilder request(Optional<? extends CreateAuthenticationRequest> request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
         return this;

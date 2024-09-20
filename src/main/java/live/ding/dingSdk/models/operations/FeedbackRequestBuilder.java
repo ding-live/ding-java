@@ -17,13 +17,13 @@ public class FeedbackRequestBuilder {
         this.sdk = sdk;
     }
                 
-    public FeedbackRequestBuilder request(live.ding.dingSdk.models.shared.FeedbackRequest request) {
+    public FeedbackRequestBuilder request(FeedbackRequest request) {
         Utils.checkNotNull(request, "request");
         this.request = Optional.of(request);
         return this;
     }
 
-    public FeedbackRequestBuilder request(java.util.Optional<? extends live.ding.dingSdk.models.shared.FeedbackRequest> request) {
+    public FeedbackRequestBuilder request(Optional<? extends FeedbackRequest> request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
         return this;

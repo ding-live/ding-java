@@ -17,13 +17,13 @@ public class CheckRequestBuilder {
         this.sdk = sdk;
     }
                 
-    public CheckRequestBuilder request(live.ding.dingSdk.models.shared.CreateCheckRequest request) {
+    public CheckRequestBuilder request(CreateCheckRequest request) {
         Utils.checkNotNull(request, "request");
         this.request = Optional.of(request);
         return this;
     }
 
-    public CheckRequestBuilder request(java.util.Optional<? extends live.ding.dingSdk.models.shared.CreateCheckRequest> request) {
+    public CheckRequestBuilder request(Optional<? extends CreateCheckRequest> request) {
         Utils.checkNotNull(request, "request");
         this.request = request;
         return this;

@@ -19,11 +19,14 @@ class SDKConfiguration {
     public HTTPClient defaultClient;
     public String serverUrl;
     public int serverIdx = 0;
-    public String language = "java";
-    public String openapiDocVersion = "1.0.0";
-    public String sdkVersion = "0.6.3";
-    public String genVersion = "2.415.6";
-    public String userAgent = "speakeasy-sdk/java 0.6.3 2.415.6 1.0.0 live.ding.dingSdk";
+    private static final String LANGUAGE = "java";
+    public static final String OPENAPI_DOC_VERSION = "1.0.0";
+    public static final String SDK_VERSION = "0.7.0";
+    public static final String GEN_VERSION = "2.420.2";
+    private static final String BASE_PACKAGE = "live.ding.dingSdk";
+    public static final String USER_AGENT = 
+            String.format("speakeasy-sdk/%s %s %s %s %s", 
+                LANGUAGE, SDK_VERSION, GEN_VERSION, OPENAPI_DOC_VERSION, BASE_PACKAGE);
 
     private Hooks _hooks = createHooks();
 
