@@ -35,7 +35,7 @@ public class Application {
             .build();
 
         LookupResponse res = sdk.lookup().lookup()
-                .customerUuid("6e93aa15-9177-4d09-8395-b69ce50db1c8")
+                .customerUuid("69a197d9-356c-45d1-a807-41874e16b555")
                 .phoneNumber("<value>")
                 .call();
 

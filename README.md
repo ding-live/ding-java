@@ -30,7 +30,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'live.ding:dingSdk:0.7.0'
+implementation 'live.ding:dingSdk:0.7.1'
 ```
 
 Maven:
@@ -38,7 +38,7 @@ Maven:
 <dependency>
     <groupId>live.ding</groupId>
     <artifactId>dingSdk</artifactId>
-    <version>0.7.0</version>
+    <version>0.7.1</version>
 </dependency>
 ```
 
@@ -88,7 +88,7 @@ public class Application {
             .build();
 
         CreateAuthenticationRequest req = CreateAuthenticationRequest.builder()
-                .customerUuid("c9f826e0-deca-41ec-871f-ecd6e8efeb46")
+                .customerUuid("cf2edc1c-7fc6-48fb-86da-b7508c6b7b71")
                 .phoneNumber("+1234567890")
                 .build();
 
@@ -129,9 +129,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
+                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
                 .checkCode("123456")
-                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
+                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
                 .build();
 
         CheckResponse res = sdk.otp().check()
@@ -171,8 +171,8 @@ public class Application {
             .build();
 
         RetryAuthenticationRequest req = RetryAuthenticationRequest.builder()
-                .authenticationUuid("a74ee547-564d-487a-91df-37fb25413a91")
-                .customerUuid("3c8b3a46-881e-4cdd-93a6-f7f238bf020a")
+                .authenticationUuid("a4e4548a-1f7b-451a-81cb-a68ed5aff3b0")
+                .customerUuid("28532118-1b33-420a-b57b-648c9bf85fee")
                 .build();
 
         RetryResponse res = sdk.otp().retry()
@@ -243,9 +243,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
+                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
                 .checkCode("123456")
-                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
+                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
                 .build();
 
         CheckResponse res = sdk.otp().check()
@@ -285,9 +285,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
+                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
                 .checkCode("123456")
-                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
+                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
                 .build();
 
         CheckResponse res = sdk.otp().check()
@@ -335,9 +335,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
+                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
                 .checkCode("123456")
-                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
+                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
                 .build();
 
         CheckResponse res = sdk.otp().check()
@@ -385,9 +385,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
+                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
                 .checkCode("123456")
-                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
+                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
                 .build();
 
         CheckResponse res = sdk.otp().check()
