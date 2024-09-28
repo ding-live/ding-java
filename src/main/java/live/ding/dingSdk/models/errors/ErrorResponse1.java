@@ -15,7 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 import live.ding.dingSdk.utils.Utils;
 
-public class ErrorResponse extends RuntimeException {
+public class ErrorResponse1 extends RuntimeException {
 
     /**
      * A machine-readable code that describes the error.
@@ -39,7 +39,7 @@ public class ErrorResponse extends RuntimeException {
     private Optional<String> message;
 
     @JsonCreator
-    public ErrorResponse(
+    public ErrorResponse1(
             @JsonProperty("code") Optional<? extends Code> code,
             @JsonProperty("doc_url") Optional<String> docUrl,
             @JsonProperty("message") Optional<String> message) {
@@ -51,7 +51,7 @@ public class ErrorResponse extends RuntimeException {
         this.message = message;
     }
     
-    public ErrorResponse() {
+    public ErrorResponse1() {
         this(Optional.empty(), Optional.empty(), Optional.empty());
     }
 
@@ -84,7 +84,7 @@ public class ErrorResponse extends RuntimeException {
     /**
      * A machine-readable code that describes the error.
      */
-    public ErrorResponse withCode(Code code) {
+    public ErrorResponse1 withCode(Code code) {
         Utils.checkNotNull(code, "code");
         this.code = Optional.ofNullable(code);
         return this;
@@ -93,7 +93,7 @@ public class ErrorResponse extends RuntimeException {
     /**
      * A machine-readable code that describes the error.
      */
-    public ErrorResponse withCode(Optional<? extends Code> code) {
+    public ErrorResponse1 withCode(Optional<? extends Code> code) {
         Utils.checkNotNull(code, "code");
         this.code = code;
         return this;
@@ -102,7 +102,7 @@ public class ErrorResponse extends RuntimeException {
     /**
      * A link to the documentation that describes the error.
      */
-    public ErrorResponse withDocUrl(String docUrl) {
+    public ErrorResponse1 withDocUrl(String docUrl) {
         Utils.checkNotNull(docUrl, "docUrl");
         this.docUrl = Optional.ofNullable(docUrl);
         return this;
@@ -111,7 +111,7 @@ public class ErrorResponse extends RuntimeException {
     /**
      * A link to the documentation that describes the error.
      */
-    public ErrorResponse withDocUrl(Optional<String> docUrl) {
+    public ErrorResponse1 withDocUrl(Optional<String> docUrl) {
         Utils.checkNotNull(docUrl, "docUrl");
         this.docUrl = docUrl;
         return this;
@@ -120,7 +120,7 @@ public class ErrorResponse extends RuntimeException {
     /**
      * A human-readable message that describes the error.
      */
-    public ErrorResponse withMessage(String message) {
+    public ErrorResponse1 withMessage(String message) {
         Utils.checkNotNull(message, "message");
         this.message = Optional.ofNullable(message);
         return this;
@@ -129,7 +129,7 @@ public class ErrorResponse extends RuntimeException {
     /**
      * A human-readable message that describes the error.
      */
-    public ErrorResponse withMessage(Optional<String> message) {
+    public ErrorResponse1 withMessage(Optional<String> message) {
         Utils.checkNotNull(message, "message");
         this.message = message;
         return this;
@@ -143,7 +143,7 @@ public class ErrorResponse extends RuntimeException {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ErrorResponse other = (ErrorResponse) o;
+        ErrorResponse1 other = (ErrorResponse1) o;
         return
             Objects.deepEquals(this.code, other.code) &&
             Objects.deepEquals(this.docUrl, other.docUrl) &&
@@ -160,7 +160,7 @@ public class ErrorResponse extends RuntimeException {
 
     @Override
     public String toString() {
-        return Utils.toString(ErrorResponse.class,
+        return Utils.toString(ErrorResponse1.class,
                 "code", code,
                 "docUrl", docUrl,
                 "message", message);
@@ -232,8 +232,8 @@ public class ErrorResponse extends RuntimeException {
             return this;
         }
 
-        public ErrorResponse build() {
-            return new ErrorResponse(
+        public ErrorResponse1 build() {
+            return new ErrorResponse1(
                 code,
                 docUrl,
                 message);

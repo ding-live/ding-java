@@ -3,17 +3,17 @@ id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
   docChecksum: c2a5d8222f4117f238343d6187ef2751
   docVersion: 1.0.0
-  speakeasyVersion: 1.402.14
-  generationVersion: 2.422.22
-  releaseVersion: 0.7.1
-  configChecksum: 078192b98b435bdabdbdcc2fd80fb234
+  speakeasyVersion: 1.404.5
+  generationVersion: 2.426.2
+  releaseVersion: 0.7.2
+  configChecksum: 02fb00c28fe3c06ad142835aef4ec6c3
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
-    core: 3.30.2
+    core: 3.30.3
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.7
@@ -27,6 +27,7 @@ generatedFiles:
   - build.gradle
   - docs/models/errors/Code.md
   - docs/models/errors/ErrorResponse.md
+  - docs/models/errors/ErrorResponse1.md
   - docs/models/operations/CheckResponse.md
   - docs/models/operations/CreateAuthenticationResponse.md
   - docs/models/operations/FeedbackResponse.md
@@ -39,6 +40,7 @@ generatedFiles:
   - docs/models/shared/CreateCheckResponse.md
   - docs/models/shared/CreateCheckResponseStatus.md
   - docs/models/shared/DeviceType.md
+  - docs/models/shared/ErrorResponse.md
   - docs/models/shared/FeedbackRequest.md
   - docs/models/shared/FeedbackRequestStatus.md
   - docs/models/shared/FeedbackResponse.md
@@ -65,6 +67,7 @@ generatedFiles:
   - src/main/java/live/ding/dingSdk/models/errors/AuthException.java
   - src/main/java/live/ding/dingSdk/models/errors/Code.java
   - src/main/java/live/ding/dingSdk/models/errors/ErrorResponse.java
+  - src/main/java/live/ding/dingSdk/models/errors/ErrorResponse1.java
   - src/main/java/live/ding/dingSdk/models/errors/SDKError.java
   - src/main/java/live/ding/dingSdk/models/operations/CheckRequestBuilder.java
   - src/main/java/live/ding/dingSdk/models/operations/CheckResponse.java
@@ -84,6 +87,7 @@ generatedFiles:
   - src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponse.java
   - src/main/java/live/ding/dingSdk/models/shared/CreateCheckResponseStatus.java
   - src/main/java/live/ding/dingSdk/models/shared/DeviceType.java
+  - src/main/java/live/ding/dingSdk/models/shared/ErrorResponse.java
   - src/main/java/live/ding/dingSdk/models/shared/FeedbackRequest.java
   - src/main/java/live/ding/dingSdk/models/shared/FeedbackRequestStatus.java
   - src/main/java/live/ding/dingSdk/models/shared/FeedbackResponse.java

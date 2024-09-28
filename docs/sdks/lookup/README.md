@@ -20,13 +20,13 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse;
+import live.ding.dingSdk.models.errors.ErrorResponse1;
 import live.ding.dingSdk.models.operations.LookupResponse;
 import live.ding.dingSdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse1, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -59,7 +59,7 @@ public class Application {
 
 ### Errors
 
-| Error Object                | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400                         | application/json            |
-| models/errors/SDKError      | 4xx-5xx                     | \*\/*                       |
+| Error Object                 | Status Code                  | Content Type                 |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| models/errors/ErrorResponse1 | 400                          | application/json             |
+| models/errors/SDKError       | 4xx-5xx                      | \*\/*                        |

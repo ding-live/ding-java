@@ -13,6 +13,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
+import live.ding.dingSdk.models.errors.ErrorResponse1;
 import live.ding.dingSdk.models.errors.ErrorResponse;
 import live.ding.dingSdk.models.errors.SDKError;
 import live.ding.dingSdk.models.operations.CheckRequestBuilder;
@@ -475,9 +476,9 @@ public class Otp implements
         }
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "default")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ErrorResponse _out = Utils.mapper().readValue(
+                live.ding.dingSdk.models.shared.ErrorResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ErrorResponse>() {});
+                    new TypeReference<live.ding.dingSdk.models.shared.ErrorResponse>() {});
                 _res.withErrorResponse(Optional.ofNullable(_out));
                 return _res;
             } else {
@@ -615,9 +616,9 @@ public class Otp implements
         }
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ErrorResponse _out = Utils.mapper().readValue(
+                ErrorResponse1 _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ErrorResponse>() {});
+                    new TypeReference<ErrorResponse1>() {});
                 throw _out;
             } else {
                 throw new SDKError(

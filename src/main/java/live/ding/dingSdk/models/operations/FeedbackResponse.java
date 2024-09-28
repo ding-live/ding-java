@@ -15,7 +15,7 @@ import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
 import java.util.Objects;
 import java.util.Optional;
-import live.ding.dingSdk.models.errors.ErrorResponse;
+import live.ding.dingSdk.models.shared.ErrorResponse;
 import live.ding.dingSdk.utils.Response;
 import live.ding.dingSdk.utils.Utils;
 

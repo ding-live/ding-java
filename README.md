@@ -30,7 +30,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'live.ding:dingSdk:0.7.1'
+implementation 'live.ding:dingSdk:0.7.2'
 ```
 
 Maven:
@@ -38,7 +38,7 @@ Maven:
 <dependency>
     <groupId>live.ding</groupId>
     <artifactId>dingSdk</artifactId>
-    <version>0.7.1</version>
+    <version>0.7.2</version>
 </dependency>
 ```
 
@@ -155,14 +155,14 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse;
+import live.ding.dingSdk.models.errors.ErrorResponse1;
 import live.ding.dingSdk.models.operations.RetryResponse;
 import live.ding.dingSdk.models.shared.RetryAuthenticationRequest;
 import live.ding.dingSdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse1, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
