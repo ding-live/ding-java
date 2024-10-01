@@ -61,7 +61,7 @@ tasks.withType(Javadoc) {
 }
 
 group = "live.ding"
-version = "0.7.2"
+version = "0.7.3"
 
 sourcesJar {
     archiveBaseName = "dingSdk"
@@ -88,7 +88,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'live.ding'
             artifactId = 'dingSdk'
-            version = '0.7.2'
+            version = '0.7.3'
 
             from components.java
 
