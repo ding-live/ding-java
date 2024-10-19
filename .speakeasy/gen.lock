@@ -3,17 +3,17 @@ id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
   docChecksum: c2a5d8222f4117f238343d6187ef2751
   docVersion: 1.0.0
-  speakeasyVersion: 1.405.6
-  generationVersion: 2.428.1
-  releaseVersion: 0.7.3
-  configChecksum: 6ac1f073cbeaff2ab54d11083a12b521
+  speakeasyVersion: 1.419.2
+  generationVersion: 2.438.15
+  releaseVersion: 0.7.4
+  configChecksum: 0d9a664c763258cc8e450c0d2aaad00e
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
-    core: 3.30.4
+    core: 3.30.5
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.7
