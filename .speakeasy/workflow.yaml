@@ -1,0 +1,12 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    my-source:
+        inputs:
+            - location: https://raw.githubusercontent.com/ding-live/openapi/main/ding.yaml
+        registry:
+            location: registry.speakeasyapi.dev/ding/ding/my-source
+targets:
+    live.ding.dingsdk:
+        target: java
+        source: my-source
