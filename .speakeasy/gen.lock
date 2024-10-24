@@ -3,10 +3,10 @@ id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
   docChecksum: c2a5d8222f4117f238343d6187ef2751
   docVersion: 1.0.0
-  speakeasyVersion: 1.419.2
+  speakeasyVersion: 1.421.1
   generationVersion: 2.438.15
-  releaseVersion: 0.7.4
-  configChecksum: 0d9a664c763258cc8e450c0d2aaad00e
+  releaseVersion: 0.7.6
+  configChecksum: 0b8669cb4a02cc62f94d7623babd3985
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true

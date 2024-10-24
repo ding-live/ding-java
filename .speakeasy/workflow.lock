@@ -1,0 +1,27 @@
+speakeasyVersion: 1.421.1
+sources:
+    my-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:079d99ab6878940575794be6f3075c2ab1cf022eac1a83524dbe0d7e42cf8aa7
+        sourceBlobDigest: sha256:eb023ba63fc6f8af5e33eee8eae2e78ee7de1b2e658db90eefd4533e0f955d33
+        tags:
+            - latest
+targets:
+    live.ding.dingsdk:
+        source: my-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:079d99ab6878940575794be6f3075c2ab1cf022eac1a83524dbe0d7e42cf8aa7
+        sourceBlobDigest: sha256:eb023ba63fc6f8af5e33eee8eae2e78ee7de1b2e658db90eefd4533e0f955d33
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        my-source:
+            inputs:
+                - location: https://raw.githubusercontent.com/ding-live/openapi/main/ding.yaml
+            registry:
+                location: registry.speakeasyapi.dev/ding/ding/my-source
+    targets:
+        live.ding.dingsdk:
+            target: java
+            source: my-source
