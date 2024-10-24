@@ -10,3 +10,9 @@ targets:
     live.ding.dingsdk:
         target: java
         source: my-source
+        publish:
+            java:
+                ossrhUsername: f1b6diLi
+                ossrhPassword: $ossrh_password
+                gpgSecretKey: $java_gpg_secret_key
+                gpgPassPhrase: $java_gpg_passphrase
