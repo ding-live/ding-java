@@ -1,8 +1,8 @@
-speakeasyVersion: 1.421.1
+speakeasyVersion: 1.421.2
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:61ec3342724a92cd5515849701c97a77d4eae6094a27df873a7d772121011091
+        sourceRevisionDigest: sha256:87cde9189a30c3e0a8cdbc416d372dd5294e4e783c8099f5dfab22b5837d2a63
         sourceBlobDigest: sha256:983960b6ecce35b4c545e5d1129506d864a1e60f367893d0723cc775ef2c15b1
         tags:
             - latest
@@ -11,7 +11,7 @@ targets:
     live.ding.dingsdk:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:61ec3342724a92cd5515849701c97a77d4eae6094a27df873a7d772121011091
+        sourceRevisionDigest: sha256:87cde9189a30c3e0a8cdbc416d372dd5294e4e783c8099f5dfab22b5837d2a63
         sourceBlobDigest: sha256:983960b6ecce35b4c545e5d1129506d864a1e60f367893d0723cc775ef2c15b1
 workflow:
     workflowVersion: 1.0.0
@@ -26,3 +26,9 @@ workflow:
         live.ding.dingsdk:
             target: java
             source: my-source
+            publish:
+                java:
+                    ossrhUsername: f1b6diLi
+                    ossrhPassword: $ossrh_password
+                    gpgSecretKey: $java_gpg_secret_key
+                    gpgPassPhrase: $java_gpg_passphrase
