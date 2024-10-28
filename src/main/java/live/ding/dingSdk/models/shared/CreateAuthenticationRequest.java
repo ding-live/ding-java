@@ -91,6 +91,13 @@ public class CreateAuthenticationRequest {
     private Optional<Boolean> isReturningUser;
 
     /**
+     * A BCP-47 locale indicating the language the SMS should be sent to; if this is not set, the SMS will be sent to the language specified by the country code of the message. If we don't support the language set, the message will be sent in US English (en-US).
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("locale")
+    private Optional<String> locale;
+
+    /**
      * The version of the user's device operating system.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -102,6 +109,13 @@ public class CreateAuthenticationRequest {
      */
     @JsonProperty("phone_number")
     private String phoneNumber;
+
+    /**
+     * The Sender ID to use when sending the message.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("sender_id")
+    private Optional<String> senderId;
 
     /**
      * The template id associated with the message content variant to be sent.
@@ -122,8 +136,10 @@ public class CreateAuthenticationRequest {
             @JsonProperty("device_type") Optional<? extends DeviceType> deviceType,
             @JsonProperty("ip") Optional<String> ip,
             @JsonProperty("is_returning_user") Optional<Boolean> isReturningUser,
+            @JsonProperty("locale") Optional<String> locale,
             @JsonProperty("os_version") Optional<String> osVersion,
             @JsonProperty("phone_number") String phoneNumber,
+            @JsonProperty("sender_id") Optional<String> senderId,
             @JsonProperty("template_id") Optional<String> templateId) {
         Utils.checkNotNull(appRealm, "appRealm");
         Utils.checkNotNull(appVersion, "appVersion");
@@ -135,8 +151,10 @@ public class CreateAuthenticationRequest {
         Utils.checkNotNull(deviceType, "deviceType");
         Utils.checkNotNull(ip, "ip");
         Utils.checkNotNull(isReturningUser, "isReturningUser");
+        Utils.checkNotNull(locale, "locale");
         Utils.checkNotNull(osVersion, "osVersion");
         Utils.checkNotNull(phoneNumber, "phoneNumber");
+        Utils.checkNotNull(senderId, "senderId");
         Utils.checkNotNull(templateId, "templateId");
         this.appRealm = appRealm;
         this.appVersion = appVersion;
@@ -148,15 +166,17 @@ public class CreateAuthenticationRequest {
         this.deviceType = deviceType;
         this.ip = ip;
         this.isReturningUser = isReturningUser;
+        this.locale = locale;
         this.osVersion = osVersion;
         this.phoneNumber = phoneNumber;
+        this.senderId = senderId;
         this.templateId = templateId;
     }
     
     public CreateAuthenticationRequest(
             String customerUuid,
             String phoneNumber) {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), customerUuid, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), phoneNumber, Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), customerUuid, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), phoneNumber, Optional.empty(), Optional.empty());
     }
 
     /**
@@ -241,6 +261,14 @@ public class CreateAuthenticationRequest {
     }
 
     /**
+     * A BCP-47 locale indicating the language the SMS should be sent to; if this is not set, the SMS will be sent to the language specified by the country code of the message. If we don't support the language set, the message will be sent in US English (en-US).
+     */
+    @JsonIgnore
+    public Optional<String> locale() {
+        return locale;
+    }
+
+    /**
      * The version of the user's device operating system.
      */
     @JsonIgnore
@@ -254,6 +282,14 @@ public class CreateAuthenticationRequest {
     @JsonIgnore
     public String phoneNumber() {
         return phoneNumber;
+    }
+
+    /**
+     * The Sender ID to use when sending the message.
+     */
+    @JsonIgnore
+    public Optional<String> senderId() {
+        return senderId;
     }
 
     /**
@@ -440,6 +476,24 @@ public class CreateAuthenticationRequest {
     }
 
     /**
+     * A BCP-47 locale indicating the language the SMS should be sent to; if this is not set, the SMS will be sent to the language specified by the country code of the message. If we don't support the language set, the message will be sent in US English (en-US).
+     */
+    public CreateAuthenticationRequest withLocale(String locale) {
+        Utils.checkNotNull(locale, "locale");
+        this.locale = Optional.ofNullable(locale);
+        return this;
+    }
+
+    /**
+     * A BCP-47 locale indicating the language the SMS should be sent to; if this is not set, the SMS will be sent to the language specified by the country code of the message. If we don't support the language set, the message will be sent in US English (en-US).
+     */
+    public CreateAuthenticationRequest withLocale(Optional<String> locale) {
+        Utils.checkNotNull(locale, "locale");
+        this.locale = locale;
+        return this;
+    }
+
+    /**
      * The version of the user's device operating system.
      */
     public CreateAuthenticationRequest withOsVersion(String osVersion) {
@@ -463,6 +517,24 @@ public class CreateAuthenticationRequest {
     public CreateAuthenticationRequest withPhoneNumber(String phoneNumber) {
         Utils.checkNotNull(phoneNumber, "phoneNumber");
         this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    /**
+     * The Sender ID to use when sending the message.
+     */
+    public CreateAuthenticationRequest withSenderId(String senderId) {
+        Utils.checkNotNull(senderId, "senderId");
+        this.senderId = Optional.ofNullable(senderId);
+        return this;
+    }
+
+    /**
+     * The Sender ID to use when sending the message.
+     */
+    public CreateAuthenticationRequest withSenderId(Optional<String> senderId) {
+        Utils.checkNotNull(senderId, "senderId");
+        this.senderId = senderId;
         return this;
     }
 
@@ -504,8 +576,10 @@ public class CreateAuthenticationRequest {
             Objects.deepEquals(this.deviceType, other.deviceType) &&
             Objects.deepEquals(this.ip, other.ip) &&
             Objects.deepEquals(this.isReturningUser, other.isReturningUser) &&
+            Objects.deepEquals(this.locale, other.locale) &&
             Objects.deepEquals(this.osVersion, other.osVersion) &&
             Objects.deepEquals(this.phoneNumber, other.phoneNumber) &&
+            Objects.deepEquals(this.senderId, other.senderId) &&
             Objects.deepEquals(this.templateId, other.templateId);
     }
     
@@ -522,8 +596,10 @@ public class CreateAuthenticationRequest {
             deviceType,
             ip,
             isReturningUser,
+            locale,
             osVersion,
             phoneNumber,
+            senderId,
             templateId);
     }
     
@@ -540,8 +616,10 @@ public class CreateAuthenticationRequest {
                 "deviceType", deviceType,
                 "ip", ip,
                 "isReturningUser", isReturningUser,
+                "locale", locale,
                 "osVersion", osVersion,
                 "phoneNumber", phoneNumber,
+                "senderId", senderId,
                 "templateId", templateId);
     }
     
@@ -567,9 +645,13 @@ public class CreateAuthenticationRequest {
  
         private Optional<Boolean> isReturningUser = Optional.empty();
  
+        private Optional<String> locale = Optional.empty();
+ 
         private Optional<String> osVersion = Optional.empty();
  
         private String phoneNumber;
+ 
+        private Optional<String> senderId = Optional.empty();
  
         private Optional<String> templateId = Optional.empty();  
         
@@ -749,6 +831,24 @@ public class CreateAuthenticationRequest {
         }
 
         /**
+         * A BCP-47 locale indicating the language the SMS should be sent to; if this is not set, the SMS will be sent to the language specified by the country code of the message. If we don't support the language set, the message will be sent in US English (en-US).
+         */
+        public Builder locale(String locale) {
+            Utils.checkNotNull(locale, "locale");
+            this.locale = Optional.ofNullable(locale);
+            return this;
+        }
+
+        /**
+         * A BCP-47 locale indicating the language the SMS should be sent to; if this is not set, the SMS will be sent to the language specified by the country code of the message. If we don't support the language set, the message will be sent in US English (en-US).
+         */
+        public Builder locale(Optional<String> locale) {
+            Utils.checkNotNull(locale, "locale");
+            this.locale = locale;
+            return this;
+        }
+
+        /**
          * The version of the user's device operating system.
          */
         public Builder osVersion(String osVersion) {
@@ -772,6 +872,24 @@ public class CreateAuthenticationRequest {
         public Builder phoneNumber(String phoneNumber) {
             Utils.checkNotNull(phoneNumber, "phoneNumber");
             this.phoneNumber = phoneNumber;
+            return this;
+        }
+
+        /**
+         * The Sender ID to use when sending the message.
+         */
+        public Builder senderId(String senderId) {
+            Utils.checkNotNull(senderId, "senderId");
+            this.senderId = Optional.ofNullable(senderId);
+            return this;
+        }
+
+        /**
+         * The Sender ID to use when sending the message.
+         */
+        public Builder senderId(Optional<String> senderId) {
+            Utils.checkNotNull(senderId, "senderId");
+            this.senderId = senderId;
             return this;
         }
 
@@ -805,8 +923,10 @@ public class CreateAuthenticationRequest {
                 deviceType,
                 ip,
                 isReturningUser,
+                locale,
                 osVersion,
                 phoneNumber,
+                senderId,
                 templateId);
         }
     }

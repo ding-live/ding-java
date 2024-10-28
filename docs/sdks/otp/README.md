@@ -10,6 +10,7 @@ Send OTP codes to your users using their phone numbers.
 * [check](#check) - Check a code
 * [createAuthentication](#createauthentication) - Send a code
 * [feedback](#feedback) - Send feedback
+* [getAuthenticationStatus](#getauthenticationstatus) - Get authentication status
 * [retry](#retry) - Perform a retry
 
 ## check
@@ -101,6 +102,7 @@ public class Application {
         CreateAuthenticationRequest req = CreateAuthenticationRequest.builder()
                 .customerUuid("cf2edc1c-7fc6-48fb-86da-b7508c6b7b71")
                 .phoneNumber("+1234567890")
+                .locale("fr-FR")
                 .build();
 
         CreateAuthenticationResponse res = sdk.otp().createAuthentication()
@@ -183,6 +185,57 @@ public class Application {
 ### Response
 
 **[FeedbackResponse](../../models/operations/FeedbackResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## getAuthenticationStatus
+
+Get authentication status
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import live.ding.dingSdk.Ding;
+import live.ding.dingSdk.models.operations.GetAuthenticationStatusResponse;
+import live.ding.dingSdk.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Ding sdk = Ding.builder()
+                .security(Security.builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build())
+            .build();
+
+        GetAuthenticationStatusResponse res = sdk.otp().getAuthenticationStatus()
+                .authUuid("d8446450-f2fa-4dd9-806b-df5b8c661f23")
+                .call();
+
+        if (res.authenticationStatusResponse().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `authUuid`         | *String*           | :heavy_check_mark: | N/A                |
+
+### Response
+
+**[GetAuthenticationStatusResponse](../../models/operations/GetAuthenticationStatusResponse.md)**
 
 ### Errors
 

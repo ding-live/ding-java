@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.Optional;
 import live.ding.dingSdk.utils.Utils;
 
+@SuppressWarnings("serial")
 public class ErrorResponse extends RuntimeException {
 
     /**
@@ -43,6 +44,7 @@ public class ErrorResponse extends RuntimeException {
             @JsonProperty("code") Optional<? extends Code> code,
             @JsonProperty("doc_url") Optional<String> docUrl,
             @JsonProperty("message") Optional<String> message) {
+        super(message.orElse(null));
         Utils.checkNotNull(code, "code");
         Utils.checkNotNull(docUrl, "docUrl");
         Utils.checkNotNull(message, "message");

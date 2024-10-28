@@ -27,24 +27,14 @@ public class CreateCheckResponse {
     @JsonProperty("authentication_uuid")
     private Optional<String> authenticationUuid;
 
-    /**
-     * The status of the check. Possible values are:
-     *   * `valid` - The code is valid.
-     *   * `invalid` - The code is invalid.
-     *   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
-     *   * `rate_limited` - The authentication was rate limited and cannot be checked.
-     *   * `already_validated` - The authentication has already been validated.
-     *   * `expired_auth` - The authentication has expired and cannot be checked.
-     * 
-     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("status")
-    private Optional<? extends CreateCheckResponseStatus> status;
+    private Optional<? extends CheckStatus> status;
 
     @JsonCreator
     public CreateCheckResponse(
             @JsonProperty("authentication_uuid") Optional<String> authenticationUuid,
-            @JsonProperty("status") Optional<? extends CreateCheckResponseStatus> status) {
+            @JsonProperty("status") Optional<? extends CheckStatus> status) {
         Utils.checkNotNull(authenticationUuid, "authenticationUuid");
         Utils.checkNotNull(status, "status");
         this.authenticationUuid = authenticationUuid;
@@ -63,20 +53,10 @@ public class CreateCheckResponse {
         return authenticationUuid;
     }
 
-    /**
-     * The status of the check. Possible values are:
-     *   * `valid` - The code is valid.
-     *   * `invalid` - The code is invalid.
-     *   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
-     *   * `rate_limited` - The authentication was rate limited and cannot be checked.
-     *   * `already_validated` - The authentication has already been validated.
-     *   * `expired_auth` - The authentication has expired and cannot be checked.
-     * 
-     */
     @SuppressWarnings("unchecked")
     @JsonIgnore
-    public Optional<CreateCheckResponseStatus> status() {
-        return (Optional<CreateCheckResponseStatus>) status;
+    public Optional<CheckStatus> status() {
+        return (Optional<CheckStatus>) status;
     }
 
     public final static Builder builder() {
@@ -101,33 +81,13 @@ public class CreateCheckResponse {
         return this;
     }
 
-    /**
-     * The status of the check. Possible values are:
-     *   * `valid` - The code is valid.
-     *   * `invalid` - The code is invalid.
-     *   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
-     *   * `rate_limited` - The authentication was rate limited and cannot be checked.
-     *   * `already_validated` - The authentication has already been validated.
-     *   * `expired_auth` - The authentication has expired and cannot be checked.
-     * 
-     */
-    public CreateCheckResponse withStatus(CreateCheckResponseStatus status) {
+    public CreateCheckResponse withStatus(CheckStatus status) {
         Utils.checkNotNull(status, "status");
         this.status = Optional.ofNullable(status);
         return this;
     }
 
-    /**
-     * The status of the check. Possible values are:
-     *   * `valid` - The code is valid.
-     *   * `invalid` - The code is invalid.
-     *   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
-     *   * `rate_limited` - The authentication was rate limited and cannot be checked.
-     *   * `already_validated` - The authentication has already been validated.
-     *   * `expired_auth` - The authentication has expired and cannot be checked.
-     * 
-     */
-    public CreateCheckResponse withStatus(Optional<? extends CreateCheckResponseStatus> status) {
+    public CreateCheckResponse withStatus(Optional<? extends CheckStatus> status) {
         Utils.checkNotNull(status, "status");
         this.status = status;
         return this;
@@ -165,7 +125,7 @@ public class CreateCheckResponse {
  
         private Optional<String> authenticationUuid = Optional.empty();
  
-        private Optional<? extends CreateCheckResponseStatus> status = Optional.empty();  
+        private Optional<? extends CheckStatus> status = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -189,33 +149,13 @@ public class CreateCheckResponse {
             return this;
         }
 
-        /**
-         * The status of the check. Possible values are:
-         *   * `valid` - The code is valid.
-         *   * `invalid` - The code is invalid.
-         *   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
-         *   * `rate_limited` - The authentication was rate limited and cannot be checked.
-         *   * `already_validated` - The authentication has already been validated.
-         *   * `expired_auth` - The authentication has expired and cannot be checked.
-         * 
-         */
-        public Builder status(CreateCheckResponseStatus status) {
+        public Builder status(CheckStatus status) {
             Utils.checkNotNull(status, "status");
             this.status = Optional.ofNullable(status);
             return this;
         }
 
-        /**
-         * The status of the check. Possible values are:
-         *   * `valid` - The code is valid.
-         *   * `invalid` - The code is invalid.
-         *   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
-         *   * `rate_limited` - The authentication was rate limited and cannot be checked.
-         *   * `already_validated` - The authentication has already been validated.
-         *   * `expired_auth` - The authentication has expired and cannot be checked.
-         * 
-         */
-        public Builder status(Optional<? extends CreateCheckResponseStatus> status) {
+        public Builder status(Optional<? extends CheckStatus> status) {
             Utils.checkNotNull(status, "status");
             this.status = status;
             return this;
