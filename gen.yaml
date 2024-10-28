@@ -15,7 +15,7 @@ java:
   version: 0.8.1
   additionalDependencies: []
   additionalPlugins: []
-  artifactID: dingSdk
+  artifactID: dingsdk
   clientServerStatusCodesAsErrors: true
   companyEmail: hello@ding.live
   companyName: Ding
