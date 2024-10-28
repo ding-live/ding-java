@@ -33,6 +33,12 @@ public class SDKMethodInterfaces {
     }
 
 
+    public interface MethodCallGetAuthenticationStatus {
+        GetAuthenticationStatusResponse getAuthenticationStatus(
+            String authUuid) throws Exception;
+    }
+
+
     public interface MethodCallRetry {
         RetryResponse retry(
             Optional<? extends RetryAuthenticationRequest> request) throws Exception;

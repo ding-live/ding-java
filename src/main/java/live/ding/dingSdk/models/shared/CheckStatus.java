@@ -8,7 +8,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
 
 /**
- * CreateCheckResponseStatus - The status of the check. Possible values are:
+ * CheckStatus - The status of the check. Possible values are:
+ *   * `unknown` - The status is unknown.
  *   * `valid` - The code is valid.
  *   * `invalid` - The code is invalid.
  *   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
@@ -17,7 +18,8 @@ import java.lang.String;
  *   * `expired_auth` - The authentication has expired and cannot be checked.
  * 
  */
-public enum CreateCheckResponseStatus {
+public enum CheckStatus {
+    UNKNOWN("unknown"),
     VALID("valid"),
     INVALID("invalid"),
     WITHOUT_ATTEMPT("without_attempt"),
@@ -28,7 +30,7 @@ public enum CreateCheckResponseStatus {
     @JsonValue
     private final String value;
 
-    private CreateCheckResponseStatus(String value) {
+    private CheckStatus(String value) {
         this.value = value;
     }
     
