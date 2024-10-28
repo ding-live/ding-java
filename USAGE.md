@@ -8,11 +8,11 @@ Send an OTP code to a user's phone number.
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse;
-import live.ding.dingSdk.models.operations.CreateAuthenticationResponse;
-import live.ding.dingSdk.models.shared.CreateAuthenticationRequest;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
+import live.ding.dingsdk.models.operations.CreateAuthenticationResponse;
+import live.ding.dingsdk.models.shared.CreateAuthenticationRequest;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
@@ -50,11 +50,11 @@ Check that a code entered by a user is valid.
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse;
-import live.ding.dingSdk.models.operations.CheckResponse;
-import live.ding.dingSdk.models.shared.CreateCheckRequest;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
+import live.ding.dingsdk.models.operations.CheckResponse;
+import live.ding.dingsdk.models.shared.CreateCheckRequest;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
@@ -92,11 +92,11 @@ Perform a retry if a user has not received the code.
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse1;
-import live.ding.dingSdk.models.operations.RetryResponse;
-import live.ding.dingSdk.models.shared.RetryAuthenticationRequest;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.operations.RetryResponse;
+import live.ding.dingsdk.models.shared.RetryAuthenticationRequest;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
@@ -133,11 +133,11 @@ Send feedback about the authentication process.
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.operations.FeedbackResponse;
-import live.ding.dingSdk.models.shared.FeedbackRequest;
-import live.ding.dingSdk.models.shared.FeedbackRequestStatus;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.operations.FeedbackResponse;
+import live.ding.dingsdk.models.shared.FeedbackRequest;
+import live.ding.dingsdk.models.shared.FeedbackRequestStatus;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
@@ -175,9 +175,9 @@ Get the status of an authentication.
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.operations.GetAuthenticationStatusResponse;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.operations.GetAuthenticationStatusResponse;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
@@ -209,10 +209,10 @@ Perform a phone number lookup.
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse1;
-import live.ding.dingSdk.models.operations.LookupResponse;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.operations.LookupResponse;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 

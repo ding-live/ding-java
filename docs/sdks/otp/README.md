@@ -23,11 +23,11 @@ Check a code
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse;
-import live.ding.dingSdk.models.operations.CheckResponse;
-import live.ding.dingSdk.models.shared.CreateCheckRequest;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
+import live.ding.dingsdk.models.operations.CheckResponse;
+import live.ding.dingsdk.models.shared.CreateCheckRequest;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
@@ -83,11 +83,11 @@ Send a code
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse;
-import live.ding.dingSdk.models.operations.CreateAuthenticationResponse;
-import live.ding.dingSdk.models.shared.CreateAuthenticationRequest;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
+import live.ding.dingsdk.models.operations.CreateAuthenticationResponse;
+import live.ding.dingsdk.models.shared.CreateAuthenticationRequest;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
@@ -143,11 +143,11 @@ Send feedback
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.operations.FeedbackResponse;
-import live.ding.dingSdk.models.shared.FeedbackRequest;
-import live.ding.dingSdk.models.shared.FeedbackRequestStatus;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.operations.FeedbackResponse;
+import live.ding.dingsdk.models.shared.FeedbackRequest;
+import live.ding.dingsdk.models.shared.FeedbackRequestStatus;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
@@ -202,9 +202,9 @@ Get authentication status
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.operations.GetAuthenticationStatusResponse;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.operations.GetAuthenticationStatusResponse;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
@@ -253,11 +253,11 @@ Perform a retry
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse1;
-import live.ding.dingSdk.models.operations.RetryResponse;
-import live.ding.dingSdk.models.shared.RetryAuthenticationRequest;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.operations.RetryResponse;
+import live.ding.dingsdk.models.shared.RetryAuthenticationRequest;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
