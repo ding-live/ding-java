@@ -19,10 +19,10 @@ Look up for phone number
 package hello.world;
 
 import java.lang.Exception;
-import live.ding.dingSdk.Ding;
-import live.ding.dingSdk.models.errors.ErrorResponse1;
-import live.ding.dingSdk.models.operations.LookupResponse;
-import live.ding.dingSdk.models.shared.Security;
+import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.operations.LookupResponse;
+import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 

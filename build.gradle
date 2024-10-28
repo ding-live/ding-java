@@ -41,9 +41,9 @@ model {
 
 jar {
     dependsOn(":generatePomFileForMavenPublication")
-    archiveBaseName = "dingSdk"
+    archiveBaseName = "dingsdk"
 
-    into("META-INF/maven/live.ding/dingSdk") {
+    into("META-INF/maven/live.ding/dingsdk") {
         from("$buildDir/pom.xml")
     }
 }
@@ -63,14 +63,14 @@ tasks.withType(Javadoc) {
 }
 
 group = "live.ding"
-version = "0.8.1"
+version = "0.8.2"
 
 sourcesJar {
-    archiveBaseName = "dingSdk"
+    archiveBaseName = "dingsdk"
 }
 
 javadocJar {
-    archiveBaseName = "dingSdk"
+    archiveBaseName = "dingsdk"
 }
 sonatypeCentralUpload {
     // This is your Sonatype generated username
@@ -80,9 +80,9 @@ sonatypeCentralUpload {
 
     // This is a list of files to upload. Ideally you would point to your jar file, source and javadoc jar (required by central)
     archives = files(
-      "$buildDir/libs/dingSdk-${version}.jar",
-      "$buildDir/libs/dingSdk-${version}-sources.jar",
-      "$buildDir/libs/dingSdk-${version}-javadoc.jar"
+      "$buildDir/libs/dingsdk-${version}.jar",
+      "$buildDir/libs/dingsdk-${version}-sources.jar",
+      "$buildDir/libs/dingsdk-${version}-javadoc.jar"
     )
 
     // This is the pom file to upload. This is required by central
@@ -100,8 +100,8 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'live.ding'
-            artifactId = 'dingSdk'
-            version = '0.8.1'
+            artifactId = 'dingsdk'
+            version = '0.8.2'
 
             from components.java
 
