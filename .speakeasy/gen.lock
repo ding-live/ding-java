@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.422.2
   generationVersion: 2.442.11
-  releaseVersion: 0.8.2
-  configChecksum: fd81ee73ccb912b43e4378c3bda820c6
+  releaseVersion: 0.8.3
+  configChecksum: 1fd95fdd632f62e3f6c998bd21d550b2
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true

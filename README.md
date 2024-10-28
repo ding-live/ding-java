@@ -30,7 +30,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'live.ding:dingsdk:0.8.2'
+implementation 'live.ding:dingsdk:0.8.3'
 ```
 
 Maven:
@@ -38,7 +38,7 @@ Maven:
 <dependency>
     <groupId>live.ding</groupId>
     <artifactId>dingsdk</artifactId>
-    <version>0.8.2</version>
+    <version>0.8.3</version>
 </dependency>
 ```
 
