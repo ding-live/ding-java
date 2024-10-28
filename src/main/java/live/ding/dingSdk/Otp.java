@@ -22,9 +22,13 @@ import live.ding.dingSdk.models.operations.CreateAuthenticationRequestBuilder;
 import live.ding.dingSdk.models.operations.CreateAuthenticationResponse;
 import live.ding.dingSdk.models.operations.FeedbackRequestBuilder;
 import live.ding.dingSdk.models.operations.FeedbackResponse;
+import live.ding.dingSdk.models.operations.GetAuthenticationStatusRequest;
+import live.ding.dingSdk.models.operations.GetAuthenticationStatusRequestBuilder;
+import live.ding.dingSdk.models.operations.GetAuthenticationStatusResponse;
 import live.ding.dingSdk.models.operations.RetryRequestBuilder;
 import live.ding.dingSdk.models.operations.RetryResponse;
 import live.ding.dingSdk.models.operations.SDKMethodInterfaces.*;
+import live.ding.dingSdk.models.shared.AuthenticationStatusResponse;
 import live.ding.dingSdk.models.shared.CreateAuthenticationRequest;
 import live.ding.dingSdk.models.shared.CreateCheckRequest;
 import live.ding.dingSdk.models.shared.CreateCheckResponse;
@@ -47,6 +51,7 @@ public class Otp implements
             MethodCallCheck,
             MethodCallCreateAuthentication,
             MethodCallFeedback,
+            MethodCallGetAuthenticationStatus,
             MethodCallRetry {
 
     private final SDKConfiguration sdkConfiguration;
@@ -457,6 +462,143 @@ public class Otp implements
                     Utils.toUtf8AndClose(_httpRes.body()),
                     new TypeReference<live.ding.dingSdk.models.shared.FeedbackResponse>() {});
                 _res.withFeedbackResponse(Optional.ofNullable(_out));
+                return _res;
+            } else {
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX", "5XX")) {
+            // no content 
+            throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "API error occurred", 
+                    Utils.extractByteArrayFromBody(_httpRes));
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "default")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                live.ding.dingSdk.models.shared.ErrorResponse _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<live.ding.dingSdk.models.shared.ErrorResponse>() {});
+                _res.withErrorResponse(Optional.ofNullable(_out));
+                return _res;
+            } else {
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        throw new SDKError(
+            _httpRes, 
+            _httpRes.statusCode(), 
+            "Unexpected status code received: " + _httpRes.statusCode(), 
+            Utils.extractByteArrayFromBody(_httpRes));
+    }
+
+
+
+    /**
+     * Get authentication status
+     * @return The call builder
+     */
+    public GetAuthenticationStatusRequestBuilder getAuthenticationStatus() {
+        return new GetAuthenticationStatusRequestBuilder(this);
+    }
+
+    /**
+     * Get authentication status
+     * @param authUuid
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public GetAuthenticationStatusResponse getAuthenticationStatus(
+            String authUuid) throws Exception {
+        GetAuthenticationStatusRequest request =
+            GetAuthenticationStatusRequest
+                .builder()
+                .authUuid(authUuid)
+                .build();
+        
+        String _baseUrl = this.sdkConfiguration.serverUrl;
+        String _url = Utils.generateURL(
+                GetAuthenticationStatusRequest.class,
+                _baseUrl,
+                "/authentication/{auth_uuid}",
+                request, null);
+        
+        HTTPRequest _req = new HTTPRequest(_url, "GET");
+        _req.addHeader("Accept", "application/json")
+            .addHeader("user-agent", 
+                SDKConfiguration.USER_AGENT);
+
+        Utils.configureSecurity(_req,  
+                this.sdkConfiguration.securitySource.getSecurity());
+
+        HTTPClient _client = this.sdkConfiguration.defaultClient;
+        HttpRequest _r = 
+            sdkConfiguration.hooks()
+               .beforeRequest(
+                  new BeforeRequestContextImpl(
+                      "getAuthenticationStatus", 
+                      Optional.of(List.of()), 
+                      sdkConfiguration.securitySource()),
+                  _req.build());
+        HttpResponse<InputStream> _httpRes;
+        try {
+            _httpRes = _client.send(_r);
+            if (Utils.statusCodeMatches(_httpRes.statusCode(), "4XX", "5XX")) {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl(
+                            "getAuthenticationStatus",
+                            Optional.of(List.of()),
+                            sdkConfiguration.securitySource()),
+                        Optional.of(_httpRes),
+                        Optional.empty());
+            } else {
+                _httpRes = sdkConfiguration.hooks()
+                    .afterSuccess(
+                        new AfterSuccessContextImpl(
+                            "getAuthenticationStatus",
+                            Optional.of(List.of()), 
+                            sdkConfiguration.securitySource()),
+                         _httpRes);
+            }
+        } catch (Exception _e) {
+            _httpRes = sdkConfiguration.hooks()
+                    .afterError(
+                        new AfterErrorContextImpl(
+                            "getAuthenticationStatus",
+                            Optional.of(List.of()),
+                            sdkConfiguration.securitySource()), 
+                        Optional.empty(),
+                        Optional.of(_e));
+        }
+        String _contentType = _httpRes
+            .headers()
+            .firstValue("Content-Type")
+            .orElse("application/octet-stream");
+        GetAuthenticationStatusResponse.Builder _resBuilder = 
+            GetAuthenticationStatusResponse
+                .builder()
+                .contentType(_contentType)
+                .statusCode(_httpRes.statusCode())
+                .rawResponse(_httpRes);
+
+        GetAuthenticationStatusResponse _res = _resBuilder.build();
+        
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "200")) {
+            if (Utils.contentTypeMatches(_contentType, "application/json")) {
+                AuthenticationStatusResponse _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<AuthenticationStatusResponse>() {});
+                _res.withAuthenticationStatusResponse(Optional.ofNullable(_out));
                 return _res;
             } else {
                 throw new SDKError(

@@ -27,6 +27,7 @@ public class Application {
         CreateAuthenticationRequest req = CreateAuthenticationRequest.builder()
                 .customerUuid("cf2edc1c-7fc6-48fb-86da-b7508c6b7b71")
                 .phoneNumber("+1234567890")
+                .locale("fr-FR")
                 .build();
 
         CreateAuthenticationResponse res = sdk.otp().createAuthentication()
@@ -117,6 +118,118 @@ public class Application {
                 .call();
 
         if (res.retryAuthenticationResponse().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Send feedback
+
+Send feedback about the authentication process.
+
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import live.ding.dingSdk.Ding;
+import live.ding.dingSdk.models.operations.FeedbackResponse;
+import live.ding.dingSdk.models.shared.FeedbackRequest;
+import live.ding.dingSdk.models.shared.FeedbackRequestStatus;
+import live.ding.dingSdk.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Ding sdk = Ding.builder()
+                .security(Security.builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build())
+            .build();
+
+        FeedbackRequest req = FeedbackRequest.builder()
+                .customerUuid("cc0f6c04-40de-448f-8301-3cb0e6565dff")
+                .phoneNumber("+1234567890")
+                .status(FeedbackRequestStatus.ONBOARDED)
+                .build();
+
+        FeedbackResponse res = sdk.otp().feedback()
+                .request(req)
+                .call();
+
+        if (res.feedbackResponse().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Get authentication status
+
+Get the status of an authentication.
+
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import live.ding.dingSdk.Ding;
+import live.ding.dingSdk.models.operations.GetAuthenticationStatusResponse;
+import live.ding.dingSdk.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        Ding sdk = Ding.builder()
+                .security(Security.builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build())
+            .build();
+
+        GetAuthenticationStatusResponse res = sdk.otp().getAuthenticationStatus()
+                .authUuid("d8446450-f2fa-4dd9-806b-df5b8c661f23")
+                .call();
+
+        if (res.authenticationStatusResponse().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Look up for phone number
+
+Perform a phone number lookup.
+
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import live.ding.dingSdk.Ding;
+import live.ding.dingSdk.models.errors.ErrorResponse1;
+import live.ding.dingSdk.models.operations.LookupResponse;
+import live.ding.dingSdk.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws ErrorResponse1, Exception {
+
+        Ding sdk = Ding.builder()
+                .security(Security.builder()
+                    .apiKey("YOUR_API_KEY")
+                    .build())
+            .build();
+
+        LookupResponse res = sdk.lookup().lookup()
+                .customerUuid("69a197d9-356c-45d1-a807-41874e16b555")
+                .phoneNumber("<value>")
+                .call();
+
+        if (res.lookupResponse().isPresent()) {
             // handle response
         }
     }

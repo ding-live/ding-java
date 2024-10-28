@@ -1,6 +1,7 @@
-# CreateCheckResponseStatus
+# CheckStatus
 
 The status of the check. Possible values are:
+  * `unknown` - The status is unknown.
   * `valid` - The code is valid.
   * `invalid` - The code is invalid.
   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
@@ -14,6 +15,7 @@ The status of the check. Possible values are:
 
 | Name                | Value               |
 | ------------------- | ------------------- |
+| `UNKNOWN`           | unknown             |
 | `VALID`             | valid               |
 | `INVALID`           | invalid             |
 | `WITHOUT_ATTEMPT`   | without_attempt     |

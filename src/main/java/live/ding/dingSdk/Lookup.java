@@ -39,7 +39,7 @@ public class Lookup implements
 
 
     /**
-     * Perform a phone number lookup
+     * Look up for phone number
      * @return The call builder
      */
     public LookupRequestBuilder lookup() {
@@ -47,7 +47,7 @@ public class Lookup implements
     }
 
     /**
-     * Perform a phone number lookup
+     * Look up for phone number
      * @param customerUuid
      * @param phoneNumber
      * @return The response from the API call
