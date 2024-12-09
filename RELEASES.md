@@ -265,3 +265,13 @@ Based on:
 - [java v0.8.3] .
 ### Releases
 - [Maven Central v0.8.3] https://central.sonatype.com/artifact/live.ding/dingsdk/0.8.3 - .
+
+## 2024-12-09 00:11:41
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.453.4 (2.474.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v0.9.0] .
+### Releases
+- [Maven Central v0.9.0] https://central.sonatype.com/artifact/live.ding/dingsdk/0.9.0 - .

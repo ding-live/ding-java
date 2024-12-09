@@ -41,6 +41,13 @@ public class DeliveryStatus {
     private Optional<OffsetDateTime> createdAt;
 
     /**
+     * The date and time from the provider.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("originated_at")
+    private Optional<OffsetDateTime> originatedAt;
+
+    /**
      * The status of the delivery. Possible values are:
      *   * `unknown` - The status of the delivery is unknown.
      *   * `submitted` - The message has been submitted to the carrier.
@@ -65,22 +72,25 @@ public class DeliveryStatus {
             @JsonProperty("attempt_id") Optional<String> attemptId,
             @JsonProperty("attempt_number") Optional<Long> attemptNumber,
             @JsonProperty("created_at") Optional<OffsetDateTime> createdAt,
+            @JsonProperty("originated_at") Optional<OffsetDateTime> originatedAt,
             @JsonProperty("status") Optional<? extends AuthenticationStatusResponseStatus> status,
             @JsonProperty("type") Optional<? extends AuthenticationStatusResponseSchemasType> type) {
         Utils.checkNotNull(attemptId, "attemptId");
         Utils.checkNotNull(attemptNumber, "attemptNumber");
         Utils.checkNotNull(createdAt, "createdAt");
+        Utils.checkNotNull(originatedAt, "originatedAt");
         Utils.checkNotNull(status, "status");
         Utils.checkNotNull(type, "type");
         this.attemptId = attemptId;
         this.attemptNumber = attemptNumber;
         this.createdAt = createdAt;
+        this.originatedAt = originatedAt;
         this.status = status;
         this.type = type;
     }
     
     public DeliveryStatus() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -102,6 +112,14 @@ public class DeliveryStatus {
     @JsonIgnore
     public Optional<OffsetDateTime> createdAt() {
         return createdAt;
+    }
+
+    /**
+     * The date and time from the provider.
+     */
+    @JsonIgnore
+    public Optional<OffsetDateTime> originatedAt() {
+        return originatedAt;
     }
 
     /**
@@ -181,6 +199,24 @@ public class DeliveryStatus {
     }
 
     /**
+     * The date and time from the provider.
+     */
+    public DeliveryStatus withOriginatedAt(OffsetDateTime originatedAt) {
+        Utils.checkNotNull(originatedAt, "originatedAt");
+        this.originatedAt = Optional.ofNullable(originatedAt);
+        return this;
+    }
+
+    /**
+     * The date and time from the provider.
+     */
+    public DeliveryStatus withOriginatedAt(Optional<OffsetDateTime> originatedAt) {
+        Utils.checkNotNull(originatedAt, "originatedAt");
+        this.originatedAt = originatedAt;
+        return this;
+    }
+
+    /**
      * The status of the delivery. Possible values are:
      *   * `unknown` - The status of the delivery is unknown.
      *   * `submitted` - The message has been submitted to the carrier.
@@ -241,6 +277,7 @@ public class DeliveryStatus {
             Objects.deepEquals(this.attemptId, other.attemptId) &&
             Objects.deepEquals(this.attemptNumber, other.attemptNumber) &&
             Objects.deepEquals(this.createdAt, other.createdAt) &&
+            Objects.deepEquals(this.originatedAt, other.originatedAt) &&
             Objects.deepEquals(this.status, other.status) &&
             Objects.deepEquals(this.type, other.type);
     }
@@ -251,6 +288,7 @@ public class DeliveryStatus {
             attemptId,
             attemptNumber,
             createdAt,
+            originatedAt,
             status,
             type);
     }
@@ -261,6 +299,7 @@ public class DeliveryStatus {
                 "attemptId", attemptId,
                 "attemptNumber", attemptNumber,
                 "createdAt", createdAt,
+                "originatedAt", originatedAt,
                 "status", status,
                 "type", type);
     }
@@ -272,6 +311,8 @@ public class DeliveryStatus {
         private Optional<Long> attemptNumber = Optional.empty();
  
         private Optional<OffsetDateTime> createdAt = Optional.empty();
+ 
+        private Optional<OffsetDateTime> originatedAt = Optional.empty();
  
         private Optional<? extends AuthenticationStatusResponseStatus> status = Optional.empty();
  
@@ -330,6 +371,24 @@ public class DeliveryStatus {
         }
 
         /**
+         * The date and time from the provider.
+         */
+        public Builder originatedAt(OffsetDateTime originatedAt) {
+            Utils.checkNotNull(originatedAt, "originatedAt");
+            this.originatedAt = Optional.ofNullable(originatedAt);
+            return this;
+        }
+
+        /**
+         * The date and time from the provider.
+         */
+        public Builder originatedAt(Optional<OffsetDateTime> originatedAt) {
+            Utils.checkNotNull(originatedAt, "originatedAt");
+            this.originatedAt = originatedAt;
+            return this;
+        }
+
+        /**
          * The status of the delivery. Possible values are:
          *   * `unknown` - The status of the delivery is unknown.
          *   * `submitted` - The message has been submitted to the carrier.
@@ -382,6 +441,7 @@ public class DeliveryStatus {
                 attemptId,
                 attemptNumber,
                 createdAt,
+                originatedAt,
                 status,
                 type);
         }

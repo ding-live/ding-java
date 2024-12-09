@@ -90,6 +90,13 @@ public class LookupResponse {
     @JsonProperty("phone_number")
     private Optional<String> phoneNumber;
 
+    /**
+     * Whether the phone number is in our database of disposable, temporary phone numbers
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("temporary_phone_number")
+    private Optional<Boolean> temporaryPhoneNumber;
+
     @JsonCreator
     public LookupResponse(
             @JsonProperty("carrier") Optional<String> carrier,
@@ -98,7 +105,8 @@ public class LookupResponse {
             @JsonProperty("mcc") Optional<String> mcc,
             @JsonProperty("mnc") Optional<String> mnc,
             @JsonProperty("number_ported") Optional<Boolean> numberPorted,
-            @JsonProperty("phone_number") Optional<String> phoneNumber) {
+            @JsonProperty("phone_number") Optional<String> phoneNumber,
+            @JsonProperty("temporary_phone_number") Optional<Boolean> temporaryPhoneNumber) {
         Utils.checkNotNull(carrier, "carrier");
         Utils.checkNotNull(countryCode, "countryCode");
         Utils.checkNotNull(lineType, "lineType");
@@ -106,6 +114,7 @@ public class LookupResponse {
         Utils.checkNotNull(mnc, "mnc");
         Utils.checkNotNull(numberPorted, "numberPorted");
         Utils.checkNotNull(phoneNumber, "phoneNumber");
+        Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
         this.carrier = carrier;
         this.countryCode = countryCode;
         this.lineType = lineType;
@@ -113,10 +122,11 @@ public class LookupResponse {
         this.mnc = mnc;
         this.numberPorted = numberPorted;
         this.phoneNumber = phoneNumber;
+        this.temporaryPhoneNumber = temporaryPhoneNumber;
     }
     
     public LookupResponse() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -194,6 +204,14 @@ public class LookupResponse {
     @JsonIgnore
     public Optional<String> phoneNumber() {
         return phoneNumber;
+    }
+
+    /**
+     * Whether the phone number is in our database of disposable, temporary phone numbers
+     */
+    @JsonIgnore
+    public Optional<Boolean> temporaryPhoneNumber() {
+        return temporaryPhoneNumber;
     }
 
     public final static Builder builder() {
@@ -365,6 +383,24 @@ public class LookupResponse {
         this.phoneNumber = phoneNumber;
         return this;
     }
+
+    /**
+     * Whether the phone number is in our database of disposable, temporary phone numbers
+     */
+    public LookupResponse withTemporaryPhoneNumber(boolean temporaryPhoneNumber) {
+        Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
+        this.temporaryPhoneNumber = Optional.ofNullable(temporaryPhoneNumber);
+        return this;
+    }
+
+    /**
+     * Whether the phone number is in our database of disposable, temporary phone numbers
+     */
+    public LookupResponse withTemporaryPhoneNumber(Optional<Boolean> temporaryPhoneNumber) {
+        Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
+        this.temporaryPhoneNumber = temporaryPhoneNumber;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -382,7 +418,8 @@ public class LookupResponse {
             Objects.deepEquals(this.mcc, other.mcc) &&
             Objects.deepEquals(this.mnc, other.mnc) &&
             Objects.deepEquals(this.numberPorted, other.numberPorted) &&
-            Objects.deepEquals(this.phoneNumber, other.phoneNumber);
+            Objects.deepEquals(this.phoneNumber, other.phoneNumber) &&
+            Objects.deepEquals(this.temporaryPhoneNumber, other.temporaryPhoneNumber);
     }
     
     @Override
@@ -394,7 +431,8 @@ public class LookupResponse {
             mcc,
             mnc,
             numberPorted,
-            phoneNumber);
+            phoneNumber,
+            temporaryPhoneNumber);
     }
     
     @Override
@@ -406,7 +444,8 @@ public class LookupResponse {
                 "mcc", mcc,
                 "mnc", mnc,
                 "numberPorted", numberPorted,
-                "phoneNumber", phoneNumber);
+                "phoneNumber", phoneNumber,
+                "temporaryPhoneNumber", temporaryPhoneNumber);
     }
     
     public final static class Builder {
@@ -423,7 +462,9 @@ public class LookupResponse {
  
         private Optional<Boolean> numberPorted = Optional.empty();
  
-        private Optional<String> phoneNumber = Optional.empty();  
+        private Optional<String> phoneNumber = Optional.empty();
+ 
+        private Optional<Boolean> temporaryPhoneNumber = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -594,6 +635,24 @@ public class LookupResponse {
             this.phoneNumber = phoneNumber;
             return this;
         }
+
+        /**
+         * Whether the phone number is in our database of disposable, temporary phone numbers
+         */
+        public Builder temporaryPhoneNumber(boolean temporaryPhoneNumber) {
+            Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
+            this.temporaryPhoneNumber = Optional.ofNullable(temporaryPhoneNumber);
+            return this;
+        }
+
+        /**
+         * Whether the phone number is in our database of disposable, temporary phone numbers
+         */
+        public Builder temporaryPhoneNumber(Optional<Boolean> temporaryPhoneNumber) {
+            Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
+            this.temporaryPhoneNumber = temporaryPhoneNumber;
+            return this;
+        }
         
         public LookupResponse build() {
             return new LookupResponse(
@@ -603,7 +662,8 @@ public class LookupResponse {
                 mcc,
                 mnc,
                 numberPorted,
-                phoneNumber);
+                phoneNumber,
+                temporaryPhoneNumber);
         }
     }
 }
