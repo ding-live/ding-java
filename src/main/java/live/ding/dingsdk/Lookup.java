@@ -12,7 +12,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.errors.SDKError;
 import live.ding.dingsdk.models.operations.LookupRequest;
 import live.ding.dingsdk.models.operations.LookupRequestBuilder;
@@ -75,10 +75,10 @@ public class Lookup implements
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
         _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -86,7 +86,7 @@ public class Lookup implements
                   new BeforeRequestContextImpl(
                       "lookup", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -97,7 +97,7 @@ public class Lookup implements
                         new AfterErrorContextImpl(
                             "lookup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -106,7 +106,7 @@ public class Lookup implements
                         new AfterSuccessContextImpl(
                             "lookup",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -115,7 +115,7 @@ public class Lookup implements
                         new AfterErrorContextImpl(
                             "lookup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -149,9 +149,9 @@ public class Lookup implements
         }
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ErrorResponse1 _out = Utils.mapper().readValue(
+                ErrorResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ErrorResponse1>() {});
+                    new TypeReference<ErrorResponse>() {});
                 throw _out;
             } else {
                 throw new SDKError(
