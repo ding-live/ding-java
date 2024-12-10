@@ -15,7 +15,6 @@ import java.lang.SuppressWarnings;
 import java.net.http.HttpResponse;
 import java.util.Objects;
 import java.util.Optional;
-import live.ding.dingsdk.models.shared.ErrorResponse;
 import live.ding.dingsdk.utils.Response;
 import live.ding.dingsdk.utils.Utils;
 
@@ -26,11 +25,6 @@ public class FeedbackResponse implements Response {
      * HTTP response content type for this operation
      */
     private String contentType;
-
-    /**
-     * Bad Request
-     */
-    private Optional<? extends ErrorResponse> errorResponse;
 
     /**
      * OK
@@ -50,17 +44,14 @@ public class FeedbackResponse implements Response {
     @JsonCreator
     public FeedbackResponse(
             String contentType,
-            Optional<? extends ErrorResponse> errorResponse,
             Optional<? extends live.ding.dingsdk.models.shared.FeedbackResponse> feedbackResponse,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
         Utils.checkNotNull(contentType, "contentType");
-        Utils.checkNotNull(errorResponse, "errorResponse");
         Utils.checkNotNull(feedbackResponse, "feedbackResponse");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
         this.contentType = contentType;
-        this.errorResponse = errorResponse;
         this.feedbackResponse = feedbackResponse;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
@@ -70,7 +61,7 @@ public class FeedbackResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
-        this(contentType, Optional.empty(), Optional.empty(), statusCode, rawResponse);
+        this(contentType, Optional.empty(), statusCode, rawResponse);
     }
 
     /**
@@ -79,15 +70,6 @@ public class FeedbackResponse implements Response {
     @JsonIgnore
     public String contentType() {
         return contentType;
-    }
-
-    /**
-     * Bad Request
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<ErrorResponse> errorResponse() {
-        return (Optional<ErrorResponse>) errorResponse;
     }
 
     /**
@@ -125,24 +107,6 @@ public class FeedbackResponse implements Response {
     public FeedbackResponse withContentType(String contentType) {
         Utils.checkNotNull(contentType, "contentType");
         this.contentType = contentType;
-        return this;
-    }
-
-    /**
-     * Bad Request
-     */
-    public FeedbackResponse withErrorResponse(ErrorResponse errorResponse) {
-        Utils.checkNotNull(errorResponse, "errorResponse");
-        this.errorResponse = Optional.ofNullable(errorResponse);
-        return this;
-    }
-
-    /**
-     * Bad Request
-     */
-    public FeedbackResponse withErrorResponse(Optional<? extends ErrorResponse> errorResponse) {
-        Utils.checkNotNull(errorResponse, "errorResponse");
-        this.errorResponse = errorResponse;
         return this;
     }
 
@@ -193,7 +157,6 @@ public class FeedbackResponse implements Response {
         FeedbackResponse other = (FeedbackResponse) o;
         return 
             Objects.deepEquals(this.contentType, other.contentType) &&
-            Objects.deepEquals(this.errorResponse, other.errorResponse) &&
             Objects.deepEquals(this.feedbackResponse, other.feedbackResponse) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
             Objects.deepEquals(this.rawResponse, other.rawResponse);
@@ -203,7 +166,6 @@ public class FeedbackResponse implements Response {
     public int hashCode() {
         return Objects.hash(
             contentType,
-            errorResponse,
             feedbackResponse,
             statusCode,
             rawResponse);
@@ -213,7 +175,6 @@ public class FeedbackResponse implements Response {
     public String toString() {
         return Utils.toString(FeedbackResponse.class,
                 "contentType", contentType,
-                "errorResponse", errorResponse,
                 "feedbackResponse", feedbackResponse,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse);
@@ -222,8 +183,6 @@ public class FeedbackResponse implements Response {
     public final static class Builder {
  
         private String contentType;
- 
-        private Optional<? extends ErrorResponse> errorResponse = Optional.empty();
  
         private Optional<? extends live.ding.dingsdk.models.shared.FeedbackResponse> feedbackResponse = Optional.empty();
  
@@ -241,24 +200,6 @@ public class FeedbackResponse implements Response {
         public Builder contentType(String contentType) {
             Utils.checkNotNull(contentType, "contentType");
             this.contentType = contentType;
-            return this;
-        }
-
-        /**
-         * Bad Request
-         */
-        public Builder errorResponse(ErrorResponse errorResponse) {
-            Utils.checkNotNull(errorResponse, "errorResponse");
-            this.errorResponse = Optional.ofNullable(errorResponse);
-            return this;
-        }
-
-        /**
-         * Bad Request
-         */
-        public Builder errorResponse(Optional<? extends ErrorResponse> errorResponse) {
-            Utils.checkNotNull(errorResponse, "errorResponse");
-            this.errorResponse = errorResponse;
             return this;
         }
 
@@ -301,7 +242,6 @@ public class FeedbackResponse implements Response {
         public FeedbackResponse build() {
             return new FeedbackResponse(
                 contentType,
-                errorResponse,
                 feedbackResponse,
                 statusCode,
                 rawResponse);
