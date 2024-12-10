@@ -18,5 +18,5 @@ targets:
                 gpgPassPhrase: $java_gpg_passphrase
         codeSamples:
             registry:
-                location: registry.speakeasyapi.dev/ding/ding/my-source-code-samples
+                location: registry.speakeasyapi.dev/ding/ding/my-source-java-code-samples
             blocking: false
