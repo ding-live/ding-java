@@ -16,7 +16,6 @@ import java.net.http.HttpResponse;
 import java.util.Objects;
 import java.util.Optional;
 import live.ding.dingsdk.models.shared.AuthenticationStatusResponse;
-import live.ding.dingsdk.models.shared.ErrorResponse;
 import live.ding.dingsdk.utils.Response;
 import live.ding.dingsdk.utils.Utils;
 
@@ -34,11 +33,6 @@ public class GetAuthenticationStatusResponse implements Response {
     private String contentType;
 
     /**
-     * Bad Request
-     */
-    private Optional<? extends ErrorResponse> errorResponse;
-
-    /**
      * HTTP response status code for this operation
      */
     private int statusCode;
@@ -52,17 +46,14 @@ public class GetAuthenticationStatusResponse implements Response {
     public GetAuthenticationStatusResponse(
             Optional<? extends AuthenticationStatusResponse> authenticationStatusResponse,
             String contentType,
-            Optional<? extends ErrorResponse> errorResponse,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
         Utils.checkNotNull(authenticationStatusResponse, "authenticationStatusResponse");
         Utils.checkNotNull(contentType, "contentType");
-        Utils.checkNotNull(errorResponse, "errorResponse");
         Utils.checkNotNull(statusCode, "statusCode");
         Utils.checkNotNull(rawResponse, "rawResponse");
         this.authenticationStatusResponse = authenticationStatusResponse;
         this.contentType = contentType;
-        this.errorResponse = errorResponse;
         this.statusCode = statusCode;
         this.rawResponse = rawResponse;
     }
@@ -71,7 +62,7 @@ public class GetAuthenticationStatusResponse implements Response {
             String contentType,
             int statusCode,
             HttpResponse<InputStream> rawResponse) {
-        this(Optional.empty(), contentType, Optional.empty(), statusCode, rawResponse);
+        this(Optional.empty(), contentType, statusCode, rawResponse);
     }
 
     /**
@@ -89,15 +80,6 @@ public class GetAuthenticationStatusResponse implements Response {
     @JsonIgnore
     public String contentType() {
         return contentType;
-    }
-
-    /**
-     * Bad Request
-     */
-    @SuppressWarnings("unchecked")
-    @JsonIgnore
-    public Optional<ErrorResponse> errorResponse() {
-        return (Optional<ErrorResponse>) errorResponse;
     }
 
     /**
@@ -148,24 +130,6 @@ public class GetAuthenticationStatusResponse implements Response {
     }
 
     /**
-     * Bad Request
-     */
-    public GetAuthenticationStatusResponse withErrorResponse(ErrorResponse errorResponse) {
-        Utils.checkNotNull(errorResponse, "errorResponse");
-        this.errorResponse = Optional.ofNullable(errorResponse);
-        return this;
-    }
-
-    /**
-     * Bad Request
-     */
-    public GetAuthenticationStatusResponse withErrorResponse(Optional<? extends ErrorResponse> errorResponse) {
-        Utils.checkNotNull(errorResponse, "errorResponse");
-        this.errorResponse = errorResponse;
-        return this;
-    }
-
-    /**
      * HTTP response status code for this operation
      */
     public GetAuthenticationStatusResponse withStatusCode(int statusCode) {
@@ -195,7 +159,6 @@ public class GetAuthenticationStatusResponse implements Response {
         return 
             Objects.deepEquals(this.authenticationStatusResponse, other.authenticationStatusResponse) &&
             Objects.deepEquals(this.contentType, other.contentType) &&
-            Objects.deepEquals(this.errorResponse, other.errorResponse) &&
             Objects.deepEquals(this.statusCode, other.statusCode) &&
             Objects.deepEquals(this.rawResponse, other.rawResponse);
     }
@@ -205,7 +168,6 @@ public class GetAuthenticationStatusResponse implements Response {
         return Objects.hash(
             authenticationStatusResponse,
             contentType,
-            errorResponse,
             statusCode,
             rawResponse);
     }
@@ -215,7 +177,6 @@ public class GetAuthenticationStatusResponse implements Response {
         return Utils.toString(GetAuthenticationStatusResponse.class,
                 "authenticationStatusResponse", authenticationStatusResponse,
                 "contentType", contentType,
-                "errorResponse", errorResponse,
                 "statusCode", statusCode,
                 "rawResponse", rawResponse);
     }
@@ -225,8 +186,6 @@ public class GetAuthenticationStatusResponse implements Response {
         private Optional<? extends AuthenticationStatusResponse> authenticationStatusResponse = Optional.empty();
  
         private String contentType;
- 
-        private Optional<? extends ErrorResponse> errorResponse = Optional.empty();
  
         private Integer statusCode;
  
@@ -264,24 +223,6 @@ public class GetAuthenticationStatusResponse implements Response {
         }
 
         /**
-         * Bad Request
-         */
-        public Builder errorResponse(ErrorResponse errorResponse) {
-            Utils.checkNotNull(errorResponse, "errorResponse");
-            this.errorResponse = Optional.ofNullable(errorResponse);
-            return this;
-        }
-
-        /**
-         * Bad Request
-         */
-        public Builder errorResponse(Optional<? extends ErrorResponse> errorResponse) {
-            Utils.checkNotNull(errorResponse, "errorResponse");
-            this.errorResponse = errorResponse;
-            return this;
-        }
-
-        /**
          * HTTP response status code for this operation
          */
         public Builder statusCode(int statusCode) {
@@ -303,7 +244,6 @@ public class GetAuthenticationStatusResponse implements Response {
             return new GetAuthenticationStatusResponse(
                 authenticationStatusResponse,
                 contentType,
-                errorResponse,
                 statusCode,
                 rawResponse);
         }

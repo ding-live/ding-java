@@ -22,6 +22,13 @@ import live.ding.dingsdk.utils.Utils;
 public class LookupResponse {
 
     /**
+     * The CNAM (Caller ID Name) associated with the phone number. Contact us if you need to use this functionality. Once enabled, put `cnam` option to `type` query parameter.
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("caller_name")
+    private Optional<String> callerName;
+
+    /**
      * The carrier of the phone number.
      */
     @JsonInclude(Include.NON_ABSENT)
@@ -90,15 +97,25 @@ public class LookupResponse {
     @JsonProperty("phone_number")
     private Optional<String> phoneNumber;
 
+    /**
+     * Whether the phone number is in our database of disposable, temporary phone numbers
+     */
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("temporary_phone_number")
+    private Optional<Boolean> temporaryPhoneNumber;
+
     @JsonCreator
     public LookupResponse(
+            @JsonProperty("caller_name") Optional<String> callerName,
             @JsonProperty("carrier") Optional<String> carrier,
             @JsonProperty("country_code") Optional<String> countryCode,
             @JsonProperty("line_type") Optional<? extends LineType> lineType,
             @JsonProperty("mcc") Optional<String> mcc,
             @JsonProperty("mnc") Optional<String> mnc,
             @JsonProperty("number_ported") Optional<Boolean> numberPorted,
-            @JsonProperty("phone_number") Optional<String> phoneNumber) {
+            @JsonProperty("phone_number") Optional<String> phoneNumber,
+            @JsonProperty("temporary_phone_number") Optional<Boolean> temporaryPhoneNumber) {
+        Utils.checkNotNull(callerName, "callerName");
         Utils.checkNotNull(carrier, "carrier");
         Utils.checkNotNull(countryCode, "countryCode");
         Utils.checkNotNull(lineType, "lineType");
@@ -106,6 +123,8 @@ public class LookupResponse {
         Utils.checkNotNull(mnc, "mnc");
         Utils.checkNotNull(numberPorted, "numberPorted");
         Utils.checkNotNull(phoneNumber, "phoneNumber");
+        Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
+        this.callerName = callerName;
         this.carrier = carrier;
         this.countryCode = countryCode;
         this.lineType = lineType;
@@ -113,10 +132,19 @@ public class LookupResponse {
         this.mnc = mnc;
         this.numberPorted = numberPorted;
         this.phoneNumber = phoneNumber;
+        this.temporaryPhoneNumber = temporaryPhoneNumber;
     }
     
     public LookupResponse() {
-        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+    }
+
+    /**
+     * The CNAM (Caller ID Name) associated with the phone number. Contact us if you need to use this functionality. Once enabled, put `cnam` option to `type` query parameter.
+     */
+    @JsonIgnore
+    public Optional<String> callerName() {
+        return callerName;
     }
 
     /**
@@ -196,8 +224,34 @@ public class LookupResponse {
         return phoneNumber;
     }
 
+    /**
+     * Whether the phone number is in our database of disposable, temporary phone numbers
+     */
+    @JsonIgnore
+    public Optional<Boolean> temporaryPhoneNumber() {
+        return temporaryPhoneNumber;
+    }
+
     public final static Builder builder() {
         return new Builder();
+    }
+
+    /**
+     * The CNAM (Caller ID Name) associated with the phone number. Contact us if you need to use this functionality. Once enabled, put `cnam` option to `type` query parameter.
+     */
+    public LookupResponse withCallerName(String callerName) {
+        Utils.checkNotNull(callerName, "callerName");
+        this.callerName = Optional.ofNullable(callerName);
+        return this;
+    }
+
+    /**
+     * The CNAM (Caller ID Name) associated with the phone number. Contact us if you need to use this functionality. Once enabled, put `cnam` option to `type` query parameter.
+     */
+    public LookupResponse withCallerName(Optional<String> callerName) {
+        Utils.checkNotNull(callerName, "callerName");
+        this.callerName = callerName;
+        return this;
     }
 
     /**
@@ -365,6 +419,24 @@ public class LookupResponse {
         this.phoneNumber = phoneNumber;
         return this;
     }
+
+    /**
+     * Whether the phone number is in our database of disposable, temporary phone numbers
+     */
+    public LookupResponse withTemporaryPhoneNumber(boolean temporaryPhoneNumber) {
+        Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
+        this.temporaryPhoneNumber = Optional.ofNullable(temporaryPhoneNumber);
+        return this;
+    }
+
+    /**
+     * Whether the phone number is in our database of disposable, temporary phone numbers
+     */
+    public LookupResponse withTemporaryPhoneNumber(Optional<Boolean> temporaryPhoneNumber) {
+        Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
+        this.temporaryPhoneNumber = temporaryPhoneNumber;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -376,40 +448,48 @@ public class LookupResponse {
         }
         LookupResponse other = (LookupResponse) o;
         return 
+            Objects.deepEquals(this.callerName, other.callerName) &&
             Objects.deepEquals(this.carrier, other.carrier) &&
             Objects.deepEquals(this.countryCode, other.countryCode) &&
             Objects.deepEquals(this.lineType, other.lineType) &&
             Objects.deepEquals(this.mcc, other.mcc) &&
             Objects.deepEquals(this.mnc, other.mnc) &&
             Objects.deepEquals(this.numberPorted, other.numberPorted) &&
-            Objects.deepEquals(this.phoneNumber, other.phoneNumber);
+            Objects.deepEquals(this.phoneNumber, other.phoneNumber) &&
+            Objects.deepEquals(this.temporaryPhoneNumber, other.temporaryPhoneNumber);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
+            callerName,
             carrier,
             countryCode,
             lineType,
             mcc,
             mnc,
             numberPorted,
-            phoneNumber);
+            phoneNumber,
+            temporaryPhoneNumber);
     }
     
     @Override
     public String toString() {
         return Utils.toString(LookupResponse.class,
+                "callerName", callerName,
                 "carrier", carrier,
                 "countryCode", countryCode,
                 "lineType", lineType,
                 "mcc", mcc,
                 "mnc", mnc,
                 "numberPorted", numberPorted,
-                "phoneNumber", phoneNumber);
+                "phoneNumber", phoneNumber,
+                "temporaryPhoneNumber", temporaryPhoneNumber);
     }
     
     public final static class Builder {
+ 
+        private Optional<String> callerName = Optional.empty();
  
         private Optional<String> carrier = Optional.empty();
  
@@ -423,10 +503,30 @@ public class LookupResponse {
  
         private Optional<Boolean> numberPorted = Optional.empty();
  
-        private Optional<String> phoneNumber = Optional.empty();  
+        private Optional<String> phoneNumber = Optional.empty();
+ 
+        private Optional<Boolean> temporaryPhoneNumber = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
+        }
+
+        /**
+         * The CNAM (Caller ID Name) associated with the phone number. Contact us if you need to use this functionality. Once enabled, put `cnam` option to `type` query parameter.
+         */
+        public Builder callerName(String callerName) {
+            Utils.checkNotNull(callerName, "callerName");
+            this.callerName = Optional.ofNullable(callerName);
+            return this;
+        }
+
+        /**
+         * The CNAM (Caller ID Name) associated with the phone number. Contact us if you need to use this functionality. Once enabled, put `cnam` option to `type` query parameter.
+         */
+        public Builder callerName(Optional<String> callerName) {
+            Utils.checkNotNull(callerName, "callerName");
+            this.callerName = callerName;
+            return this;
         }
 
         /**
@@ -594,16 +694,36 @@ public class LookupResponse {
             this.phoneNumber = phoneNumber;
             return this;
         }
+
+        /**
+         * Whether the phone number is in our database of disposable, temporary phone numbers
+         */
+        public Builder temporaryPhoneNumber(boolean temporaryPhoneNumber) {
+            Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
+            this.temporaryPhoneNumber = Optional.ofNullable(temporaryPhoneNumber);
+            return this;
+        }
+
+        /**
+         * Whether the phone number is in our database of disposable, temporary phone numbers
+         */
+        public Builder temporaryPhoneNumber(Optional<Boolean> temporaryPhoneNumber) {
+            Utils.checkNotNull(temporaryPhoneNumber, "temporaryPhoneNumber");
+            this.temporaryPhoneNumber = temporaryPhoneNumber;
+            return this;
+        }
         
         public LookupResponse build() {
             return new LookupResponse(
+                callerName,
                 carrier,
                 countryCode,
                 lineType,
                 mcc,
                 mnc,
                 numberPorted,
-                phoneNumber);
+                phoneNumber,
+                temporaryPhoneNumber);
         }
     }
 }

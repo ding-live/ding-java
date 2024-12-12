@@ -9,10 +9,11 @@ generation:
     requestResponseComponentNamesFeb2024: false
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
   baseServerURL: ""
   flattenGlobalSecurity: true
 java:
-  version: 0.8.3
+  version: 0.9.0
   additionalDependencies: []
   additionalPlugins: []
   artifactID: dingsdk
@@ -20,6 +21,7 @@ java:
   companyEmail: hello@ding.live
   companyName: Ding
   companyURL: https://ding.live
+  defaultErrorName: SDKError
   flattenGlobalSecurity: false
   githubURL: github.com/ding-live/ding-java
   groupID: live.ding

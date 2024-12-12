@@ -1,20 +1,21 @@
-speakeasyVersion: 1.422.2
+speakeasyVersion: 1.454.0
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:0306ab5b925614b1d6f8d720d9cc121b8e6d6bf6a654af1264da72725e40d521
-        sourceBlobDigest: sha256:53cfa7778a132bc5e0a8ddb6d02fbbe345b15d571d7748cc4978523211008ea3
+        sourceRevisionDigest: sha256:6bc1e168f93bdff151aa61c1faedbfd41fb90e51d6909a7fedcaebc4ef5525a5
+        sourceBlobDigest: sha256:1bc8346f862d17395d3ec227c51c74504f59eabaf83eb40c2932c517c8a40bf8
         tags:
             - latest
-            - main
+            - speakeasy-sdk-regen-1730160561
+            - 1.0.0
 targets:
     live.ding.dingsdk:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:0306ab5b925614b1d6f8d720d9cc121b8e6d6bf6a654af1264da72725e40d521
-        sourceBlobDigest: sha256:53cfa7778a132bc5e0a8ddb6d02fbbe345b15d571d7748cc4978523211008ea3
-        codeSamplesNamespace: my-source-code-samples
-        codeSamplesRevisionDigest: sha256:9003fae7a6b530fc5bd43595728f64817b6e00f3997d8ace5b690c6ead134cac
+        sourceRevisionDigest: sha256:6bc1e168f93bdff151aa61c1faedbfd41fb90e51d6909a7fedcaebc4ef5525a5
+        sourceBlobDigest: sha256:1bc8346f862d17395d3ec227c51c74504f59eabaf83eb40c2932c517c8a40bf8
+        codeSamplesNamespace: my-source-java-code-samples
+        codeSamplesRevisionDigest: sha256:9ef0457f42e2bbae25d91d9daf04e8974c05882de6f64e70ca5e7d77b3c3eef9
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -36,5 +37,5 @@ workflow:
                     gpgPassPhrase: $java_gpg_passphrase
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/ding/ding/my-source-code-samples
+                    location: registry.speakeasyapi.dev/ding/ding/my-source-java-code-samples
                 blocking: false
