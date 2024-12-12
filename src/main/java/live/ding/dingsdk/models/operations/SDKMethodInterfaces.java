@@ -6,6 +6,7 @@ package live.ding.dingsdk.models.operations;
 
 import java.lang.Exception;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import live.ding.dingsdk.models.shared.CreateAuthenticationRequest;
 import live.ding.dingsdk.models.shared.CreateCheckRequest;
@@ -48,7 +49,8 @@ public class SDKMethodInterfaces {
     public interface MethodCallLookup {
         LookupResponse lookup(
             String customerUuid,
-            String phoneNumber) throws Exception;
+            String phoneNumber,
+            Optional<? extends List<Type>> type) throws Exception;
     }
 
 

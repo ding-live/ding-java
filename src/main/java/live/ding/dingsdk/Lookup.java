@@ -12,12 +12,13 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.errors.SDKError;
 import live.ding.dingsdk.models.operations.LookupRequest;
 import live.ding.dingsdk.models.operations.LookupRequestBuilder;
 import live.ding.dingsdk.models.operations.LookupResponse;
 import live.ding.dingsdk.models.operations.SDKMethodInterfaces.*;
+import live.ding.dingsdk.models.operations.Type;
 import live.ding.dingsdk.utils.HTTPClient;
 import live.ding.dingsdk.utils.HTTPRequest;
 import live.ding.dingsdk.utils.Hook.AfterErrorContextImpl;
@@ -56,11 +57,27 @@ public class Lookup implements
     public LookupResponse lookup(
             String customerUuid,
             String phoneNumber) throws Exception {
+        return lookup(customerUuid, phoneNumber, Optional.empty());
+    }
+    
+    /**
+     * Look up for phone number
+     * @param customerUuid
+     * @param phoneNumber
+     * @param type
+     * @return The response from the API call
+     * @throws Exception if the API call fails
+     */
+    public LookupResponse lookup(
+            String customerUuid,
+            String phoneNumber,
+            Optional<? extends List<Type>> type) throws Exception {
         LookupRequest request =
             LookupRequest
                 .builder()
                 .customerUuid(customerUuid)
                 .phoneNumber(phoneNumber)
+                .type(type)
                 .build();
         
         String _baseUrl = this.sdkConfiguration.serverUrl;
@@ -74,11 +91,16 @@ public class Lookup implements
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
-        _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
 
+        _req.addQueryParams(Utils.getQueryParams(
+                LookupRequest.class,
+                request, 
+                null));
+        _req.addHeaders(Utils.getHeadersFromMetadata(request, null));
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HttpRequest _r = 
             sdkConfiguration.hooks()
@@ -86,7 +108,7 @@ public class Lookup implements
                   new BeforeRequestContextImpl(
                       "lookup", 
                       Optional.of(List.of()), 
-                      sdkConfiguration.securitySource()),
+                      _hookSecuritySource),
                   _req.build());
         HttpResponse<InputStream> _httpRes;
         try {
@@ -97,7 +119,7 @@ public class Lookup implements
                         new AfterErrorContextImpl(
                             "lookup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                         Optional.of(_httpRes),
                         Optional.empty());
             } else {
@@ -106,7 +128,7 @@ public class Lookup implements
                         new AfterSuccessContextImpl(
                             "lookup",
                             Optional.of(List.of()), 
-                            sdkConfiguration.securitySource()),
+                            _hookSecuritySource),
                          _httpRes);
             }
         } catch (Exception _e) {
@@ -115,7 +137,7 @@ public class Lookup implements
                         new AfterErrorContextImpl(
                             "lookup",
                             Optional.of(List.of()),
-                            sdkConfiguration.securitySource()), 
+                            _hookSecuritySource), 
                         Optional.empty(),
                         Optional.of(_e));
         }
@@ -149,9 +171,9 @@ public class Lookup implements
         }
         if (Utils.statusCodeMatches(_httpRes.statusCode(), "400")) {
             if (Utils.contentTypeMatches(_contentType, "application/json")) {
-                ErrorResponse1 _out = Utils.mapper().readValue(
+                ErrorResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
-                    new TypeReference<ErrorResponse1>() {});
+                    new TypeReference<ErrorResponse>() {});
                 throw _out;
             } else {
                 throw new SDKError(

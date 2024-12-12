@@ -11,8 +11,10 @@ import java.lang.String;
  * AuthenticationStatusResponseDeviceType - The type of device the user is using.
  */
 public enum AuthenticationStatusResponseDeviceType {
-    IOS("IOS"),
     ANDROID("ANDROID"),
+    IOS("IOS"),
+    IPADOS("IPADOS"),
+    TVOS("TVOS"),
     WEB("WEB");
 
     @JsonValue

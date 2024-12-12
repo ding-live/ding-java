@@ -5,12 +5,15 @@
 package live.ding.dingsdk.models.operations;
 
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import live.ding.dingsdk.utils.Utils;
 
 public class LookupRequestBuilder {
 
     private String customerUuid;
     private String phoneNumber;
+    private Optional<? extends List<Type>> type = Optional.empty();
     private final SDKMethodInterfaces.MethodCallLookup sdk;
 
     public LookupRequestBuilder(SDKMethodInterfaces.MethodCallLookup sdk) {
@@ -28,11 +31,24 @@ public class LookupRequestBuilder {
         this.phoneNumber = phoneNumber;
         return this;
     }
+                
+    public LookupRequestBuilder type(List<Type> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = Optional.of(type);
+        return this;
+    }
+
+    public LookupRequestBuilder type(Optional<? extends List<Type>> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
 
     public LookupResponse call() throws Exception {
 
         return sdk.lookup(
             customerUuid,
-            phoneNumber);
+            phoneNumber,
+            type);
     }
 }
