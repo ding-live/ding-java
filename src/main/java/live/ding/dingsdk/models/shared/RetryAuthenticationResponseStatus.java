@@ -6,6 +6,8 @@ package live.ding.dingsdk.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * RetryAuthenticationResponseStatus - The status of the retry. Possible values are:
@@ -34,5 +36,14 @@ public enum RetryAuthenticationResponseStatus {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<RetryAuthenticationResponseStatus> fromValue(String value) {
+        for (RetryAuthenticationResponseStatus o: RetryAuthenticationResponseStatus.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

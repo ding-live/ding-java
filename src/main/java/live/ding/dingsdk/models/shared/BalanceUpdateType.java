@@ -6,6 +6,8 @@ package live.ding.dingsdk.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 public enum BalanceUpdateType {
     UNKNOWN("unknown"),
@@ -25,5 +27,14 @@ public enum BalanceUpdateType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<BalanceUpdateType> fromValue(String value) {
+        for (BalanceUpdateType o: BalanceUpdateType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

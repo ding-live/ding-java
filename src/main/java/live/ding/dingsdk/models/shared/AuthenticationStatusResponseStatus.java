@@ -6,6 +6,8 @@ package live.ding.dingsdk.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AuthenticationStatusResponseStatus - The status of the delivery. Possible values are:
@@ -32,5 +34,14 @@ public enum AuthenticationStatusResponseStatus {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<AuthenticationStatusResponseStatus> fromValue(String value) {
+        for (AuthenticationStatusResponseStatus o: AuthenticationStatusResponseStatus.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

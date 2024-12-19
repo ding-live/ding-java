@@ -9,7 +9,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.Override;
 import java.lang.String;
+import java.lang.SuppressWarnings;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import live.ding.dingsdk.utils.SpeakeasyMetadata;
 import live.ding.dingsdk.utils.Utils;
 
@@ -22,14 +25,26 @@ public class LookupRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=phone_number")
     private String phoneNumber;
 
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")
+    private Optional<? extends List<Type>> type;
+
     @JsonCreator
     public LookupRequest(
             String customerUuid,
-            String phoneNumber) {
+            String phoneNumber,
+            Optional<? extends List<Type>> type) {
         Utils.checkNotNull(customerUuid, "customerUuid");
         Utils.checkNotNull(phoneNumber, "phoneNumber");
+        Utils.checkNotNull(type, "type");
         this.customerUuid = customerUuid;
         this.phoneNumber = phoneNumber;
+        this.type = type;
+    }
+    
+    public LookupRequest(
+            String customerUuid,
+            String phoneNumber) {
+        this(customerUuid, phoneNumber, Optional.empty());
     }
 
     @JsonIgnore
@@ -40,6 +55,12 @@ public class LookupRequest {
     @JsonIgnore
     public String phoneNumber() {
         return phoneNumber;
+    }
+
+    @SuppressWarnings("unchecked")
+    @JsonIgnore
+    public Optional<List<Type>> type() {
+        return (Optional<List<Type>>) type;
     }
 
     public final static Builder builder() {
@@ -57,6 +78,18 @@ public class LookupRequest {
         this.phoneNumber = phoneNumber;
         return this;
     }
+
+    public LookupRequest withType(List<Type> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = Optional.ofNullable(type);
+        return this;
+    }
+
+    public LookupRequest withType(Optional<? extends List<Type>> type) {
+        Utils.checkNotNull(type, "type");
+        this.type = type;
+        return this;
+    }
     
     @Override
     public boolean equals(java.lang.Object o) {
@@ -69,28 +102,33 @@ public class LookupRequest {
         LookupRequest other = (LookupRequest) o;
         return 
             Objects.deepEquals(this.customerUuid, other.customerUuid) &&
-            Objects.deepEquals(this.phoneNumber, other.phoneNumber);
+            Objects.deepEquals(this.phoneNumber, other.phoneNumber) &&
+            Objects.deepEquals(this.type, other.type);
     }
     
     @Override
     public int hashCode() {
         return Objects.hash(
             customerUuid,
-            phoneNumber);
+            phoneNumber,
+            type);
     }
     
     @Override
     public String toString() {
         return Utils.toString(LookupRequest.class,
                 "customerUuid", customerUuid,
-                "phoneNumber", phoneNumber);
+                "phoneNumber", phoneNumber,
+                "type", type);
     }
     
     public final static class Builder {
  
         private String customerUuid;
  
-        private String phoneNumber;  
+        private String phoneNumber;
+ 
+        private Optional<? extends List<Type>> type = Optional.empty();  
         
         private Builder() {
           // force use of static builder() method
@@ -107,11 +145,24 @@ public class LookupRequest {
             this.phoneNumber = phoneNumber;
             return this;
         }
+
+        public Builder type(List<Type> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = Optional.ofNullable(type);
+            return this;
+        }
+
+        public Builder type(Optional<? extends List<Type>> type) {
+            Utils.checkNotNull(type, "type");
+            this.type = type;
+            return this;
+        }
         
         public LookupRequest build() {
             return new LookupRequest(
                 customerUuid,
-                phoneNumber);
+                phoneNumber,
+                type);
         }
     }
 }
