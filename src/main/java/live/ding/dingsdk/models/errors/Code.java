@@ -6,6 +6,8 @@ package live.ding.dingsdk.models.errors;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Code - A machine-readable code that describes the error.
@@ -44,5 +46,14 @@ public enum Code {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<Code> fromValue(String value) {
+        for (Code o: Code.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -10,13 +10,19 @@ Ding: The OTP API allows you to send authentication codes to your users using th
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Ding Java SDK](#ding-java-sdk)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [SDK Example Usage](#sdk-example-usage-1)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Server Selection](#server-selection)
+  * [Error Handling](#error-handling)
+  * [Authentication](#authentication)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Authentication](#authentication)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -30,7 +36,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'live.ding:dingsdk:0.8.3'
+implementation 'live.ding:dingsdk:0.9.0'
 ```
 
 Maven:
@@ -38,7 +44,7 @@ Maven:
 <dependency>
     <groupId>live.ding</groupId>
     <artifactId>dingsdk</artifactId>
-    <version>0.8.3</version>
+    <version>0.9.0</version>
 </dependency>
 ```
 
@@ -88,7 +94,7 @@ public class Application {
             .build();
 
         CreateAuthenticationRequest req = CreateAuthenticationRequest.builder()
-                .customerUuid("cf2edc1c-7fc6-48fb-86da-b7508c6b7b71")
+                .customerUuid("c9f826e0-deca-41ec-871f-ecd6e8efeb46")
                 .phoneNumber("+1234567890")
                 .locale("fr-FR")
                 .build();
@@ -130,9 +136,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
+                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
                 .checkCode("123456")
-                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
+                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
                 .build();
 
         CheckResponse res = sdk.otp().check()
@@ -156,14 +162,14 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.RetryResponse;
 import live.ding.dingsdk.models.shared.RetryAuthenticationRequest;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse1, Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -197,6 +203,7 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.FeedbackResponse;
 import live.ding.dingsdk.models.shared.FeedbackRequest;
 import live.ding.dingsdk.models.shared.FeedbackRequestStatus;
@@ -204,7 +211,7 @@ import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -213,7 +220,7 @@ public class Application {
             .build();
 
         FeedbackRequest req = FeedbackRequest.builder()
-                .customerUuid("cc0f6c04-40de-448f-8301-3cb0e6565dff")
+                .customerUuid("c0c405fa-6bcb-4094-9430-7d6e2428ff23")
                 .phoneNumber("+1234567890")
                 .status(FeedbackRequestStatus.ONBOARDED)
                 .build();
@@ -239,12 +246,13 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.GetAuthenticationStatusResponse;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -272,14 +280,16 @@ Perform a phone number lookup.
 package hello.world;
 
 import java.lang.Exception;
+import java.util.List;
 import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.LookupResponse;
+import live.ding.dingsdk.models.operations.Type;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse1, Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -288,8 +298,10 @@ public class Application {
             .build();
 
         LookupResponse res = sdk.lookup().lookup()
-                .customerUuid("69a197d9-356c-45d1-a807-41874e16b555")
+                .customerUuid("6e93aa15-9177-4d09-8395-b69ce50db1c8")
                 .phoneNumber("<value>")
+                .type(List.of(
+                    Type.CNAM))
                 .call();
 
         if (res.lookupResponse().isPresent()) {
@@ -325,58 +337,9 @@ public class Application {
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIndex` builder method when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.ding.live/v1` | None |
-
-#### Example
-
-```java
-package hello.world;
-
-import java.lang.Exception;
-import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse;
-import live.ding.dingsdk.models.operations.CheckResponse;
-import live.ding.dingsdk.models.shared.CreateCheckRequest;
-import live.ding.dingsdk.models.shared.Security;
-
-public class Application {
-
-    public static void main(String[] args) throws ErrorResponse, Exception {
-
-        Ding sdk = Ding.builder()
-                .serverIndex(0)
-                .security(Security.builder()
-                    .apiKey("YOUR_API_KEY")
-                    .build())
-            .build();
-
-        CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
-                .checkCode("123456")
-                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
-                .build();
-
-        CheckResponse res = sdk.otp().check()
-                .request(req)
-                .call();
-
-        if (res.createCheckResponse().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` builder method when initializing the SDK client instance. For example:
+The default server can also be overridden globally using the `.serverURL(String serverUrl)` builder method when initializing the SDK client instance. For example:
 ```java
 package hello.world;
 
@@ -399,9 +362,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
+                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
                 .checkCode("123456")
-                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
+                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
                 .build();
 
         CheckResponse res = sdk.otp().check()
@@ -423,10 +386,10 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By default, an API error will throw a `models/errors/SDKError` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `check` method throws the following exceptions:
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400                         | application/json            |
-| models/errors/SDKError      | 4XX, 5XX                    | \*/\*                       |
+| Error Type                  | Status Code | Content Type     |
+| --------------------------- | ----------- | ---------------- |
+| models/errors/ErrorResponse | 400         | application/json |
+| models/errors/SDKError      | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -451,9 +414,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
+                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
                 .checkCode("123456")
-                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
+                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
                 .build();
 
         CheckResponse res = sdk.otp().check()
@@ -475,9 +438,9 @@ public class Application {
 
 This SDK supports the following security scheme globally:
 
-| Name     | Type     | Scheme   |
-| -------- | -------- | -------- |
-| `apiKey` | apiKey   | API key  |
+| Name     | Type   | Scheme  |
+| -------- | ------ | ------- |
+| `apiKey` | apiKey | API key |
 
 You can set the security parameters through the `security` builder method when initializing the SDK client instance. For example:
 ```java
@@ -501,9 +464,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
+                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
                 .checkCode("123456")
-                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
+                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
                 .build();
 
         CheckResponse res = sdk.otp().check()

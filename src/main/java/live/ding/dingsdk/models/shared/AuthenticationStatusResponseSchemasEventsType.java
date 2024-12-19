@@ -6,6 +6,8 @@ package live.ding.dingsdk.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * AuthenticationStatusResponseSchemasEventsType - The type of the event.
@@ -25,5 +27,14 @@ public enum AuthenticationStatusResponseSchemasEventsType {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<AuthenticationStatusResponseSchemasEventsType> fromValue(String value) {
+        for (AuthenticationStatusResponseSchemasEventsType o: AuthenticationStatusResponseSchemasEventsType.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }

@@ -7,7 +7,6 @@ package live.ding.dingsdk;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
-import live.ding.dingsdk.models.operations.SDKMethodInterfaces.*;
 import live.ding.dingsdk.utils.HTTPClient;
 import live.ding.dingsdk.utils.RetryConfig;
 import live.ding.dingsdk.utils.SpeakeasyHTTPClient;

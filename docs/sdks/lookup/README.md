@@ -19,14 +19,16 @@ Look up for phone number
 package hello.world;
 
 import java.lang.Exception;
+import java.util.List;
 import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.LookupResponse;
+import live.ding.dingsdk.models.operations.Type;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse1, Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -35,8 +37,10 @@ public class Application {
             .build();
 
         LookupResponse res = sdk.lookup().lookup()
-                .customerUuid("69a197d9-356c-45d1-a807-41874e16b555")
+                .customerUuid("6e93aa15-9177-4d09-8395-b69ce50db1c8")
                 .phoneNumber("<value>")
+                .type(List.of(
+                    Type.CNAM))
                 .call();
 
         if (res.lookupResponse().isPresent()) {
@@ -48,10 +52,11 @@ public class Application {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `customerUuid`     | *String*           | :heavy_check_mark: | N/A                |
-| `phoneNumber`      | *String*           | :heavy_check_mark: | N/A                |
+| Parameter                                      | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `customerUuid`                                 | *String*                                       | :heavy_check_mark:                             | N/A                                            |
+| `phoneNumber`                                  | *String*                                       | :heavy_check_mark:                             | N/A                                            |
+| `type`                                         | List\<[Type](../../models/operations/Type.md)> | :heavy_minus_sign:                             | N/A                                            |
 
 ### Response
 
@@ -59,7 +64,7 @@ public class Application {
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models/errors/ErrorResponse1 | 400                          | application/json             |
-| models/errors/SDKError       | 4XX, 5XX                     | \*/\*                        |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4XX, 5XX                    | \*/\*                       |

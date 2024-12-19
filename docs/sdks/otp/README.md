@@ -40,9 +40,9 @@ public class Application {
             .build();
 
         CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
+                .authenticationUuid("e0e7b0e9-739d-424b-922f-1c2cb48ab077")
                 .checkCode("123456")
-                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
+                .customerUuid("8f1196d5-806e-4b71-9b24-5f96ec052808")
                 .build();
 
         CheckResponse res = sdk.otp().check()
@@ -100,7 +100,7 @@ public class Application {
             .build();
 
         CreateAuthenticationRequest req = CreateAuthenticationRequest.builder()
-                .customerUuid("cf2edc1c-7fc6-48fb-86da-b7508c6b7b71")
+                .customerUuid("c9f826e0-deca-41ec-871f-ecd6e8efeb46")
                 .phoneNumber("+1234567890")
                 .locale("fr-FR")
                 .build();
@@ -144,6 +144,7 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.FeedbackResponse;
 import live.ding.dingsdk.models.shared.FeedbackRequest;
 import live.ding.dingsdk.models.shared.FeedbackRequestStatus;
@@ -151,7 +152,7 @@ import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -160,7 +161,7 @@ public class Application {
             .build();
 
         FeedbackRequest req = FeedbackRequest.builder()
-                .customerUuid("cc0f6c04-40de-448f-8301-3cb0e6565dff")
+                .customerUuid("c0c405fa-6bcb-4094-9430-7d6e2428ff23")
                 .phoneNumber("+1234567890")
                 .status(FeedbackRequestStatus.ONBOARDED)
                 .build();
@@ -188,9 +189,10 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4XX, 5XX                    | \*/\*                       |
 
 ## getAuthenticationStatus
 
@@ -203,12 +205,13 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.GetAuthenticationStatusResponse;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -239,9 +242,10 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4XX, 5XX                    | \*/\*                       |
 
 ## retry
 
@@ -254,14 +258,14 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.RetryResponse;
 import live.ding.dingsdk.models.shared.RetryAuthenticationRequest;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse1, Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -297,7 +301,7 @@ public class Application {
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models/errors/ErrorResponse1 | 400                          | application/json             |
-| models/errors/SDKError       | 4XX, 5XX                     | \*/\*                        |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4XX, 5XX                    | \*/\*                       |

@@ -6,6 +6,8 @@ package live.ding.dingsdk.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.lang.String;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * CheckStatus - The status of the check. Possible values are:
@@ -36,5 +38,14 @@ public enum CheckStatus {
     
     public String value() {
         return value;
+    }
+    
+    public static Optional<CheckStatus> fromValue(String value) {
+        for (CheckStatus o: CheckStatus.values()) {
+            if (Objects.deepEquals(o.value, value)) {
+                return Optional.of(o);
+            }
+        }
+        return Optional.empty();
     }
 }
