@@ -1,3 +1,5 @@
+.speakeasy/temp/
+.speakeasy/reports
 # Ignore IDE-specific configs
 .project
 .settings/

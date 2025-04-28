@@ -10,13 +10,19 @@ Ding: The OTP API allows you to send authentication codes to your users using th
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [Ding Java SDK](#ding-java-sdk)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [SDK Example Usage](#sdk-example-usage-1)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Server Selection](#server-selection)
+  * [Error Handling](#error-handling)
+  * [Authentication](#authentication)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Authentication](#authentication)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -30,7 +36,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'live.ding:dingsdk:0.8.3'
+implementation 'live.ding:dingsdk:0.9.0'
 ```
 
 Maven:
@@ -38,7 +44,7 @@ Maven:
 <dependency>
     <groupId>live.ding</groupId>
     <artifactId>dingsdk</artifactId>
-    <version>0.8.3</version>
+    <version>0.9.0</version>
 </dependency>
 ```
 
@@ -55,6 +61,29 @@ On Windows:
 ```bash
 gradlew.bat publishToMavenLocal -Pskip.signing
 ```
+
+### Logging
+A logging framework/facade has not yet been adopted but is under consideration.
+
+For request and response logging (especially json bodies) use:
+```java
+SpeakeasyHTTPClient.setDebugLogging(true); // experimental API only (may change without warning)
+```
+Example output:
+```
+Sending request: http://localhost:35123/bearer#global GET
+Request headers: {Accept=[application/json], Authorization=[******], Client-Level-Header=[added by client], Idempotency-Key=[some-key], x-speakeasy-user-agent=[speakeasy-sdk/java 0.0.1 internal 0.1.0 org.openapis.openapi]}
+Received response: (GET http://localhost:35123/bearer#global) 200
+Response headers: {access-control-allow-credentials=[true], access-control-allow-origin=[*], connection=[keep-alive], content-length=[50], content-type=[application/json], date=[Wed, 09 Apr 2025 01:43:29 GMT], server=[gunicorn/19.9.0]}
+Response body:
+{
+  "authenticated": true, 
+  "token": "global"
+}
+```
+WARNING: This should only used for temporary debugging purposes. Leaving this option on in a production system could expose credentials/secrets in logs. <i>Authorization</i> headers are redacted by default and there is the ability to specify redacted header names via `SpeakeasyHTTPClient.setRedactedHeaders`.
+
+Another option is to set the System property `-Djdk.httpclient.HttpClient.log=all`. However, this second option does not log bodies.
 <!-- End SDK Installation [installation] -->
 
 ## SDK Example Usage
@@ -65,7 +94,6 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ### Send a code
 
 Send an OTP code to a user's phone number.
-
 
 ```java
 package hello.world;
@@ -108,7 +136,6 @@ public class Application {
 
 Check that a code entered by a user is valid.
 
-
 ```java
 package hello.world;
 
@@ -150,20 +177,19 @@ public class Application {
 
 Perform a retry if a user has not received the code.
 
-
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.RetryResponse;
 import live.ding.dingsdk.models.shared.RetryAuthenticationRequest;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse1, Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -197,14 +223,13 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.FeedbackResponse;
-import live.ding.dingsdk.models.shared.FeedbackRequest;
-import live.ding.dingsdk.models.shared.FeedbackRequestStatus;
-import live.ding.dingsdk.models.shared.Security;
+import live.ding.dingsdk.models.shared.*;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -233,18 +258,18 @@ public class Application {
 
 Get the status of an authentication.
 
-
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.GetAuthenticationStatusResponse;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -267,19 +292,18 @@ public class Application {
 
 Perform a phone number lookup.
 
-
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.LookupResponse;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse1, Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -325,58 +349,9 @@ public class Application {
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIndex` builder method when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.ding.live/v1` | None |
-
-#### Example
-
-```java
-package hello.world;
-
-import java.lang.Exception;
-import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse;
-import live.ding.dingsdk.models.operations.CheckResponse;
-import live.ding.dingsdk.models.shared.CreateCheckRequest;
-import live.ding.dingsdk.models.shared.Security;
-
-public class Application {
-
-    public static void main(String[] args) throws ErrorResponse, Exception {
-
-        Ding sdk = Ding.builder()
-                .serverIndex(0)
-                .security(Security.builder()
-                    .apiKey("YOUR_API_KEY")
-                    .build())
-            .build();
-
-        CreateCheckRequest req = CreateCheckRequest.builder()
-                .authenticationUuid("eebe792b-2fcc-44a0-87f1-650e79259e02")
-                .checkCode("123456")
-                .customerUuid("64f66a7c-4b2c-4131-a8ff-d5b954cca05f")
-                .build();
-
-        CheckResponse res = sdk.otp().check()
-                .request(req)
-                .call();
-
-        if (res.createCheckResponse().isPresent()) {
-            // handle response
-        }
-    }
-}
-```
-
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` builder method when initializing the SDK client instance. For example:
+The default server can be overridden globally using the `.serverURL(String serverUrl)` builder method when initializing the SDK client instance. For example:
 ```java
 package hello.world;
 
@@ -423,10 +398,10 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By default, an API error will throw a `models/errors/SDKError` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `check` method throws the following exceptions:
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400                         | application/json            |
-| models/errors/SDKError      | 4XX, 5XX                    | \*/\*                       |
+| Error Type                  | Status Code | Content Type     |
+| --------------------------- | ----------- | ---------------- |
+| models/errors/ErrorResponse | 400         | application/json |
+| models/errors/SDKError      | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -475,9 +450,9 @@ public class Application {
 
 This SDK supports the following security scheme globally:
 
-| Name     | Type     | Scheme   |
-| -------- | -------- | -------- |
-| `apiKey` | apiKey   | API key  |
+| Name     | Type   | Scheme  |
+| -------- | ------ | ------- |
+| `apiKey` | apiKey | API key |
 
 You can set the security parameters through the `security` builder method when initializing the SDK client instance. For example:
 ```java

@@ -3,7 +3,6 @@
 
 Send an OTP code to a user's phone number.
 
-
 ```java
 package hello.world;
 
@@ -44,7 +43,6 @@ public class Application {
 ### Check a code
 
 Check that a code entered by a user is valid.
-
 
 ```java
 package hello.world;
@@ -87,20 +85,19 @@ public class Application {
 
 Perform a retry if a user has not received the code.
 
-
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.RetryResponse;
 import live.ding.dingsdk.models.shared.RetryAuthenticationRequest;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse1, Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -134,14 +131,13 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.FeedbackResponse;
-import live.ding.dingsdk.models.shared.FeedbackRequest;
-import live.ding.dingsdk.models.shared.FeedbackRequestStatus;
-import live.ding.dingsdk.models.shared.Security;
+import live.ding.dingsdk.models.shared.*;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -170,18 +166,18 @@ public class Application {
 
 Get the status of an authentication.
 
-
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.GetAuthenticationStatusResponse;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -204,19 +200,18 @@ public class Application {
 
 Perform a phone number lookup.
 
-
 ```java
 package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.LookupResponse;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse1, Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()

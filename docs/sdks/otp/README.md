@@ -15,7 +15,7 @@ Send OTP codes to your users using their phone numbers.
 
 ## check
 
-Check a code
+Check that a code entered by a user is valid.
 
 ### Example Usage
 
@@ -75,7 +75,7 @@ public class Application {
 
 ## createAuthentication
 
-Send a code
+Send an OTP code to a user's phone number.
 
 ### Example Usage
 
@@ -135,7 +135,7 @@ public class Application {
 
 ## feedback
 
-Send feedback
+Send feedback about the authentication process.
 
 ### Example Usage
 
@@ -144,14 +144,13 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.FeedbackResponse;
-import live.ding.dingsdk.models.shared.FeedbackRequest;
-import live.ding.dingsdk.models.shared.FeedbackRequestStatus;
-import live.ding.dingsdk.models.shared.Security;
+import live.ding.dingsdk.models.shared.*;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -188,13 +187,14 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4XX, 5XX                    | \*/\*                       |
 
 ## getAuthenticationStatus
 
-Get authentication status
+Get the status of an authentication.
 
 ### Example Usage
 
@@ -203,12 +203,13 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.GetAuthenticationStatusResponse;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -239,13 +240,14 @@ public class Application {
 
 ### Errors
 
-| Error Type             | Status Code            | Content Type           |
-| ---------------------- | ---------------------- | ---------------------- |
-| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4XX, 5XX                    | \*/\*                       |
 
 ## retry
 
-Perform a retry
+Perform a retry if a user has not received the code.
 
 ### Example Usage
 
@@ -254,14 +256,14 @@ package hello.world;
 
 import java.lang.Exception;
 import live.ding.dingsdk.Ding;
-import live.ding.dingsdk.models.errors.ErrorResponse1;
+import live.ding.dingsdk.models.errors.ErrorResponse;
 import live.ding.dingsdk.models.operations.RetryResponse;
 import live.ding.dingsdk.models.shared.RetryAuthenticationRequest;
 import live.ding.dingsdk.models.shared.Security;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse1, Exception {
+    public static void main(String[] args) throws ErrorResponse, Exception {
 
         Ding sdk = Ding.builder()
                 .security(Security.builder()
@@ -297,7 +299,7 @@ public class Application {
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models/errors/ErrorResponse1 | 400                          | application/json             |
-| models/errors/SDKError       | 4XX, 5XX                     | \*/\*                        |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400                         | application/json            |
+| models/errors/SDKError      | 4XX, 5XX                    | \*/\*                       |

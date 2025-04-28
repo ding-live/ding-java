@@ -1,34 +1,32 @@
 lockVersion: 2.0.0
 id: fd2a78ee-286d-4e3c-ab3c-507a8f89f511
 management:
-  docChecksum: c83994f98c3e17c6753afdeef51be898
+  docChecksum: ab1dcbf52747c79a9f4eef70ba8d414f
   docVersion: 1.0.0
-  speakeasyVersion: 1.422.2
-  generationVersion: 2.442.11
-  releaseVersion: 0.8.3
-  configChecksum: 1fd95fdd632f62e3f6c998bd21d550b2
+  speakeasyVersion: 1.540.0
+  generationVersion: 2.593.3
+  releaseVersion: 0.9.0
+  configChecksum: f59b3b2458198348e410a6739d8e24b7
   repoURL: https://github.com/ding-live/ding-java.git
   repoSubDirectory: .
   published: true
 features:
   java:
     additionalDependencies: 0.1.0
-    core: 3.30.6
-    examples: 2.81.3
+    core: 3.37.1
+    examples: 2.81.5
     flattening: 2.81.1
-    globalSecurity: 2.82.7
+    globalSecurity: 2.82.8
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.1
-    sdkHooks: 0.1.0
-    unions: 0.0.5
+    sdkHooks: 1.0.0
+    unions: 0.0.6
 generatedFiles:
   - .gitattributes
-  - CONTRIBUTING.md
   - USAGE.md
   - build.gradle
   - docs/models/errors/Code.md
   - docs/models/errors/ErrorResponse.md
-  - docs/models/errors/ErrorResponse1.md
   - docs/models/operations/CheckResponse.md
   - docs/models/operations/CreateAuthenticationResponse.md
   - docs/models/operations/FeedbackResponse.md
@@ -37,6 +35,7 @@ generatedFiles:
   - docs/models/operations/LookupRequest.md
   - docs/models/operations/LookupResponse.md
   - docs/models/operations/RetryResponse.md
+  - docs/models/operations/Type.md
   - docs/models/shared/Attempt.md
   - docs/models/shared/AuthenticationStatusResponse.md
   - docs/models/shared/AuthenticationStatusResponseDeviceType.md
@@ -56,7 +55,6 @@ generatedFiles:
   - docs/models/shared/CreateCheckResponse.md
   - docs/models/shared/DeliveryStatus.md
   - docs/models/shared/DeviceType.md
-  - docs/models/shared/ErrorResponse.md
   - docs/models/shared/Events.md
   - docs/models/shared/FeedbackRequest.md
   - docs/models/shared/FeedbackRequestStatus.md
@@ -73,6 +71,7 @@ generatedFiles:
   - docs/sdks/ding/README.md
   - docs/sdks/lookup/README.md
   - docs/sdks/otp/README.md
+  - gradle.properties
   - gradle/wrapper/gradle-wrapper.jar
   - gradle/wrapper/gradle-wrapper.properties
   - gradlew
@@ -86,7 +85,6 @@ generatedFiles:
   - src/main/java/live/ding/dingsdk/models/errors/AuthException.java
   - src/main/java/live/ding/dingsdk/models/errors/Code.java
   - src/main/java/live/ding/dingsdk/models/errors/ErrorResponse.java
-  - src/main/java/live/ding/dingsdk/models/errors/ErrorResponse1.java
   - src/main/java/live/ding/dingsdk/models/errors/SDKError.java
   - src/main/java/live/ding/dingsdk/models/operations/CheckRequestBuilder.java
   - src/main/java/live/ding/dingsdk/models/operations/CheckResponse.java
@@ -103,6 +101,7 @@ generatedFiles:
   - src/main/java/live/ding/dingsdk/models/operations/RetryRequestBuilder.java
   - src/main/java/live/ding/dingsdk/models/operations/RetryResponse.java
   - src/main/java/live/ding/dingsdk/models/operations/SDKMethodInterfaces.java
+  - src/main/java/live/ding/dingsdk/models/operations/Type.java
   - src/main/java/live/ding/dingsdk/models/shared/Attempt.java
   - src/main/java/live/ding/dingsdk/models/shared/AuthenticationStatusResponse.java
   - src/main/java/live/ding/dingsdk/models/shared/AuthenticationStatusResponseDeviceType.java
@@ -122,7 +121,6 @@ generatedFiles:
   - src/main/java/live/ding/dingsdk/models/shared/CreateCheckResponse.java
   - src/main/java/live/ding/dingsdk/models/shared/DeliveryStatus.java
   - src/main/java/live/ding/dingsdk/models/shared/DeviceType.java
-  - src/main/java/live/ding/dingsdk/models/shared/ErrorResponse.java
   - src/main/java/live/ding/dingsdk/models/shared/Events.java
   - src/main/java/live/ding/dingsdk/models/shared/FeedbackRequest.java
   - src/main/java/live/ding/dingsdk/models/shared/FeedbackRequestStatus.java
@@ -139,6 +137,7 @@ generatedFiles:
   - src/main/java/live/ding/dingsdk/utils/BackoffStrategy.java
   - src/main/java/live/ding/dingsdk/utils/BigDecimalString.java
   - src/main/java/live/ding/dingsdk/utils/BigIntegerString.java
+  - src/main/java/live/ding/dingsdk/utils/Constants.java
   - src/main/java/live/ding/dingsdk/utils/Deserializers.java
   - src/main/java/live/ding/dingsdk/utils/EventStream.java
   - src/main/java/live/ding/dingsdk/utils/EventStreamLineReader.java
@@ -147,6 +146,7 @@ generatedFiles:
   - src/main/java/live/ding/dingsdk/utils/FormMetadata.java
   - src/main/java/live/ding/dingsdk/utils/HTTPClient.java
   - src/main/java/live/ding/dingsdk/utils/HTTPRequest.java
+  - src/main/java/live/ding/dingsdk/utils/HasSecurity.java
   - src/main/java/live/ding/dingsdk/utils/HeaderMetadata.java
   - src/main/java/live/ding/dingsdk/utils/Helpers.java
   - src/main/java/live/ding/dingsdk/utils/Hook.java
@@ -154,12 +154,17 @@ generatedFiles:
   - src/main/java/live/ding/dingsdk/utils/JSON.java
   - src/main/java/live/ding/dingsdk/utils/LazySingletonValue.java
   - src/main/java/live/ding/dingsdk/utils/Metadata.java
+  - src/main/java/live/ding/dingsdk/utils/Multipart.java
   - src/main/java/live/ding/dingsdk/utils/MultipartFormMetadata.java
+  - src/main/java/live/ding/dingsdk/utils/NameValue.java
   - src/main/java/live/ding/dingsdk/utils/OneOfDeserializer.java
   - src/main/java/live/ding/dingsdk/utils/Options.java
   - src/main/java/live/ding/dingsdk/utils/PathParamsMetadata.java
+  - src/main/java/live/ding/dingsdk/utils/QueryEncoding.java
+  - src/main/java/live/ding/dingsdk/utils/QueryParameter.java
   - src/main/java/live/ding/dingsdk/utils/QueryParameters.java
   - src/main/java/live/ding/dingsdk/utils/QueryParamsMetadata.java
+  - src/main/java/live/ding/dingsdk/utils/RecordingClient.java
   - src/main/java/live/ding/dingsdk/utils/RequestBody.java
   - src/main/java/live/ding/dingsdk/utils/RequestMetadata.java
   - src/main/java/live/ding/dingsdk/utils/Response.java
@@ -168,57 +173,41 @@ generatedFiles:
   - src/main/java/live/ding/dingsdk/utils/Security.java
   - src/main/java/live/ding/dingsdk/utils/SecurityMetadata.java
   - src/main/java/live/ding/dingsdk/utils/SerializedBody.java
+  - src/main/java/live/ding/dingsdk/utils/SessionManager.java
   - src/main/java/live/ding/dingsdk/utils/SpeakeasyHTTPClient.java
   - src/main/java/live/ding/dingsdk/utils/SpeakeasyMetadata.java
   - src/main/java/live/ding/dingsdk/utils/TypedObject.java
   - src/main/java/live/ding/dingsdk/utils/Types.java
+  - src/main/java/live/ding/dingsdk/utils/Utf8UrlEncoder.java
   - src/main/java/live/ding/dingsdk/utils/Utils.java
 examples:
   check:
     speakeasy-default-check:
       requestBody:
-        application/json: {"authentication_uuid": "e0e7b0e9-739d-424b-922f-1c2cb48ab077", "check_code": "123456", "customer_uuid": "8f1196d5-806e-4b71-9b24-5f96ec052808"}
+        application/json: {"authentication_uuid": "eebe792b-2fcc-44a0-87f1-650e79259e02", "check_code": "123456", "customer_uuid": "64f66a7c-4b2c-4131-a8ff-d5b954cca05f"}
       responses:
         "200":
           application/json: {"status": "valid"}
         "400":
-          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/verify/v1/documentation/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
   create-authentication:
     speakeasy-default-create-authentication:
       requestBody:
-        application/json: {"customer_uuid": "c9f826e0-deca-41ec-871f-ecd6e8efeb46", "locale": "fr-FR", "phone_number": "+1234567890"}
+        application/json: {"customer_uuid": "cf2edc1c-7fc6-48fb-86da-b7508c6b7b71", "locale": "fr-FR", "phone_number": "+1234567890"}
       responses:
+        "200":
+          application/json: {}
         "400":
-          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
-        "200": {}
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/verify/v1/documentation/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
   feedback:
     speakeasy-default-feedback:
       requestBody:
-        application/json: {"customer_uuid": "c0c405fa-6bcb-4094-9430-7d6e2428ff23", "phone_number": "+1234567890", "status": "onboarded"}
+        application/json: {"customer_uuid": "cc0f6c04-40de-448f-8301-3cb0e6565dff", "phone_number": "+1234567890", "status": "onboarded"}
       responses:
         "200":
           application/json: {"uuid": "123e4567-e89b-12d3-a456-4266141740a0"}
-        default:
-          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
-  retry:
-    speakeasy-default-retry:
-      responses:
-        "200":
-          application/json: {"remaining_retry": 3, "status": "approved"}
         "400":
-          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
-  lookup:
-    speakeasy-default-lookup:
-      parameters:
-        path:
-          phone_number: "<value>"
-        header:
-          customer-uuid: "6e93aa15-9177-4d09-8395-b69ce50db1c8"
-      responses:
-        "200":
-          application/json: {"carrier": "AT&T", "country_code": "US", "line_type": "Mobile", "mcc": "310", "mnc": "410", "phone_number": "+1234567890"}
-        "400":
-          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/verify/v1/documentation/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
   getAuthenticationStatus:
     speakeasy-default-get-authentication-status:
       parameters:
@@ -226,6 +215,28 @@ examples:
           auth_uuid: "d8446450-f2fa-4dd9-806b-df5b8c661f23"
       responses:
         "200":
-          application/json: {"events": [], "phone_number": "+1234567890"}
-        default:
-          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+          application/json: {"events": [{"content": "Your code is 123456"}], "phone_number": "+1234567890"}
+        "400":
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/verify/v1/documentation/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+  retry:
+    speakeasy-default-retry:
+      responses:
+        "200":
+          application/json: {"remaining_retry": 3, "status": "approved"}
+        "400":
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/verify/v1/documentation/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+  lookup:
+    speakeasy-default-lookup:
+      parameters:
+        path:
+          phone_number: "<value>"
+        query: {}
+        header:
+          customer-uuid: "69a197d9-356c-45d1-a807-41874e16b555"
+      responses:
+        "200":
+          application/json: {"carrier": "AT&T", "country_code": "US", "line_type": "Mobile", "mcc": "310", "mnc": "410", "phone_number": "+1234567890"}
+        "400":
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/verify/v1/documentation/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+examplesVersion: 1.0.1
+generatedTests: {}
